@@ -46,6 +46,7 @@
 | git fetch --all                                     | fetch all file from giihub             |
 | git reset --hard <name> [origin/master]             | head branch to target vision           |
 | git merge origin/master --allow-unrelated-histories | force merge                            |
+| git pull --rebase origin master                     | rebase to branch                       |
 *** Linux command
 #+NAME: <TXT file Chinese messy code>
 #+BEGIN_SRC sh
