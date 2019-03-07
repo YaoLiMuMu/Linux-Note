@@ -1,0 +1,34 @@
+*** terminal command
+| command              | description                                    |
+| pwd                  | show now location                              |
+| mkdir                | make new directory                             |
+| cd                   | enter directory                                |
+| ls                   | list of directories                            |
+| ls -a                | list of all directories,including hidden files |
+| ls -l                | list of deteail location of directories        |
+| g++ hello.c -o hello | execute C/Cpp file                             |
+| mv file directory    | move file to directory                         |
+| ln src  dst          | create hard link                               |
+| ln -s src dst        | create symbolic link                           |
+| ln -snf src dst      | create new location symbolic link              |
+| rm -rf filename      | delete file                                    |
+*** git command
+| command             | description             |
+| git init            | create initial git file |
+| git add file        | add file to git         |
+| git commit -m "..." | commit description      |
+|                     |                         |
+|                     |                         |
+*** Linux command
+#+NAME: <TXT file Chinese messy code>
+#+BEGIN_SRC sh
+gsettings set org.gnome.gedit.preferences.encodings candidate-encodings "['GB18030', 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"  #TXT file Chinese messy code
+#+END_SRC
+
+PPA:Personal Package Archives
+#+BEGIN_SRC sh
+sudo add-apt-repository ppa:user/ppa-name # add ppa source
+sudo apt-get update # refresh source
+sudo add-apt-repository -r ppa:user/ppa-name # remove ppa source
+sudo apt-get update # refresh source
+#+END_SRC
