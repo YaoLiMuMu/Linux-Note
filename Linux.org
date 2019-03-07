@@ -13,33 +13,39 @@
 | ln -snf src dst      | create new location symbolic link              |
 | rm -rf filename      | delete file                                    |
 *** git command
-| command                                            | description                        |
-| git init                                           | create initial git file            |
-| git add file                                       | add file to git                    |
-| git add .                                          | add all file to git                |
-| git rm filename                                    | remove file                        |
-| git status                                         | check status                       |
-| git log                                            | check log                          |
-| git commit -m "..."                                | commit description                 |
-| git remote add origin [github address]             | add github address                 |
-| git push -u origin master                          | push master branch to github       |
-| git pull origin master                             | fresh github to local              |
-| git push origin master -f                          | force push master branch           |
-| git config –global credential.helper cache         | cache git password for 15 minutes  |
-| git config credential.helper ‘cache –timeout=3600’ | cache git password for 1 hour      |
-| git config –global credential.helper store         | store git password forever         |
-| git remote rm origin                               | remove origin                      |
-| git branch                                         | check branch, head pointer "*"     |
-| git checkout -b dev                                | switch to a new branch "dev"       |
-| git branch dev                                     | create a new branch "dev"          |
-| git checkout dev                                   | switch to branch "dev"             |
-| git merge dev                                      | merge target branch to head branch |
-| git merge --no-ff -m "..." dev                     | merge without no-fast-forward      |
-| git branch -d dev                                  | delete branch "dev"                |
-| git stash                                          | store head branch                  |
-| git stash list                                     | list stash log                     |
-| git stash pop                                      | stash apply and drop               |
-|                                                    |                                    |
+| command                                             | description                            |
+| git init                                            | create initial git file                |
+| git add file                                        | add file to git                        |
+| git add .                                           | add all file to git                    |
+| git rm filename                                     | remove file                            |
+| git status                                          | check status                           |
+| git log                                             | check log                              |
+| git commit -m "..."                                 | commit description                     |
+| git remote add origin [github address]              | add github address                     |
+| git push -u origin master                           | push master branch to github           |
+| git pull origin master                              | fresh(fetch and merge) github to local |
+| git push origin master -f                           | force push master branch               |
+| git config –global credential.helper cache          | cache git password for 15 minutes      |
+| git config credential.helper ‘cache –timeout=3600’  | cache git password for 1 hour          |
+| git config –global credential.helper store          | store git password forever             |
+| git remote rm origin                                | remove origin                          |
+| git branch                                          | check branch, head pointer "*"         |
+| git checkout -b dev                                 | switch to a new branch "dev"           |
+| git branch dev                                      | create a new branch "dev"              |
+| git checkout dev                                    | switch to branch "dev"                 |
+| git merge dev                                       | merge target branch to head branch     |
+| git merge --no-ff -m "..." dev                      | merge without no-fast-forward          |
+| git branch -d dev                                   | delete branch "dev"                    |
+| git stash                                           | store head branch                      |
+| git stash list                                      | list stash log                         |
+| git stash pop                                       | stash apply and drop                   |
+| git fetch origin master                             | fetch file from giihub                 |
+| git log -p master..origin/master                    | compare master and origin              |
+| git merge origin/master                             | merge master and origin                |
+| git diff <name>                                     | compare <name> and head                |
+| git fetch --all                                     | fetch all file from giihub             |
+| git reset --hard <name> [origin/master]             | head branch to target vision           |
+| git merge origin/master --allow-unrelated-histories | force merge                            |
 *** Linux command
 #+NAME: <TXT file Chinese messy code>
 XS#+BEGIN_SRC sh
