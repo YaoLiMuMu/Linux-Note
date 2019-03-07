@@ -13,12 +13,18 @@
 | ln -snf src dst      | create new location symbolic link              |
 | rm -rf filename      | delete file                                    |
 *** git command
-| command             | description             |
-| git init            | create initial git file |
-| git add file        | add file to git         |
-| git commit -m "..." | commit description      |
-|                     |                         |
-|                     |                         |
+| command                                            | description                       |
+| git init                                           | create initial git file           |
+| git add file                                       | add file to git                   |
+| git commit -m "..."                                | commit description                |
+| git remote add origin [github address]             | add github address                |
+| git push -u origin master                          | push master branch to github      |
+| git pull origin master                             | new device pull branch            |
+| git push origin master -f                          | force push master branch          |
+| git config –global credential.helper cache         | cache git password for 15 minutes |
+| git config credential.helper ‘cache –timeout=3600’ | cache git password for 1 hour     |
+| git config –global credential.helper store         | store git password forever        |
+|                                                    |                                   |
 *** Linux command
 #+NAME: <TXT file Chinese messy code>
 #+BEGIN_SRC sh
