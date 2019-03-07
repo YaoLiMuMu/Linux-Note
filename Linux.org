@@ -48,9 +48,9 @@
 | git merge origin/master --allow-unrelated-histories | force merge                            |
 *** Linux command
 #+NAME: <TXT file Chinese messy code>
-XS#+BEGIN_SRC sh
+#+BEGIN_SRC sh
 gsettings set org.gnome.gedit.preferences.encodings candidate-encodings "['GB18030', 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"  #TXT file Chinese messy code
-#+END_SRC
+#+END_SRC 
 
 PPA:Personal Package Archives
 #+BEGIN_SRC sh
@@ -58,4 +58,12 @@ sudo add-apt-repository ppa:user/ppa-name # add ppa source
 sudo apt-get update # refresh source
 sudo add-apt-repository -r ppa:user/ppa-name # remove ppa source
 sudo apt-get update # refresh source
+#+END_SRC
+#+BEGIN_SRC sh
+cat <filename> # show text 
+cat -n <filename> # show text with line number
+cat -b <filename> # show text with line number,blank line without number
+cat -T <filename> # show text without tabs
+more <filename>   # show text, <return> key:next page
+less <filename>   # show textXS
 #+END_SRC
