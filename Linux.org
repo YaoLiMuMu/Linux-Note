@@ -16,14 +16,20 @@
 | command                                            | description                       |
 | git init                                           | create initial git file           |
 | git add file                                       | add file to git                   |
+| git add .                                          | add all file to git               |
+| git rm filename                                    | remove file                       |
+| git status                                         | check status                      |
+| git log                                            | check log                         |
 | git commit -m "..."                                | commit description                |
 | git remote add origin [github address]             | add github address                |
 | git push -u origin master                          | push master branch to github      |
-| git pull origin master                             | new device pull branch            |
+| git pull origin master                             | fresh github to local             |
 | git push origin master -f                          | force push master branch          |
 | git config –global credential.helper cache         | cache git password for 15 minutes |
 | git config credential.helper ‘cache –timeout=3600’ | cache git password for 1 hour     |
 | git config –global credential.helper store         | store git password forever        |
+| git remote rm origin                               | remove origin                     |
+| git branch                                         | check branch                      |
 |                                                    |                                   |
 *** Linux command
 #+NAME: <TXT file Chinese messy code>
