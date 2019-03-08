@@ -12,6 +12,8 @@
 | ln -s src dst        | create symbolic link                           |
 | ln -snf src dst      | create new location symbolic link              |
 | rm -rf filename      | delete file                                    |
+| ~/                   | /home/                                         |
+|                      |                                                |
 *** git command
 | command                                             | description                            |
 | git init                                            | create initial git file                |
@@ -67,4 +69,13 @@ cat -b <filename> # show text with line number,blank line without number
 cat -T <filename> # show text without tabs
 more <filename>   # show text, <return> key:next page
 less <filename>   # show textXS
+cp <filename1> <filename2> # copy file1 to file2
+cp -v <filename1> <filename2> # copy file and print
+$LOGNAME # account username
+tail -n 5 <filename> # print last 5 lines of file
+ls -altr # list of all directories according time and invert
 #+END_SRC
+*** Hotkey
+| keybinding | description |
+| C-d        | exit bash   |
+|            |             |
