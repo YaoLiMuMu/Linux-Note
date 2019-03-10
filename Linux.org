@@ -13,7 +13,38 @@
 | ln -snf src dst      | create new location symbolic link              |
 | rm -rf filename      | delete file                                    |
 | ~/                   | /home/                                         |
-|                      |                                                |
+#+BEGIN_SRC bash
+sudo apt install <application> # install application
+sudo apt remove <application> # uninstall application,reserve config
+sudo apt-get <name> remove # uninstall application and config
+sudo apt update # refresh source
+sudo apt upgrade # upgrade all application
+sudo apt autoremove <name> # uninstall no required packages
+sudo apt full-upgrade # upgrade all application and packages
+apt search <name> # search application
+apt show # list of install deteails
+apt list # list of all application
+apt edit-sources # list of all source
+apt-get autoclean # clean packages
+apt-get clean # clean packages and cache
+dpkg --get-selections|grep <name> # search application about name
+dpkg -l |grep ^rc|awk '{print $2}' |sudo xargs dpkg -P # clean residual file
+dpkg -l <package name> # list of all directories of package
+wget <link-address> # download in current directory
+wget -O <dir> <link> # download link on the dir
+wget -i file.txt # execute links on the txt file (download many files)
+wget -b <link> # download link on background, generate web-log file on current directory
+wget -o <link> # download link on background, generate web-log file on current directory
+wget -c <link> # contient to download
+wget --limit-rate=100k -O  <link> # limit download rate =100kb
+wget --spider <link> # test download link
+wget --tries=3 <link> # define retry download 3 times
+wget --mirror -p --convert-links -P <local-dir> <link> # download web all links and packages,and convert links to local directory
+wget --reject=png --mirror -p --convert-links -P <local-dir> <link> # download reject target file(png)
+wget -Q5m -i file.txt # download reject size over 5Mb
+wget -r -A .png <link> # download target file(png) from web
+wget --file-user=USERNAME --file-password=PASSWORD <url> # download from FTP
+#+END_SRC
 *** git command
 | command                                             | description                            |
 | git init                                            | create initial git file                |
@@ -74,8 +105,48 @@ cp -v <filename1> <filename2> # copy file and print
 $LOGNAME # account username
 tail -n 5 <filename> # print last 5 lines of file
 ls -altr # list of all directories according time and invert
+grep [option] pattern file # regular expression
 #+END_SRC
 *** Hotkey
 | keybinding | description |
 | C-d        | exit bash   |
 |            |             |
+*** Applications
+**** BaiduPCS-Go [[https://github.com/iikira/BaiduPCS-Go#linux--macos][iikira]]
+#+BEGIN_SRC bash
+## add go path; install baidupcs-go
+wget https://dl.google.com/go/go1.10.2.linux-amd64.tar.gz # download packages from github
+sudo tar -c /usr/local -zxvf go1.10.2.linux-amd64.tar.gz # unzip packages
+vim ~/.bashrc
+export GOPATH=$HOME/go # address gp path
+# export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+source ~/.bashrc # execute config file
+sudo pat install golang # install golanguage
+go get -u -v github.com/iikira/BaiduPCS-Go # go direct install badiupcs-go from github
+sudo ln -s ~/go/bin/BaiduPCS-Go baidupcs #  create link(baidupcs) for BaiduPCS
+baidupcs # run Baidupcs-Go
+login # login
+logout # logout
+loglist # account list
+who # current account
+su <uid> # switch account
+quota # show storage capacity
+cd <dir> # enter <dir>
+cd <dir> -l # enter <dir> and list subdirectory
+cd .. # enter parent directory
+cd / # enter root directory
+pwd  # show current directory
+ls -asc # show fiie ascending order
+ls -desc # show file descending order
+ls -time # show file according time
+ls -name # show file according name
+ls -size # show file according size
+config set -savedir ~/Downloads # set download location
+search <name> # search file about <name>
+d <filename1> <filename2> # download
+upload <local-dir> <remote-dir> #upload
+share l # share
+offlinedl add <link1> <link2> # offline downloadXS
+#+END_SRC
+**** Goldendict 
+[[http://blog.sina.com.cn/s/blog_933b54980102x6hr.html][Reference]]
