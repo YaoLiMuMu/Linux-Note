@@ -44,6 +44,8 @@ wget --reject=png --mirror -p --convert-links -P <local-dir> <link> # download r
 wget -Q5m -i file.txt # download reject size over 5Mb
 wget -r -A .png <link> # download target file(png) from web
 wget --file-user=USERNAME --file-password=PASSWORD <url> # download from FTP
+dpkg -i .deb # install deb package
+sudo dpkg -l # list of all apt
 #+END_SRC
 *** git command
 | command                                             | description                            |
@@ -108,9 +110,14 @@ ls -altr # list of all directories according time and invert
 grep [option] pattern file # regular expression
 #+END_SRC
 *** Hotkey
-| keybinding | description |
-| C-d        | exit bash   |
-|            |             |
+| keybinding | description                               |
+| C-d        | exit bash                                 |
+| Pstrc      | Save a screenshot to Pictures             |
+| S-Pstrc    | Save a screenshot of an area to Pictures  |
+| M-Pstrc    | Save a screenshot of a window to Pictures |
+| C-Pstrc    | copy a screenshot to clipboard            |
+| S-C-Pstrc  | copy a screenshot of an area to clipboard |
+|            |                                           |
 *** Applications
 **** BaiduPCS-Go [[https://github.com/iikira/BaiduPCS-Go#linux--macos][iikira]]
 #+BEGIN_SRC bash
@@ -121,7 +128,7 @@ vim ~/.bashrc
 export GOPATH=$HOME/go # address gp path
 # export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 source ~/.bashrc # execute config file
-sudo pat install golang # install golanguage
+sudo apt install golang # install golanguage
 go get -u -v github.com/iikira/BaiduPCS-Go # go direct install badiupcs-go from github
 sudo ln -s ~/go/bin/BaiduPCS-Go baidupcs #  create link(baidupcs) for BaiduPCS
 baidupcs # run Baidupcs-Go
@@ -150,3 +157,15 @@ offlinedl add <link1> <link2> # offline downloadXS
 #+END_SRC
 **** Goldendict 
 [[http://blog.sina.com.cn/s/blog_933b54980102x6hr.html][Reference]]
+**** iproute2
+#+BEGIN_SRC bash
+ip add # show ip 
+ip link show # show ip
+
+#+END_SRC
+**** opensssh-server
+#+BEGIN_SRC bash
+ps -e|grep ssh # ssh-agent and sshd
+sudo /etc/init.d/ssh start # start ssh server
+
+#+END_SRC
