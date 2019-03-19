@@ -82,6 +82,13 @@ sudo dpkg -l # list of all apt
 | git reset --hard <name> [origin/master]             | head branch to target vision           |
 | git merge origin/master --allow-unrelated-histories | force merge                            |
 | git pull --rebase origin master                     | rebase to branch                       |
+#+BEGIN_SRC bash
+git config --global user.name "username"
+git config --global user.email "email address"
+ssh-keygen -C 'email address' -t rsa # generate ssh key
+gedit ~/.ssh/id_rsa.pub
+ssh -T git@github.com
+#+END_SRC
 *** Linux command
 #+NAME: <TXT file Chinese messy code>
 #+BEGIN_SRC sh
@@ -163,9 +170,18 @@ ip add # show ip
 ip link show # show ip
 
 #+END_SRC
-**** opensssh-server
+**** opensssh-server [[https://www.linuxidc.com/Linux/2014-06/103008.htm][1]] [[https://blog.csdn.net/u013452337/article/details/80847113][2]]
 #+BEGIN_SRC bash
 ps -e|grep ssh # ssh-agent and sshd
 sudo /etc/init.d/ssh start # start ssh server
+pidof sshd
+ssh username@hosrname # client login
+ssh -p 2222 username@hosrname # port 2222 login
 
 #+END_SRC
+**** gdb [[https://www.cnblogs.com/chenmingjun/p/8280889.html][1]]
+#+BEGIN_SRC bash
+gcc -o test test.c -g
+
+#+END_SRC
+**** make [[https://blog.csdn.net/qq_35451572/article/details/81092902][1]] 
