@@ -1,4 +1,4 @@
-*** terminal command
+*** terminal command [[https://www.cnblogs.com/nucdy/p/5251659.html][1]]
 | command              | description                                    |
 | pwd                  | show now location                              |
 | mkdir                | make new directory                             |
@@ -13,6 +13,18 @@
 | ln -snf src dst      | create new location symbolic link              |
 | rm -rf filename      | delete file                                    |
 | ~/                   | /home/                                         |
+| C-a                  | set cursor to the begin                        |
+| C-e                  | set cursor to the end                          |
+| C-k                  | kill all after current cursor                  |
+| C-u                  | kill all before current cursor                 |
+| C-d                  | delete char after current cursor               |
+| C-h                  | delete char before current cursor              |
+| C-w                  | delete word after current cursor               |
+| C-y                  | yank which kill by C-u\C-d\C-w                 |
+| C-l                  | clear all record                               |
+| C-r                  | read history commands                          |
+|                      |                                                |
+|                      |                                                |
 #+BEGIN_SRC bash
 sudo apt install <application> # install application
 sudo apt remove <application> # uninstall application,reserve config
@@ -46,6 +58,15 @@ wget -r -A .png <link> # download target file(png) from web
 wget --file-user=USERNAME --file-password=PASSWORD <url> # download from FTP
 dpkg -i .deb # install deb package
 sudo dpkg -l # list of all apt
+touch <filename> # create file 
+mkdir <foldername> # create folder
+rm <filename> # remove file
+rm -d <filename> # remove file and hard link
+rm -f # force remove
+rm -r # recursive remove
+rm -v # remove and check verbose
+rm -rf # clean currnt folder
+rmdirr <foldername> # remove folder
 #+END_SRC
 *** git command
 | command                                             | description                            |
@@ -168,4 +189,22 @@ ip link show # show ip
 ps -e|grep ssh # ssh-agent and sshd
 sudo /etc/init.d/ssh start # start ssh server
 
+#+END_SRC
+**** Qt [[https://www.jianshu.com/p/a21d32c5e789][1]]
+#+BEGIN_SRC 
+apt install libgl1-mesa-dev
+#+END_SRC
+**** Vim
+#+BEGIN_SRC bash
+wq # write and quit
+wq! # force write and quit
+#+END_SRC
+**** RIME [[https://www.cnblogs.com/BlackStorm/p/Install-IBUS-RIME-Input-Method-On-Ubuntu-16-04-LTS.html][1]] [[http://zhizhi.betahouse.us/2018/10/17/rime-setup/][2]] [[https://www.jianshu.com/p/cffc0ea094a7][3]] 
+#+BEGIN_SRC bash
+sudo apt install ibus-rime
+sudo apt install librime-data-pinyin-simp
+sudo apt-get install librime-data-double-pinyin
+cd ~/.config/ibus/rime
+vim default.custom.yaml
+"menu/page_size": 7
 #+END_SRC
