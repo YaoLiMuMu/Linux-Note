@@ -226,4 +226,10 @@ cd ~/.config/ibus/rime
 vim default.custom.yaml
 "menu/page_size": 7
 #+END_SRC
->>>>>>> origin/master
+*** Linux Customize
+**** turn CapsLock to Left Ctrl [[https://www.cnblogs.com/ethan87/p/10219093.html][1]]
+#+BEGIN_SRC bash
+sudo vim /usr/share/X11/xkb/keycodes/evdev
+CAPS=37;
+LCTL=66;
+#+END_SRC
