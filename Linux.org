@@ -1,3 +1,4 @@
+
 *** terminal command [[https://www.cnblogs.com/nucdy/p/5251659.html][1]]
 | command              | description                                    |
 | pwd                  | show now location                              |
@@ -211,7 +212,7 @@ ip add # show ip
 ip link show # show ip
 
 #+END_SRC
-**** opensssh-server [[https://www.linuxidc.com/Linux/2014-06/103008.htm][1]] [[https://blog.csdn.net/u013452337/article/details/80847113][2]]
+**** openssh-server [[https://www.linuxidc.com/Linux/2014-06/103008.htm][1]] [[https://blog.csdn.net/u013452337/article/details/80847113][2]]
 #+BEGIN_SRC bash
 ps -e|grep ssh # ssh-agent and sshd
 sudo /etc/init.d/ssh start # start ssh server
@@ -227,7 +228,7 @@ gcc -o test test.c -g
 #+END_SRC
 <<<<<<< HEAD
 **** make [[https://blog.csdn.net/qq_35451572/article/details/81092902][1]] 
-=======
+
 **** Qt [[https://www.jianshu.com/p/a21d32c5e789][1]]
 #+BEGIN_SRC 
 apt install libgl1-mesa-dev
@@ -289,7 +290,7 @@ vim default.custom.yaml
 **** Latex [[https://www.cnblogs.com/yeluqing/archive/2012/09/24/3827966.html][1]] [[http://blog.sciencenet.cn/home.php?mod=space&uid=200199&do=blog&id=1036667][2]] [[https://blog.csdn.net/u014803202/article/details/50410748][3]] [[https://blog.csdn.net/csfreebird/article/details/43636615][4]] [[http://www.bagualu.net/wordpress/archives/6525][5]] [[https://blog.csdn.net/csfreebird/article/details/43636615][6]] [[https://blog.csdn.net/u014803202/article/details/50410748][7]]
 #+BEGIN_SRC bash
 sudo apt install texlive-full
-sudo apt install acctex
+sudo apt install auctex
 #+END_SRC
 #+BEGIN_SRC elisp
 (add-hook 'LaTeX-mode-hook (lambda()
@@ -299,6 +300,7 @@ sudo apt install acctex
 (setq TeX-show-compilation t)
 ))
 #+END_SRC
+**** Arm [[https://blog.csdn.net/qq_33475105/article/details/81489792][1]]
 *** Linux Customize
 **** turn CapsLock to Left Ctrl [[https://www.cnblogs.com/ethan87/p/10219093.html][1]]
 #+BEGIN_SRC bash
