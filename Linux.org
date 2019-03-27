@@ -1,4 +1,3 @@
-
 *** terminal command [[https://www.cnblogs.com/nucdy/p/5251659.html][1]]
 | command              | description                                    |
 | pwd                  | show now location                              |
@@ -131,12 +130,11 @@ ssh-keygen -C 'email address' -t rsa # generate ssh key
 gedit ~/.ssh/id_rsa.pub
 ssh -T git@github.com
 #+END_SRC
-*** Linux command
+*** Linux command [[https://blog.csdn.net/qintaiwu/article/details/73384755][1]]
 #+NAME: <TXT file Chinese messy code>
 #+BEGIN_SRC sh
 gsettings set org.gnome.gedit.preferences.encodings candidate-encodings "['GB18030', 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"  #TXT file Chinese messy code
-#+END_SRC 
-
+#+END_SRC
 PPA:Personal Package Archives
 #+BEGIN_SRC sh
 sudo add-apt-repository ppa:user/ppa-name # add ppa source
@@ -157,6 +155,28 @@ $LOGNAME # account username
 tail -n 5 <filename> # print last 5 lines of file
 ls -altr # list of all directories according time and invert
 grep [option] pattern file # regular expression
+#+END_SRC
+file permission setup
+#+BEGIN_SRC bash
+ls -lh <filename> # check file permissions
+ls -ld <folder> # check folder permissions
+sudo chmod 600 xxx # u read and write
+sudo chomd 644 xxx # u read and write. group write
+sudo chomd 700 xxx # u read write and execute
+sudo chomd 666 xxx # group read and write
+sudo chomd 777 xxx # group read write and write
+# 000--no permission 100--only read 110--read and write 111--execute 
+sudo chomd u+w xxx # u write
+sudo chomd u-w xxx # cancel u write permission
+sudo chomd g+r xxx # group read
+sudo chomd o-r xxx # cancel others write
+sudo chomd +x xxx # all execute
+# u--your g--group o--others a--all
+# +--add ---cancel =--set only
+# r--read w--write x--execute
+#+END_SRC
+#+BEGIN_SRC bash
+echo "..." >> filename # add ... to file
 #+END_SRC
 *** Hotkey
 | keybinding | description                               |
@@ -287,7 +307,7 @@ cd ~/.config/ibus/rime
 vim default.custom.yaml
 "menu/page_size": 7
 #+END_SRC
-**** Latex [[https://www.cnblogs.com/yeluqing/archive/2012/09/24/3827966.html][1]] [[http://blog.sciencenet.cn/home.php?mod=space&uid=200199&do=blog&id=1036667][2]] [[https://blog.csdn.net/u014803202/article/details/50410748][3]] [[https://blog.csdn.net/csfreebird/article/details/43636615][4]] [[http://www.bagualu.net/wordpress/archives/6525][5]] [[https://blog.csdn.net/csfreebird/article/details/43636615][6]] [[https://blog.csdn.net/u014803202/article/details/50410748][7]]
+**** Latex [[https://www.cnblogs.com/yeluqing/archive/2012/09/24/3827966.html][1]] [[http://blog.sciencenet.cn/home.php?mod=space&uid=200199&do=blog&id=1036667][2]] [[https://blog.csdn.net/u014803202/article/details/50410748][3]] [[https://blog.csdn.net/csfreebird/article/details/43636615][4]] [[http://www.bagualu.net/wordpress/archives/6525][5]] [[https://blog.csdn.net/csfreebird/article/details/43636615][6]] [[https://blog.csdn.net/u014803202/article/details/50410748][7]] [[https://blog.csdn.net/wuyao721/article/details/7669993][8]] [[http://blog.sina.com.cn/s/blog_61f013b801010cdh.html][9]]
 #+BEGIN_SRC bash
 sudo apt install texlive-full
 sudo apt install auctex
@@ -301,6 +321,13 @@ sudo apt install auctex
 ))
 #+END_SRC
 **** Arm [[https://blog.csdn.net/qq_33475105/article/details/81489792][1]]
+**** minicom [[https://blog.csdn.net/qq_38880380/article/details/77662637][1]]
+#+BEGIN_SRC bash
+sudo apt install minicom
+sudo minicom -s # setup
+sudo minicom # running
+#+END_SRC
+**** SAPGUI [[https://blogs.sap.com/2015/07/04/sap-gui-for-java-installation-and-configuration/][1]] [[https://www.icloud.com/#iclouddrive/0Kwlf84ytOdz5PLbfxg8eWZZQ][JAVA 750]]
 *** Linux Customize
 **** turn CapsLock to Left Ctrl [[https://www.cnblogs.com/ethan87/p/10219093.html][1]]
 #+BEGIN_SRC bash
