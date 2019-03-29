@@ -232,13 +232,17 @@ ip add # show ip
 ip link show # show ip
 
 #+END_SRC
-**** openssh-server [[https://www.linuxidc.com/Linux/2014-06/103008.htm][1]] [[https://blog.csdn.net/u013452337/article/details/80847113][2]]
+**** openssh-server and ssh tutorial [[https://www.linuxidc.com/Linux/2014-06/103008.htm][1]] [[https://blog.csdn.net/u013452337/article/details/80847113][2]]
 #+BEGIN_SRC bash
 ps -e|grep ssh # ssh-agent and sshd
 sudo /etc/init.d/ssh start # start ssh server
 pidof sshd
-ssh username@hosrname # client login
+ssh username@hosrname # root client login
 ssh -p 2222 username@hosrname # port 2222 login
+ssh [-l login_name] [-p port] [user@hostname] # general format
+ssh -l login_name hostname # user login
+ssh login_name@hostname # user login
+
 
 #+END_SRC
 **** gdb [[https://www.cnblogs.com/chenmingjun/p/8280889.html][1]]
@@ -307,7 +311,7 @@ cd ~/.config/ibus/rime
 vim default.custom.yaml
 "menu/page_size": 7
 #+END_SRC
-**** Latex [[https://www.cnblogs.com/yeluqing/archive/2012/09/24/3827966.html][1]] [[http://blog.sciencenet.cn/home.php?mod=space&uid=200199&do=blog&id=1036667][2]] [[https://blog.csdn.net/u014803202/article/details/50410748][3]] [[https://blog.csdn.net/csfreebird/article/details/43636615][4]] [[http://www.bagualu.net/wordpress/archives/6525][5]] [[https://blog.csdn.net/csfreebird/article/details/43636615][6]] [[https://blog.csdn.net/u014803202/article/details/50410748][7]] [[https://blog.csdn.net/wuyao721/article/details/7669993][8]] [[http://blog.sina.com.cn/s/blog_61f013b801010cdh.html][9]]
+**** Latex [[https://www.cnblogs.com/yeluqing/archive/2012/09/24/3827966.html][1]] [[http://blog.sciencenet.cn/home.php?mod=space&uid=200199&do=blog&id=1036667][2]] [[https://blog.csdn.net/u014803202/article/details/50410748][3]] [[https://blog.csdn.net/csfreebird/article/details/43636615][4]] [[http://www.bagualu.net/wordpress/archives/6525][5]] [[https://blog.csdn.net/csfreebird/article/details/43636615][6]] [[https://blog.csdn.net/u014803202/article/details/50410748][7]] [[https://blog.csdn.net/wuyao721/article/details/7669993][8]] [[http://blog.sina.com.cn/s/blog_61f013b801010cdh.html][9]] [[https://www.cnblogs.com/yeluqing/archive/2012/09/24/3827966.html][10]] [[https://www.cnblogs.com/SunSmileCS/archive/2013/02/22/2923002.html][11]] [[https://blog.csdn.net/pfanaya/article/details/7669364][12]] [[https://emacs-china.org/t/topic/2540][13]] [[http://blog.sina.com.cn/s/blog_61f013b801010cdh.html][14]] [[https://www.xuebuyuan.com/865488.html][15]] [[https://max.book118.com/html/2018/0103/147043242.shtm][16]] [[https://blog.csdn.net/junyidcf/article/details/48914047][17]]
 #+BEGIN_SRC bash
 sudo apt install texlive-full
 sudo apt install auctex
@@ -320,6 +324,14 @@ sudo apt install auctex
 (setq TeX-show-compilation t)
 ))
 #+END_SRC
+#+BEGIN_SRC elisp
+(setq org-latex-compiler "xelatex")
+#+END_SRC
+#+LATEX_HEADER: \usepackage{ctex}
+#+LATEX_COMPILER: xelatex
+#+BEGIN_SRC tex
+/usepackage[unicode=true,colorlinks=no,pdfborder=no]{hyperref}
+#+END_SRC
 **** Arm [[https://blog.csdn.net/qq_33475105/article/details/81489792][1]]
 **** minicom [[https://blog.csdn.net/qq_38880380/article/details/77662637][1]]
 #+BEGIN_SRC bash
@@ -327,7 +339,17 @@ sudo apt install minicom
 sudo minicom -s # setup
 sudo minicom # running
 #+END_SRC
-**** SAPGUI [[https://blogs.sap.com/2015/07/04/sap-gui-for-java-installation-and-configuration/][1]] [[https://www.icloud.com/#iclouddrive/0Kwlf84ytOdz5PLbfxg8eWZZQ][JAVA 750]]
+**** SAPGUI [[https://blogs.sap.com/2015/07/04/sap-gui-for-java-installation-and-configuration/][1]] [[https://www.icloud.com/#iclouddrive/0Kwlf84ytOdz5PLbfxg8eWZZQ][JAVA 750]] [[https://wenku.baidu.com/view/1e730049360cba1aa811da9a.html][3]]
+**** EdrawMax [[https://www.edrawsoft.com/download-edrawmax-linux.php][1]]
+#+BEGIN_SRC bash
+tar -zxvf edrawmax-9-amd64.tar.gz
+chmod +x EdrawMax
+sudo ./EdrawMax
+cd /usr/local/bin
+sudo ln -s ~/Downloads/edrawmax-9-amd64/EdrawMax edrawmax
+#+END_SRC
+**** Orgmode [[https://www.cnblogs.com/qlwy/archive/2012/06/15/2551034.html][1]] 
+C-c C-x C-v show figure
 *** Linux Customize
 **** turn CapsLock to Left Ctrl [[https://www.cnblogs.com/ethan87/p/10219093.html][1]]
 #+BEGIN_SRC bash
