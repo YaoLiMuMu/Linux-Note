@@ -1,7 +1,6 @@
 *** terminal command [[https://www.cnblogs.com/nucdy/p/5251659.html][1]]
-| command              | description                                    |
-| pwd                  | show now location                              |
-| mkdir                | make new directory                             |
+**** shortcut
+| keybindings          | description                 w directory                            |
 | cd                   | enter directory                                |
 | ls                   | list of directories                            |
 | ls -a                | list of all directories,including hidden files |
@@ -11,8 +10,7 @@
 | ln src  dst          | create hard link                               |
 | ln -s src dst        | create symbolic link                           |
 | ln -snf src dst      | create new location symbolic link              |
-| rm -rf filename      | delete file                                    |
-| ~/                   | /home/                                         |
+| ~/                   | /home/madhouse/                                |
 | C-a                  | set cursor to the begin of line                |
 | C-e                  | set cursor to the end of line                  |
 | C-k                  | kill all after current cursor                  |
@@ -38,6 +36,20 @@
 | C-c                  | quit current task                              |
 | C-z                  | background running                             |
 #+BEGIN_SRC bash
+~/ # /home/madhouse
+pwd # show location
+mkdir # make a new directory
+cd # enter target directory 
+ls # list of directories
+ls -a # list of all directories, including hidden file
+ls -l # list of all directories and file with limition
+
+
+
+
+
+mv
+
 sudo apt install <application> # install application
 sudo apt remove <application> # uninstall application,reserve config
 sudo apt-get <name> remove # uninstall application and config
@@ -174,6 +186,11 @@ sudo chomd +x xxx # all execute
 # u--your g--group o--others a--all
 # +--add ---cancel =--set only
 # r--read w--write x--execute
+sudo useradd username # add user
+passwd ****** # set user password
+vim /etc/sudoers
+username ALL=(ALL:ALL) All # add root permission
+userdel -r username # delete user
 #+END_SRC
 #+BEGIN_SRC bash
 echo "..." >> filename # add ... to file
@@ -243,12 +260,16 @@ ssh [-l login_name] [-p port] [user@hostname] # general format
 ssh -l login_name hostname # user login
 ssh login_name@hostname # user login
 
-
+#+END_SRC
+**** mosh
+#+BEGIN_SRC bash
+sudo apt install mosh
+mosh login_name@hostname # login
 #+END_SRC
 **** gdb [[https://www.cnblogs.com/chenmingjun/p/8280889.html][1]]
 #+BEGIN_SRC bash
 gcc -o test test.c -g
-
+g++ hello.c -o hello
 #+END_SRC
 <<<<<<< HEAD
 **** make [[https://blog.csdn.net/qq_35451572/article/details/81092902][1]] 
@@ -271,37 +292,38 @@ set nu # show line number
 ?name # search ->n next
 q! # quit without save
 #+END_SRC
-| command | description            |
-| C-b     | pageup                 |
-| C-f     | pageon                 |
-| C-d     | turn up half a page    |
-| C-u     | turn on half a page    |
-| 0       | begin of text          |
-| G       | end of text            |
-| $       | end of line            |
-| ^       | begin of line          |
-| w       | next begin of word     |
-| e       | next end of word       |
-| b       | backward word          |
-| #l      | turn to char #         |
-| x       | delete                 |
-| #x      | delete # chars         |
-| X       | backspace              |
-| #X      | backspace # chars      |
-| dd      | delete current line    |
-| #dd     | delete # line          |
-| yw      | copy to buffer         |
-| #yw     | copy # words to buffer |
-| yy      | copy line to buffer    |
-| #yy     | copy # lines to buffer |
-| p       | paste                  |
-| r       | replace                |
-| R       | replace continuously   |
-| u       | undone                 |
-| cw      | delete word            |
-| c#w     | delete # words         |
-| #G      | turn to line #         |
-| C-g     | current line number    |
+| command | description                     |
+| C-b     | pageup                          |
+| C-f     | pageon                          |
+| C-d     | turn up half a page             |
+| C-u     | turn on half a page             |
+| 0       | begin of text                   |
+| G       | end of text                     |
+| $       | end of line                     |
+| ^       | begin of line                   |
+| w       | next begin of word              |
+| e       | next end of word                |
+| b       | backward word                   |
+| #l      | turn to char #                  |
+| x       | delete                          |
+| #x      | delete # chars                  |
+| X       | backspace                       |
+| #X      | backspace # chars               |
+| dd      | delete current line             |
+| #dd     | delete # line                   |
+| yw      | copy to buffer                  |
+| #yw     | copy # words to buffer          |
+| yy      | copy line to buffer             |
+| #yy     | copy # lines to buffer          |
+| p       | paste                           |
+| r       | replace                         |
+| R       | replace continuously            |
+| u       | undone                          |
+| cw      | delete word                     |
+| c#w     | delete # words                  |
+| #G      | turn to line #                  |
+| C-g     | current line number             |
+| #       | search word like current cursor |
 **** RIME [[https://www.cnblogs.com/BlackStorm/p/Install-IBUS-RIME-Input-Method-On-Ubuntu-16-04-LTS.html][1]] [[http://zhizhi.betahouse.us/2018/10/17/rime-setup/][2]] [[https://www.jianshu.com/p/cffc0ea094a7][3]] 
 #+BEGIN_SRC bash
 sudo apt install ibus-rime
@@ -340,6 +362,14 @@ sudo minicom -s # setup
 sudo minicom # running
 #+END_SRC
 **** SAPGUI [[https://blogs.sap.com/2015/07/04/sap-gui-for-java-installation-and-configuration/][1]] [[https://www.icloud.com/#iclouddrive/0Kwlf84ytOdz5PLbfxg8eWZZQ][JAVA 750]] [[https://wenku.baidu.com/view/1e730049360cba1aa811da9a.html][3]]
+[[https://wi-labor.informatik.hs-fulda.de/download/SAP%2520GUI/7.40/Java%2520740-10/][SAP DUI 7.40 Java]]
+[[https://wi-labor.informatik.hs-fulda.de/][wi-labor]]
+#+BEGIN_SRC bash
+cd /opt/SAPClients/SAPGUI/bin/
+./guistart conn=/H/ip-address/S/3200 # login
+cd /opt/SAPClients/SAPGUI7.40rev10/bin 
+./guilogon # logon
+#+END_SRC
 **** EdrawMax [[https://www.edrawsoft.com/download-edrawmax-linux.php][1]]
 #+BEGIN_SRC bash
 tar -zxvf edrawmax-9-amd64.tar.gz
@@ -350,6 +380,42 @@ sudo ln -s ~/Downloads/edrawmax-9-amd64/EdrawMax edrawmax
 #+END_SRC
 **** Orgmode [[https://www.cnblogs.com/qlwy/archive/2012/06/15/2551034.html][1]] 
 C-c C-x C-v show figure
+C-x C-c exit
+**** samba 
+[[https://blog.csdn.net/qq_16551373/article/details/78171475][share files between windows and ubuntu]]
+[[https://www.cnblogs.com/snoopys/p/6118488.html][simple tutorial]]
+#+BEGIN_SRC bash
+sudo apt install samba samba-common
+sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.bak # backup current config file
+vim /etc/samba/smb.conf # configuration file
+    security = user # account login
+
+    security = user 
+    map to guest = bad user # guest login
+[share]
+   comment = my share directory
+   path = /home/madhouse/share # add share files
+   available =yes
+   browseable = yes # directory browseable premission
+   writable = yes
+   guest ok = yes
+   public = yes
+sudo useradd smbuser
+sudo smbpasswd -a smbuser
+sudo service smbd restart # restart samba service
+sudo /etc/init.d/smbd restart # restart samba service
+service smbd status # check status
+service iptables stop # turn off SElinux
+vim /etc/selinux/config
+   SELINUX=enforcing-->set SELINUX=disabled # turn off forever
+setenforce 0 # turn off 
+#+END_SRC
+windows browser login: file://10.0.12.172/share
+smbclient login: smbclient //10.0.12.172/share/
+                 smbclient -L //10.0.12.172
+connect to server: smb://10.0.12.172/share/
+windows explorer: \\10.0.12.172
+win-r: \\10.0.12.172
 *** Linux Customize
 **** turn CapsLock to Left Ctrl [[https://www.cnblogs.com/ethan87/p/10219093.html][1]]
 #+BEGIN_SRC bash
@@ -366,3 +432,10 @@ xrandr --output VGA-0 --right-of LVDS --auto # right display
 xrandr --output VGA-0 --off # turn off monitor
 xrandr --output VGA-0 --auto --output LVDS --off # turn on VGA, turn off LVDS
 #+END_SRC
+**** ssh 
+[[https://blog.csdn.net/dy200811/article/details/52847543][reverse proxy]]
+[[https://blog.csdn.net/weixin_36562804/article/details/81737521][ssh 1]]
+[[http://arondight.me/2016/02/17/%25E4%25BD%25BF%25E7%2594%25A8SSH%25E5%258F%258D%25E5%2590%2591%25E9%259A%25A7%25E9%2581%2593%25E8%25BF%259B%25E8%25A1%258C%25E5%2586%2585%25E7%25BD%2591%25E7%25A9%25BF%25E9%2580%258F/][ssh 2]]
+[[https://blog.csdn.net/sethqqq/article/details/77033154][ssh 3]]
+[[https://blog.csdn.net/qq_33404395/article/details/80788233][4]]
+[[https://www.sunnyos.com/article-show-67.html][5]]
