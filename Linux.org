@@ -432,10 +432,6 @@ xrandr --output VGA-0 --right-of LVDS --auto # right display
 xrandr --output VGA-0 --off # turn off monitor
 xrandr --output VGA-0 --auto --output LVDS --off # turn on VGA, turn off LVDS
 #+END_SRC
-**** ssh 
-[[https://blog.csdn.net/dy200811/article/details/52847543][reverse proxy]]
-[[https://blog.csdn.net/weixin_36562804/article/details/81737521][ssh 1]]
-[[http://arondight.me/2016/02/17/%25E4%25BD%25BF%25E7%2594%25A8SSH%25E5%258F%258D%25E5%2590%2591%25E9%259A%25A7%25E9%2581%2593%25E8%25BF%259B%25E8%25A1%258C%25E5%2586%2585%25E7%25BD%2591%25E7%25A9%25BF%25E9%2580%258F/][ssh 2]]
-[[https://blog.csdn.net/sethqqq/article/details/77033154][ssh 3]]
-[[https://blog.csdn.net/qq_33404395/article/details/80788233][4]]
-[[https://www.sunnyos.com/article-show-67.html][5]]
+**** ssh
+[[https://blog.csdn.net/weixin_36562804/article/details/81737521][VPS + ssh reverse proxy + autossh 1]] [[https://blog.csdn.net/asahinokawa/article/details/85480803][2]] [[https://blog.csdn.net/dy200811/article/details/52847543][3]] [[http://arondight.me/2016/02/17/%25E4%25BD%25BF%25E7%2594%25A8SSH%25E5%258F%258D%25E5%2590%2591%25E9%259A%25A7%25E9%2581%2593%25E8%25BF%259B%25E8%25A1%258C%25E5%2586%2585%25E7%25BD%2591%25E7%25A9%25BF%25E9%2580%258F/][4]]
+[[https://blog.csdn.net/sethqqq/article/details/77033154][Ngrok + ssh connect server 1]] [[https://blog.csdn.net/qq_33404395/article/details/80788233][2]] [[https://www.sunnyos.com/article-show-67.html][3]]
