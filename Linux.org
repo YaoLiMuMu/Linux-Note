@@ -1,4 +1,4 @@
-*** terminal command [[https://www.cnblogs.com/nucdy/p/5251659.html][1]]
+*** Terminal command [[https://www.cnblogs.com/nucdy/p/5251659.html][1]]
 **** shortcut
 | keybindings | description                       |
 | C-a         | set cursor to the begin of line   |
@@ -91,7 +91,7 @@ kill -9 PID # force kill processes
 kill PID # kill processes
 ps -aux|grep firefox # check processe about firefox
 #+END_SRC
-*** git command
+*** Git command
 | command                                             | description                            |
 | git init                                            | create initial git file                |
 | git add file                                        | add file to git                        |
@@ -135,17 +135,18 @@ ssh -T git@github.com
 #+END_SRC
 *** Linux command [[https://blog.csdn.net/qintaiwu/article/details/73384755][1]]
 #+NAME: <TXT file Chinese messy code>
-#+BEGIN_SRC sh
+#+BEGIN_SRC bash
 gsettings set org.gnome.gedit.preferences.encodings candidate-encodings "['GB18030', 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"  #TXT file Chinese messy code
 #+END_SRC
 PPA:Personal Package Archives
-#+BEGIN_SRC sh
+#+BEGIN_SRC bash
 sudo add-apt-repository ppa:user/ppa-name # add ppa source
 sudo apt-get update # refresh source
 sudo add-apt-repository -r ppa:user/ppa-name # remove ppa source
 sudo apt-get update # refresh source
+sudo apt-get update -f install # force install
 #+END_SRC
-#+BEGIN_SRC sh
+#+BEGIN_SRC bash
 cat <filename> # show text 
 cat -n <filename> # show text with line number
 cat -b <filename> # show text with line number,blank line without number
@@ -159,21 +160,21 @@ tail -n 5 <filename> # print last 5 lines of file
 ls -altr # list of all directories according time and invert
 grep [option] pattern file # regular expression
 #+END_SRC
-file permission setup
+#+NAME: <file permission setup>
 #+BEGIN_SRC bash
 ls -lh <filename> # check file permissions
 ls -ld <folder> # check folder permissions
 sudo chmod 600 xxx # u read and write
-sudo chomd 644 xxx # u read and write. group write
-sudo chomd 700 xxx # u read write and execute
-sudo chomd 666 xxx # group read and write
-sudo chomd 777 xxx # group read write and write
+sudo chmod 644 xxx # u read and write. group write
+sudo chmod 700 xxx # u read write and execute
+sudo chmod 666 xxx # group read and write
+sudo chmod 777 xxx # group read write and write
 # 000--no permission 100--only read 110--read and write 111--execute 
-sudo chomd u+w xxx # u write
-sudo chomd u-w xxx # cancel u write permission
-sudo chomd g+r xxx # group read
-sudo chomd o-r xxx # cancel others write
-sudo chomd +x xxx # all execute
+sudo chmod u+w xxx # u write
+sudo chmod u-w xxx # cancel u write permission
+sudo chmod g+r xxx # group read
+sudo chmod o-r xxx # cancel others write
+sudo chmod +x xxx # all execute
 # u--your g--group o--others a--all
 # +--add ---cancel =--set only
 # r--read w--write x--execute
@@ -185,6 +186,67 @@ userdel -r username # delete user
 #+END_SRC
 #+BEGIN_SRC bash
 echo "..." >> filename # add ... to file
+mkfs -t ext4 dev/sdb6 # format sdb6
+ls -l /dev/disk/by-uuid # check disk id 
+sudo gedit /etc/fstab # edit fstab
+#+END_SRC
+#+BEGIN_SRC bash
+w # view current user
+who # view current user
+whoami # view user
+lastog # view all user
+lastlog|last -n 15 # view last 15 user logs
+#+END_SRC
+ufw: uncomplicated firewall
+#+BEGIN_SRC bash
+sudo ufw status # check firewall status
+Status: inactive # unwork
+sudo ufw version # check firwell version
+sudo ufw enable # enable firwell
+sudo ufw default deny # enable firewal and deny all input port
+sudo ufw disable # disable firwell
+sudo ufw allow|deny [service]/[port] # enable/disable service
+sudo ufw allow smtp # enable port 25/tcp, smtp service
+sudo ufw allow 22/tcp # enable port 22/tcp, ssh service
+sudo ufw allow 53 # enable port 53, tcp/udp
+sudo ufw allow from 192.168.1.100 # allow ip 192.168.1.100 connect
+sudo ufw delete allow from 192.168.254.254 
+# delete rule about 192.168.254.254
+sudo ufw deny smtp # disable smtp service
+sudo ufw delete allow smtp # delete firwell rule about smtp service
+sudo ufw delete allow|deny 20 # delete firwell rule about 20 port 
+sudo ufw allow proto udp 192.168.0.1 prot 53 to 192.168.0.2 port 25
+# allow remote 192.168.0.1 port 53 udp packet access local 192.168.0.2 port 25 
+sudo ufw logging on|off # turn on/off firwell log
+sudo ufw default allow #  enable firewall mostly open all input port
+sudo ufw status numbered # cleck firewall rule
+vim /etc/ufw/ufw.conf # firewall confiration file
+#+END_SRC
+ubuntu iptables [[https://www.cnblogs.com/davidwang456/p/3540837.html][{iptables destription}]] 
+#+BEGIN_SRC bash
+iptables -P INPUT DROP # drop all input packet
+iptables -P FORWARD DROP # drop all forward packet (mostly nat)
+iptables -P OUTPUT DROP # drop all output packet
+iptables -L -n # check all input, forward and output, -line-number
+sevrice iptables save # save iptables setting
+iptables-save # save iptables setting
+iptables-restore # restore iptables setting
+iptables -A INPUT -p tcp --dport 22 j ACCEPT 
+# append rule accept download tcp packet from port 22
+iptables -A OUTPUT -p tcp --sport 22 i ACCEPT
+# append rule accept sent tcp packet from port 22 
+iptables -A INPUT -p tcp -s 192.168.1.2 -j DROP
+# append rule drop tcp packet from 192.168.1.2 
+iptables -A INPUT -p udp --dport 60002 -j ACCEPT
+# append rule accept udp packet to port 60002
+iptables -D INPUT 2 # delete input line number 2
+sudo iptables-save > /etc/iptables.up.rules 
+# save firewall rule to iptables.up.rules
+vim /etc/network/interfaces
+   auto eth0
+   iface eht0 inet dhcp
+   pre-up iptables-restore < /etc/iptables.up.rules # load rule from iptables.up.rules
+   post-down iptables-save > /etc/iptables.up.rules # save rule before restore system
 #+END_SRC
 *** Hotkey
 | keybinding | description                               |
@@ -227,6 +289,15 @@ ls -size # show file according size
 config set -savedir ~/Downloads # set download location
 search <name> # search file about <name>
 d <filename1> <filename2> # download
+  --test          test download link
+  --ow            overwrite
+  --status        check status
+  --save          save
+  --saveto value  save to 
+  -x              add execute permission
+  --share         share links
+  --locate        links download
+  -p value        threads
 upload <local-dir> <remote-dir> #upload
 share l # share
 offlinedl add <link1> <link2> # offline downloadXS
@@ -252,7 +323,7 @@ ssh [-l login_name] [-p port] [user@hostname] # general format
 ssh -l login_name hostname # user login
 ssh login_name@hostname # user login
 #+END_SRC
-transform files
+#+NAME: transform files
 #+BEGIN_SRC bash
 scp /path/filename username@servername:/path/
 # upload file
@@ -282,15 +353,13 @@ vim /etc/ssh/sshd_config
 ->AuthorizedKeysFile .ssh/authorized_keys
 ssh user@host 'mkdir -p .ssh && cat >> .ssh/authorized_keys' < ~/.ssh/id_rsa.pub
 #+END_SRC
+[[https://blog.csdn.net/weiwei_pig/article/details/50954334][can't used root account login ssh server -permission denied, please try again]]
+#+NAME:
+**** mosh
 mosh connect on a udp port between 60000 and 61000
 #+BEGIN_SRC bash
-sudo iptables -I INPUT -p udp --dport 60001 -j ACCEPT
-mosh -p 60001 用户名@ip地址
-mosh --ssh="ssh -p 2222" 用户@服务器IP
-mosh --ssh="~/bin/ssh -i ./identity"  用户@服务器IP
-#+END_SRC
-**** mosh
-#+BEGIN_SRC bash
+sudo iptables -A INPUT -p udp --dport 60002 -j ACCEPT # server
+mosh -p 60002 username@servername # login
 sudo apt install mosh
 mosh login_name@hostname # login
 #+END_SRC
@@ -299,7 +368,6 @@ mosh login_name@hostname # login
 gcc -o test test.c -g
 g++ hello.c -o hello
 #+END_SRC
-<<<<<<< HEAD
 **** make [[https://blog.csdn.net/qq_35451572/article/details/81092902][1]] 
 
 **** Qt [[https://www.jianshu.com/p/a21d32c5e789][1]]
@@ -455,6 +523,48 @@ smbclient login: smbclient //10.0.12.172/share/
 connect to server: smb://10.0.12.172/share/
 windows explorer: \\10.0.12.172
 win-r: \\10.0.12.172
+**** MPD[Music Player Daemon]
+[[http://blog.topspeedsnail.com/archives/7504][ubuntu install and configure MPD]]
+#+BEGIN_SRC bash
+sudo apt install mpd 
+sudo systemctl start mpd
+#+END_SRC
+**** pandoc
+[[https://www.jianshu.com/p/6ba04f669d0b][install and configure pandoc]]
+**** Matlab
+[[https://www.cnblogs.com/Amedeo/archive/2018/06/03/9129925.html#_label0][install matlab2016b on ubuntu18]]
+[[https://blog.csdn.net/minione_2016/article/details/53313271][ubuntu16.04 install matlab2016b]]
+#+BEGIN_SRC bash
+cd ~
+sudo mkdir matlab
+sudo mount -t auto -o loop Linux/R2016b_glnxa64_dvd1.iso matlab/
+# sudo mount -o loop Linux/R2016b_glnxa64_dvd1.iso matlab/
+sudo matlab/install 
+sudo mount -t auto -o loop Linux/R2016b_glnxa64_dvd2.iso matlab/ 
+sudo umount matlab/
+sudo cp Matlab_R2016b_Linux64_Crack/R2016b/bin/glnxa64/* /usr/local/MATLAB/R2016b/bin/glnxa64
+sudo /usr/local/MATLAB/R2016b/bin/matlab
+sudo vim /usr/share/applications/Matlab2016b.desktop
+[Desktop Entry]
+Categories=Development;Matlab;
+Comment[zh_CN]=Matlab: The Language of Technical Computing
+Comment=Matlab: The Language of Technical Computing
+Exec=sh /usr/local/MATLAB/R2016b/bin/matlab -desktop
+GenericName[zh_CN]=Matlab2016b
+GenericName=Matlab2016b
+Icon=/usr/local/MATLAB/R2016b/toolbox/sl3d/mainpage/matlab_logo.gif
+Mimetype=
+Name[zh_CN]=MATLAB
+Name=MATLAB
+Path=
+StartupNotify=true
+Terminal=false
+Type=Application
+sudo chmod 777 ~/.matlab -R 
+sudo vim ~/.zshrc
+export PATH=/usr/local/MATLAB/R2016b/bin:$PATH
+source ~/.zshrc
+#+END_SRC
 *** Linux Customize
 **** turn CapsLock to Left Ctrl [[https://www.cnblogs.com/ethan87/p/10219093.html][1]]
 #+BEGIN_SRC bash
@@ -473,6 +583,13 @@ xrandr --output VGA-0 --auto --output LVDS --off # turn on VGA, turn off LVDS
 #+END_SRC
 **** Internal network penetration
 [[https://blog.csdn.net/weixin_36562804/article/details/81737521][VPS + ssh reverse proxy + autossh 1]] [[https://blog.csdn.net/asahinokawa/article/details/85480803][2]] [[https://blog.csdn.net/dy200811/article/details/52847543][3]] [[http://arondight.me/2016/02/17/%25E4%25BD%25BF%25E7%2594%25A8SSH%25E5%258F%258D%25E5%2590%2591%25E9%259A%25A7%25E9%2581%2593%25E8%25BF%259B%25E8%25A1%258C%25E5%2586%2585%25E7%25BD%2591%25E7%25A9%25BF%25E9%2580%258F/][4]]
+#+BEGIN_SRC bash
+ssh -fCNR # Reverse proxy ssh
+# f-> background execute, C-> allow compress date, N-> don't execute remote control, R-> reverse
+ssh -fCNL # proxy ssh
+ps aux| grep ssh # check all ssh connect
+vim /etc/rc.d/rc.loacl
+#+END_SRC
 [[https://blog.csdn.net/sethqqq/article/details/77033154][Ngrok + ssh connect server 1]] [[https://blog.csdn.net/qq_33404395/article/details/80788233][2]] [[https://www.sunnyos.com/article-show-67.html][3]]
 #+BEGIN_SRC bash
 ssh -p port username@free.idcfengye.com # tcp login
@@ -487,6 +604,20 @@ sudo apt autoclean # clean old packages
 sudo apt clean # clean all packages
 sudo du -sh ~/.cache/thumbnails # check cache pictures
 rm -rf ~/.cache/thumbnails/* # remove cache pictures
+#+END_SRC
+**** desktop shortcut
+#+BEGIN_SRC bash
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0                                     #version of an app.
+Name[en_US]=yEd                                 #name of an app.
+GenericName=GUI Port Scanner                    #longer name of an app.
+Exec=java -jar /opt/yed-3.11.1/yed.jar          #command used to launch an app.
+Terminal=false                                  #whether an app requires to be run in a terminal
+Icon[en_US]=/opt/yed-3.11.1/icons/yicon32.png   #location of icon file.
+Type=Application                                #type
+Categories=Application;Network;Security;        #categories in which this app should be listed.
+Comment[en_US]=yEd Graph Editor                 #comment which appears as a tooltip.
 #+END_SRC
 *** Latex
 **** language
@@ -545,4 +676,17 @@ sudo apt install auctex
 #+LATEX_COMPILER: xelatex
 #+BEGIN_SRC tex
 /usepackage[unicode=true,colorlinks=no,pdfborder=no]{hyperref}
+#+END_SRC
+*** VPS
+**** AWS EC2
+#+BEGIN_SRC bash
+sudo shmod 400 identity.pem 
+ssh -i identity.pem ubuntu@vps_ip # ssh connect
+sudo passwd root # set root password
+su  # root
+vim /etc/ssh/ssh_config
+PasswordAuthentication no -> yes
+sudo service sshd restart
+su 
+passwd ubuntu # reset password
 #+END_SRC
