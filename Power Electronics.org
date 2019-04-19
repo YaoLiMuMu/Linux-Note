@@ -1,0 +1,18 @@
+[[https://wenku.baidu.com/view/694ceec15fbfc77da269b1ad.html][6-Pulse Thyristor Rectification]]
+Thyristor Bridge
+| A | B | C |
+| 1 | 3 | 5 |
+| 4 | 6 | 2 |
+IGBT Bridge
+| A | B | C |
+| 1 | 3 | 5 |
+| 2 | 4 | 6 |
+[[https://wenku.baidu.com/view/91091c1826fff705cc170af1.html][IGBT PWM converter]]
+[[http://www.elecfans.com/dianzichangshi/20180515677453.html][SPWM control]]
+[[https://wenku.baidu.com/view/cf944a42178884868762caaedd3383c4bb4cb498.html?rec_flag=default][Pulse Width Modualation]]
+SPWM就是以采样控制理论中的冲量等效原理为理论依据的（冲量相等而形状不同的窄脉冲加在具有惯性的环节上时，其效果基本相同）
+**** 原理机制
+冲量等效原理\傅氏变换(Pulse Width Modualation)
+电压PWM整流器VSR（Voltage Source Rectifier）
+http://www.elecfans.com/article/88/131/189/2018/20180125622957_2.html
+https://wenku.baidu.com/view/acc03ddacc7931b764ce1581.html
