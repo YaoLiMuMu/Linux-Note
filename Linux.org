@@ -565,6 +565,20 @@ sudo vim ~/.zshrc
 export PATH=/usr/local/MATLAB/R2016b/bin:$PATH
 source ~/.zshrc
 #+END_SRC
+**** R
+#+BEGIN_SRC bash
+sudo apt install r-base
+R
+#+END_SRC
+**** redshift
+#+BEGIN_SRC bash
+sudo apt install redshift
+#+END_SRC
+**** 7zip 
+#+BEGIN_SRC bash
+sudo apt install p7zip
+p7zip -d filename
+#+END_SRC
 *** Linux Customize
 **** turn CapsLock to Left Ctrl [[https://www.cnblogs.com/ethan87/p/10219093.html][1]]
 #+BEGIN_SRC bash
@@ -619,6 +633,8 @@ Type=Application                                #type
 Categories=Application;Network;Security;        #categories in which this app should be listed.
 Comment[en_US]=yEd Graph Editor                 #comment which appears as a tooltip.
 #+END_SRC
+****  
+[[https://blog.csdn.net/u012491646/article/details/80219973][ubuntu 18 share hotspot]]
 *** Latex
 **** language
 [[https://www.sharelatex.com/][ShareLatex]] [[https://www.overleaf.com/][Overleaf]]

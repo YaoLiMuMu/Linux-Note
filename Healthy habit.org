@@ -1,0 +1,12 @@
+**** drink water
+2000cc
+| 7:30am  | 250cc     |
+| 8am     | breakfast |
+| 9am     | 250cc     |
+| 11am    | 250cc     |
+| 12:30pm | 250cc     |
+| 2pm     | 250cc     |
+| 3pm     | 250cc     |
+| 5:30pm  | 250cc     |
+| 10:30pm | 250cc     |
+| 11:30pm | sleep     |

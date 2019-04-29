@@ -1,0 +1,24 @@
+**** Simcape and PowerSystem
+[[https://blog.csdn.net/ouening/article/details/51504242][matlab2016 simulink]]
+simcape: simcape-> Electronics
+simcape
+solver configuration: simcape->Utilities
+PS-Simulink Converter: simcape->Utilities
+Sensors: simcape->Foundation Library->Electrical Sensors
+Electrical Reference: Simcape->Foundation Library->Electrical Elements
+Powerblib: Simcape->Powersystem
+PowerSystem
+powergui blocks: Powersystem->Specialized Tecgnology ->Fundamental Blocks
+Grounded Neutral: Simcape->Power Systems->Simscape Components->Connections
+Pulse Generator: simulink->Sources
+**** hotkeys
+C-r rotate blocks
+
+**** Instances
+[[http://www.szxrdt.com/xinruidaxinwen/25-95.html][Insulation detection signal injection method]]
+[[http://www.sohu.com/a/156428409_467757][Insulation detection Balanced bridage]]
+[[http://www.doc88.com/p-9983559440368.html][Electric car hig voltage safety]]
+[[https://blog.csdn.net/tichimi3375/article/details/80852938][DCDC duck Powergui]]
+
+**** simulate blocks
+
