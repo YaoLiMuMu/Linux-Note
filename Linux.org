@@ -25,6 +25,8 @@
 | S-C-q       | quit                              |
 | C-c         | quit current task                 |
 | C-z         | background running                |
+| C-S-f       | find                              |
+|             |                                   |
 **** commands
 #+BEGIN_SRC bash
 ~/ # /home/madhouse
@@ -579,6 +581,9 @@ sudo apt install redshift
 sudo apt install p7zip
 p7zip -d filename
 #+END_SRC
+**** w3m
+[[https://www.cnblogs.com/l137/p/3405967.html][emacs w3m]]
+[[https://www.linuxidc.com/Linux/2014-02/97078.htm][w3m]]
 *** Linux Customize
 **** turn CapsLock to Left Ctrl [[https://www.cnblogs.com/ethan87/p/10219093.html][1]]
 #+BEGIN_SRC bash
@@ -635,6 +640,12 @@ Comment[en_US]=yEd Graph Editor                 #comment which appears as a tool
 #+END_SRC
 ****  
 [[https://blog.csdn.net/u012491646/article/details/80219973][ubuntu 18 share hotspot]]
+**** Github+Hexo
+[[https://www.sufaith.com/article/561.html][github + hexo build personal website]]
+[[https://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html][personal blog]]
+[[https://blog.csdn.net/zml_2015/article/details/80158260][free domains]]
+[[https://blog.csdn.net/sinat_37781304/article/details/82729029][hexo detail tutorial]]
+[[https://blog.csdn.net/sinat_37781304/article/details/82729029][12]]
 *** Latex
 **** language
 [[https://www.sharelatex.com/][ShareLatex]] [[https://www.overleaf.com/][Overleaf]]
