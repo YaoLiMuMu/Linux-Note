@@ -92,6 +92,8 @@ ps -aux|more # use more to check all processes number
 kill -9 PID # force kill processes
 kill PID # kill processes
 ps -aux|grep firefox # check processe about firefox
+echo "..." > filename # cover wirte
+echo "..." >> filename # add wirte 
 #+END_SRC
 *** Git command
 | command                                             | description                            |
@@ -646,6 +648,17 @@ Comment[en_US]=yEd Graph Editor                 #comment which appears as a tool
 [[https://blog.csdn.net/zml_2015/article/details/80158260][free domains]]
 [[https://blog.csdn.net/sinat_37781304/article/details/82729029][hexo detail tutorial]]
 [[https://blog.csdn.net/sinat_37781304/article/details/82729029][12]]
+#+BEGIN_SRC bash
+echo "export PATH=$PATH:/home/madhouse/Downloads/node-v10.15.3-linux-x64/nin" >> ~/.zshrc
+echo PATH
+#+END_SRC
+#+BEGIN_SRC bash
+hexo g # generate public files
+hexo clean # clean public files
+hexo d # deploy public files
+hexo clean && hexo d # refresh public files and deploy
+#+END_SRC
+[[https://www.jianshu.com/p/0b1fccce74e0][deploy github pages on more than one PC]]
 *** Latex
 **** language
 [[https://www.sharelatex.com/][ShareLatex]] [[https://www.overleaf.com/][Overleaf]]
