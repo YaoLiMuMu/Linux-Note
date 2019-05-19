@@ -136,6 +136,13 @@ git config --global user.email "email address"
 ssh-keygen -C 'email address' -t rsa # generate ssh key
 gedit ~/.ssh/id_rsa.pub
 ssh -T git@github.com
+
+git reflog # view recent operation log 
+git reset --hard [vision id] # head branch to target vision, delete staging area and working copy
+git reset --soft [vision id] # head branch to target vision, keep staging area and working copy
+git revert # create commit and hard branch to target vision
+git log # view recent operation log about current branch
+git clone [repository address] [/path/directory] # clone github repository to target directory 
 #+END_SRC
 *** Linux command [[https://blog.csdn.net/qintaiwu/article/details/73384755][1]]
 #+NAME: <TXT file Chinese messy code>
@@ -658,6 +665,8 @@ hexo clean # clean public files
 hexo d # deploy public files
 hexo clean && hexo d # refresh public files and deploy
 #+END_SRC
+SEO(Search Engine Optimization)
+
 [[https://www.jianshu.com/p/0b1fccce74e0][deploy github pages on more than one PC]]
 *** Latex
 **** language
