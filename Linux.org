@@ -56,8 +56,13 @@ apt list # list of all application
 apt edit-sources # list of all source
 apt-get autoclean # clean packages
 apt-get clean # clean packages and cache
+dpkg -i xxx.deb # install
+dpkg -r xxx.deb # uninstall
+dpkg -r -purge xxx.deb # uninstall and delete configration
+dpkg -info xxx.deb # get information about deb package
+dpkg -l # list install packages
 dpkg --get-selections|grep <name> # search application about name
-dpkg -l |grep ^rc|awk '{print $2}' |sudo xargs dpkg -P # clean residual file
+dpkg -l |grep ^rc|awk '{print $2}' |sudo xargs dpkg -P xxx # clean residual file
 dpkg -l <package name> # list of all directories of package
 wget <link-address> # download in current directory
 wget -O <dir> <link> # download link on the dir
@@ -149,6 +154,7 @@ sudo apt-get update # refresh source
 sudo add-apt-repository -r ppa:user/ppa-name # remove ppa source
 sudo apt-get update # refresh source
 sudo apt-get update -f install # force install
+sudo apt -f install # fix dependencies
 #+END_SRC
 #+BEGIN_SRC bash
 cat <filename> # show text 
@@ -432,7 +438,11 @@ sudo apt-get install librime-data-double-pinyin
 cd ~/.config/ibus/rime
 vim default.custom.yaml
 "menu/page_size": 7
+gsettings set org.freedesktop.ibus.panel lookup-table-orientation 0 # horizontal 
 #+END_SRC
+[[https://www.findhao.net/res/1746][rime add customized thesaurus]]
+[[https://www.jianshu.com/p/58ea12e8886d][1]]
+[[https://www.jianshu.com/p/cffc0ea094a7][2]]
 **** Arm [[https://blog.csdn.net/qq_33475105/article/details/81489792][1]]
 **** minicom [[https://blog.csdn.net/qq_38880380/article/details/77662637][1]]
 #+BEGIN_SRC bash
@@ -717,6 +727,7 @@ sudo apt install auctex
 #+BEGIN_SRC tex
 /usepackage[unicode=true,colorlinks=no,pdfborder=no]{hyperref}
 #+END_SRC
+[[https://emacs-china.org/t/org-mode-latex-org/8044/2][23]]
 *** VPS
 **** AWS EC2
 #+BEGIN_SRC bash
