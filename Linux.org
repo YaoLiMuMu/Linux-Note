@@ -162,6 +162,7 @@ cat <filename> # show text
 cat -n <filename> # show text with line number
 cat -b <filename> # show text with line number,blank line without number
 cat -T <filename> # show text without tabs
+echo "..." >> filename # add ... to file
 more <filename>   # show text, <return> key:next page
 less <filename>   # show textXS
 cp <filename1> <filename2> # copy file1 to file2
@@ -194,12 +195,6 @@ passwd ****** # set user password
 vim /etc/sudoers
 username ALL=(ALL:ALL) All # add root permission
 userdel -r username # delete user
-#+END_SRC
-#+BEGIN_SRC bash
-echo "..." >> filename # add ... to file
-mkfs -t ext4 dev/sdb6 # format sdb6
-ls -l /dev/disk/by-uuid # check disk id 
-sudo gedit /etc/fstab # edit fstab
 #+END_SRC
 #+BEGIN_SRC bash
 w # view current user
@@ -398,6 +393,7 @@ set nu # show line number
 /name # search ->n next
 ?name # search ->n next
 q! # quit without save
+set fenc=utf8 nobomb ff=unix # set file format
 #+END_SRC
 | command | description                     |
 | C-b     | pageup                          |
@@ -431,15 +427,6 @@ q! # quit without save
 | #G      | turn to line #                  |
 | C-g     | current line number             |
 | #       | search word like current cursor |
-**** RIME [[https://www.cnblogs.com/BlackStorm/p/Install-IBUS-RIME-Input-Method-On-Ubuntu-16-04-LTS.html][1]] [[http://zhizhi.betahouse.us/2018/10/17/rime-setup/][2]] [[https://www.jianshu.com/p/cffc0ea094a7][3]] 
-#+BEGIN_SRC bash
-sudo apt install ibus-rime
-sudo apt install librime-data-pinyin-simp
-sudo apt-get install librime-data-double-pinyin
-cd ~/.config/ibus/rime
-vim default.custom.yaml
-"menu/page_size": 7
-#+END_SRC
 **** Arm [[https://blog.csdn.net/qq_33475105/article/details/81489792][1]]
 **** minicom [[https://blog.csdn.net/qq_38880380/article/details/77662637][1]]
 #+BEGIN_SRC bash
@@ -666,8 +653,38 @@ hexo d # deploy public files
 hexo clean && hexo d # refresh public files and deploy
 #+END_SRC
 SEO(Search Engine Optimization)
+[[https://www.google.com/webmasters/tools/home?hl=zh-CN&pli=1][Google Search Console]]
 
 [[https://www.jianshu.com/p/0b1fccce74e0][deploy github pages on more than one PC]]
+**** rime language input 
+[[http://zhizhi.betahouse.us/2018/10/17/rime-setup/][Rime squirrel configuration log]] 
+[[https://www.jianshu.com/p/cffc0ea094a7][Rime input add thesaurus and configuration file]]
+[[https://www.jianshu.com/p/58ea12e8886d][Note for linux install rime input]]
+[[https://github.com/rime/home/wiki/CustomizationGuide][github rime wiki customization guide]]
+#+BEGIN_SRC bash
+sudo apt install ibus-rime
+sudo apt install librime-data-pinyin-simp
+sudo apt-get install librime-data-double-pinyin
+cd ~/.config/ibus/rime
+vim default.custom.yaml
+"menu/page_size": 7
+gsettings set org.freedesktop.ibus.panel lookup-table-orientation 0 # Candidates are displayed horizontally
+sync rime dictionary
+vim ~/.config/ibus/rime/symbols.yaml
+installation_id: "9c755581-73c8-4fdb-b18a-a819005dc543"
+killall ibus-daemon 
+/usr/bin/rime_dict_manager -s
+#+END_SRC
+**** automatic mount hard disk 
+[[https://www.cnblogs.com/fieldtianye/p/9295986.html][Ubuntu automatic mount hard disk]]
+#+BEGIN_SRC bash
+sudo fdisk -l # list all disk found
+mkfs -t ext4 dev/sdb6 # format sdb6 to ext4
+ls -l /dev/disk/by-uuid # view disk id
+df -l # list all disk mounted 
+sudo gedit /etc/fstab # edit fstab
+sudo mount -a # mount disk according to configration file
+#+END_SRC
 *** Latex
 **** language
 [[https://www.sharelatex.com/][ShareLatex]] [[https://www.overleaf.com/][Overleaf]]
