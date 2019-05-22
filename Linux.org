@@ -637,11 +637,6 @@ Comment[en_US]=yEd Graph Editor                 #comment which appears as a tool
 ****  
 [[https://blog.csdn.net/u012491646/article/details/80219973][ubuntu 18 share hotspot]]
 **** Github+Hexo
-[[https://www.sufaith.com/article/561.html][github + hexo build personal website]]
-[[https://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html][personal blog]]
-[[https://blog.csdn.net/zml_2015/article/details/80158260][free domains]]
-[[https://blog.csdn.net/sinat_37781304/article/details/82729029][hexo detail tutorial]]
-[[https://blog.csdn.net/sinat_37781304/article/details/82729029][12]]
 #+BEGIN_SRC bash
 echo "export PATH=$PATH:/home/madhouse/Downloads/node-v10.15.3-linux-x64/nin" >> ~/.zshrc
 echo PATH
@@ -652,10 +647,18 @@ hexo clean # clean public files
 hexo d # deploy public files
 hexo clean && hexo d # refresh public files and deploy
 #+END_SRC
+[[https://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html][personal free blog]]
+[[https://blog.csdn.net/sinat_37781304/article/details/82729029][build hexo blog detail tuorial]]
 SEO(Search Engine Optimization)
 [[https://www.google.com/webmasters/tools/home?hl=zh-CN&pli=1][Google Search Console]]
-
-[[https://www.jianshu.com/p/0b1fccce74e0][deploy github pages on more than one PC]]
+[[https://wuyongshi.top/free-domain][Free Domain]]
+[[https://fedoryx.github.io/Hexo-%25E5%258D%259A%25E5%25AE%25A2%25E6%2590%259C%25E7%25B4%25A2-SEO-%25E4%25BC%2598%25E5%258C%2596-%25E8%25B0%25B7%25E6%25AD%258C%25E7%25AF%2587/][hexo SEO optimization for google]]
+[[https://www.cnblogs.com/php-linux/p/8493346.html][hexo Next themes website verification]]
+[[https://blog.csdn.net/qq_32454537/article/details/79482896][Hexo install and configure Next themes]]
+#+BEGIN_SRC yaml
+permalink: :year/:month/:day/:title/
+permalink: :title.html
+#+END_SRC
 **** rime language input 
 [[http://zhizhi.betahouse.us/2018/10/17/rime-setup/][Rime squirrel configuration log]] 
 [[https://www.jianshu.com/p/cffc0ea094a7][Rime input add thesaurus and configuration file]]
