@@ -38,6 +38,8 @@ cd # enter target directory
 ls # list of directories
 ls -a # list of all directories, including hidden file
 ls -l # list of all directories and file with limition
+ls -lht # list of all directories and size
+du -sh  # size of current directory
 mv filename dir # move file to target directory
 ln src  dst # create hard link                               |
 ln -s src dst # create symbolic link
@@ -91,16 +93,35 @@ rm -rf # clean currnt folder
 rmdirr <foldername> # remove folder
 #+END_SRC
 kill processes [[http://www.cnblogs.com/anno-ymy/p/10517512.html][1]]
+/proc/ record all processes PID
+/var/log/ dmesg locate this directory
 #+BEGIN_SRC bash
 ps -aux # show all processes number
 ps -aux|more # use more to check all processes number
+ps -aux|less # use less to check all processes number
+ps -A # list all processes
+ps -U root -u root -N # list all processes without root
+ps -u madhouse # list all processes from usrname "madhosue"
+top # dynamic display allq processes, -q quit -h help
+ps - ejH # list processes trees
+ps axjf # list processes trees
+ps -eLf # threads messaegs
+ps axms # threads messaegs
+top -b -n1 > ~/process.log # save list of all processes as log files
+top -b -n1 | mail -s 'Process snapshot' yao.lin1703@e-nebual.com # sent processes list to email
+cp -r source/ destination/
 kill -9 PID # force kill processes
 kill PID # kill processes
 ps -aux|grep firefox # check processe about firefox
+pgrep firefox # check process about firefox
+pgrep -u madhouse sshd # search processe name about "sshd" username "madhouse"
 echo "..." > filename # cover wirte
-echo "..." >> filename # add wirte 
+echo "..." >> filename # add wirte
+dmesg > boot.msg # save device boot messages to boot.msg
+dmesg | less # less dmesg
 #+END_SRC
-*** Git command
+*** Git 
+command
 | command                                             | description                            |
 | git init                                            | create initial git file                |
 | git add file                                        | add file to git                        |
@@ -168,6 +189,7 @@ cat <filename> # show text
 cat -n <filename> # show text with line number
 cat -b <filename> # show text with line number,blank line without number
 cat -T <filename> # show text without tabs
+echo "..." >> filename # add ... to file
 more <filename>   # show text, <return> key:next page
 less <filename>   # show textXS
 cp <filename1> <filename2> # copy file1 to file2
@@ -185,7 +207,7 @@ sudo chmod 600 xxx # u read and write
 sudo chmod 644 xxx # u read and write. group write
 sudo chmod 700 xxx # u read write and execute
 sudo chmod 666 xxx # group read and write
-sudo chmod 777 xxx # group read write and write
+sudo chmod 777 xxx # group read write and execute
 # 000--no permission 100--only read 110--read and write 111--execute 
 sudo chmod u+w xxx # u write
 sudo chmod u-w xxx # cancel u write permission
@@ -200,12 +222,6 @@ passwd ****** # set user password
 vim /etc/sudoers
 username ALL=(ALL:ALL) All # add root permission
 userdel -r username # delete user
-#+END_SRC
-#+BEGIN_SRC bash
-echo "..." >> filename # add ... to file
-mkfs -t ext4 dev/sdb6 # format sdb6
-ls -l /dev/disk/by-uuid # check disk id 
-sudo gedit /etc/fstab # edit fstab
 #+END_SRC
 #+BEGIN_SRC bash
 w # view current user
@@ -404,6 +420,7 @@ set nu # show line number
 /name # search ->n next
 ?name # search ->n next
 q! # quit without save
+set fenc=utf8 nobomb ff=unix # set file format
 #+END_SRC
 | command | description                     |
 | C-b     | pageup                          |
@@ -437,6 +454,7 @@ q! # quit without save
 | #G      | turn to line #                  |
 | C-g     | current line number             |
 | #       | search word like current cursor |
+<<<<<<< HEAD
 **** RIME [[https://www.cnblogs.com/BlackStorm/p/Install-IBUS-RIME-Input-Method-On-Ubuntu-16-04-LTS.html][1]] [[http://zhizhi.betahouse.us/2018/10/17/rime-setup/][2]] [[https://www.jianshu.com/p/cffc0ea094a7][3]] 
 #+BEGIN_SRC bash
 sudo apt install ibus-rime
@@ -450,6 +468,8 @@ gsettings set org.freedesktop.ibus.panel lookup-table-orientation 0 # horizontal
 [[https://www.findhao.net/res/1746][rime add customized thesaurus]]
 [[https://www.jianshu.com/p/58ea12e8886d][1]]
 [[https://www.jianshu.com/p/cffc0ea094a7][2]]
+=======
+>>>>>>> origin/master
 **** Arm [[https://blog.csdn.net/qq_33475105/article/details/81489792][1]]
 **** minicom [[https://blog.csdn.net/qq_38880380/article/details/77662637][1]]
 #+BEGIN_SRC bash
@@ -603,6 +623,11 @@ p7zip -d filename
 **** w3m
 [[https://www.cnblogs.com/l137/p/3405967.html][emacs w3m]]
 [[https://www.linuxidc.com/Linux/2014-02/97078.htm][w3m]]
+*** wireshark
+根据端口过滤
+ip.src==192.168.0.2 and ip.dst==192.168.0.233 and tcp.port==965
+根据包长过滤
+ip.src==192.168.0.2 and ip.dst==192.168.0.233 and tcp.len==12
 *** Linux Customize
 **** turn CapsLock to Left Ctrl [[https://www.cnblogs.com/ethan87/p/10219093.html][1]]
 #+BEGIN_SRC bash
@@ -660,11 +685,6 @@ Comment[en_US]=yEd Graph Editor                 #comment which appears as a tool
 ****  
 [[https://blog.csdn.net/u012491646/article/details/80219973][ubuntu 18 share hotspot]]
 **** Github+Hexo
-[[https://www.sufaith.com/article/561.html][github + hexo build personal website]]
-[[https://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html][personal blog]]
-[[https://blog.csdn.net/zml_2015/article/details/80158260][free domains]]
-[[https://blog.csdn.net/sinat_37781304/article/details/82729029][hexo detail tutorial]]
-[[https://blog.csdn.net/sinat_37781304/article/details/82729029][12]]
 #+BEGIN_SRC bash
 echo "export PATH=$PATH:/home/madhouse/Downloads/node-v10.15.3-linux-x64/nin" >> ~/.zshrc
 echo PATH
@@ -675,9 +695,54 @@ hexo clean # clean public files
 hexo d # deploy public files
 hexo clean && hexo d # refresh public files and deploy
 #+END_SRC
+[[https://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html][personal free blog]]
+[[https://blog.csdn.net/sinat_37781304/article/details/82729029][build hexo blog detail tuorial]]
 SEO(Search Engine Optimization)
-
-[[https://www.jianshu.com/p/0b1fccce74e0][deploy github pages on more than one PC]]
+[[https://www.google.com/webmasters/tools/home?hl=zh-CN&pli=1][Google Search Console]]
+[[https://wuyongshi.top/free-domain][Free Domain]]
+[[https://fedoryx.github.io/Hexo-%25E5%258D%259A%25E5%25AE%25A2%25E6%2590%259C%25E7%25B4%25A2-SEO-%25E4%25BC%2598%25E5%258C%2596-%25E8%25B0%25B7%25E6%25AD%258C%25E7%25AF%2587/][hexo SEO optimization for google]]
+[[https://www.cnblogs.com/php-linux/p/8493346.html][hexo Next themes website verification]]
+[[https://blog.csdn.net/qq_32454537/article/details/79482896][Hexo install and configure Next themes]]
+#+BEGIN_SRC yaml
+permalink: :year/:month/:day/:title/
+permalink: :title.html
+#+END_SRC
+**** rime language input 
+[[http://zhizhi.betahouse.us/2018/10/17/rime-setup/][Rime squirrel configuration log]] 
+[[https://www.jianshu.com/p/cffc0ea094a7][Rime input add thesaurus and configuration file]]
+[[https://www.jianshu.com/p/58ea12e8886d][Note for linux install rime input]]
+[[https://github.com/rime/home/wiki/CustomizationGuide][github rime wiki customization guide]]
+#+BEGIN_SRC bash
+sudo apt install ibus-rime
+sudo apt install librime-data-pinyin-simp
+sudo apt-get install librime-data-double-pinyin
+cd ~/.config/ibus/rime
+vim default.custom.yaml
+"menu/page_size": 7
+gsettings set org.freedesktop.ibus.panel lookup-table-orientation 0 # Candidates are displayed horizontally
+sync rime dictionary
+vim ~/.config/ibus/rime/symbols.yaml
+installation_id: "9c755581-73c8-4fdb-b18a-a819005dc543"
+killall ibus-daemon 
+/usr/bin/rime_dict_manager -s
+#+END_SRC
+**** automatic mount hard disk 
+[[https://www.cnblogs.com/fieldtianye/p/9295986.html][Ubuntu automatic mount hard disk]]
+#+BEGIN_SRC bash
+sudo fdisk -l # list all disk found
+mkfs -t ext4 dev/sdb6 # format sdb6 to ext4
+ls -l /dev/disk/by-uuid # view disk id
+df -l # list all disk mounted 
+df -h # list capacity of disk
+sudo gedit /etc/fstab # edit fstab
+sudo mount -a # mount disk according to configration file
+#+END_SRC
+**** pomodoro
+#+BEGIN_SRC bash
+sleep 300 && notify-send "Back to work"
+sleep 1500 && zenity --warning --text="Your pomodoro session just needed, Have a well deserved 5 minutes break"; 
+sleep 300 && zenity --warning --text="Back to work"
+#+END_SRC
 *** Latex
 **** language
 [[https://www.sharelatex.com/][ShareLatex]] [[https://www.overleaf.com/][Overleaf]]
@@ -715,7 +780,7 @@ SEO(Search Engine Optimization)
 [[https://blog.csdn.net/junyidcf/article/details/48914047][Org mode export TEX and PDF]]
 #+LATEX_HEADER: \usepackage{ctex}
 #+LATEX_HEADER: \usepackage{graphicx}
-**** Latex [[https://www.cnblogs.com/yeluqing/archive/2012/09/24/3827966.html][1]] [[http://blog.sciencenet.cn/home.php?mod=space&uid=200199&do=blog&id=1036667][2]] [[https://blog.csdn.net/u014803202/article/details/50410748][3]] [[https://blog.csdn.net/csfreebird/article/details/43636615][4]] [[http://www.bagualu.net/wordpress/archives/6525][5]] [[https://blog.csdn.net/csfreebird/article/details/43636615][6]] [[https://blog.csdn.net/u014803202/article/details/50410748][7]] [[https://blog.csdn.net/wuyao721/article/details/7669993][8]] [[http://blog.sina.com.cn/s/blog_61f013b801010cdh.html][9]] [[https://www.cnblogs.com/yeluqing/archive/2012/09/24/3827966.html][10]] [[https://www.cnblogs.com/SunSmileCS/archive/2013/02/22/2923002.html][11]] [[https://blog.csdn.net/pfanaya/article/details/7669364][12]] [[https://emacs-china.org/t/topic/2540][13]] [[http://blog.sina.com.cn/s/blog_61f013b801010cdh.html][14]] [[https://www.xuebuyuan.com/865488.html][15]] [[https://max.book118.com/html/2018/0103/147043242.shtm][16]] [[https://blog.csdn.net/junyidcf/article/details/48914047][17]]
+**** Latex [[https://blog.csdn.net/csfreebird/article/details/43636615][4]] [[http://www.bagualu.net/wordpress/archives/6525][5]] [[https://blog.csdn.net/csfreebird/article/details/43636615][6]] [[https://blog.csdn.net/u014803202/article/details/50410748][7]] [[https://blog.csdn.net/wuyao721/article/details/7669993][8]] [[http://blog.sina.com.cn/s/blog_61f013b801010cdh.html][9]] [[https://www.cnblogs.com/yeluqing/archive/2012/09/24/3827966.html][10]] [[https://www.cnblogs.com/SunSmileCS/archive/2013/02/22/2923002.html][11]] [[https://blog.csdn.net/pfanaya/article/details/7669364][12]] [[https://emacs-china.org/t/topic/2540][13]] [[http://blog.sina.com.cn/s/blog_61f013b801010cdh.html][14]] [[https://www.xuebuyuan.com/865488.html][15]] [[https://max.book118.com/html/2018/0103/147043242.shtm][16]] [[https://blog.csdn.net/junyidcf/article/details/48914047][17]]
 #+BEGIN_SRC bash
 sudo apt install texlive-full
 sudo apt install auctex

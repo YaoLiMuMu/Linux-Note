@@ -1,0 +1,109 @@
+*** C lanuage
+unistd.h 环境Linux
+nanosleep() 秒级延时
+usleep() 毫秒级延时, 单位微秒
+stdio.h
+printf() 输出
+?: 三目条件运算符号, 1?2:3 if (1) 2 else 3
+scanf() 输入
+strlen(const char *)可获得字符大小(是通过转化为符号后计算大小)
+atoi 包含于 <stdio.h> 返回int
+strtol() 返回long
+malloc分配长度为num_bytes字节的内存块(memory allocation)，可以向系统申请分配指定size个字节的内存空间.
+dword(double word), 每个word为两字节, dword为4字节 
+*** org mode
+\[
+\alpha, \beta and \gamma.
+a_{1}
+a^{5}
+\]
+
+\begin{equation}
+\sum\limits_{i=1}^n(Z_i * t)
+\end{equation}
+
+\begin{equation}
+\frac{1^p+2^p+\cdot\cdot\cdot+n^p}{n^{1+p}}
+\end{equation}
+
+\[
+\stackrel{abc}{\longrightarrow}
+\]
+
+I am $op_1\stackrel{abc}{\longrightarrow}op_2$
+\[
+\times
+\]
+\begin{equation}
+Y=\left\{
+\begin{aligned}
++1 & , & if & & X \geq \theta \\
+-1 & , & if & & X < \theta
+\end{aligned}
+\right
+\end{equation}
+
+org-entiles-help 查看完整entities
+C-c C-x C-l 预览
+~org latex size~
+#+BEGIN_SRC elisp
+(require 'org)
+(setq org-format-latex-options (plist-put org-format-options :scale 2.0))
+#+END_SRC
+*** C++
+foreach
+map [[https://blog.csdn.net/qq_41700151/article/details/81231688][{1}]] reverse_iterator,反序排列
+memset
+memcpy
+类继承public，protected，private [[https://www.cnblogs.com/anSn/p/8763167.html][{1}]]
+strlen可获取数组指针的长度
+#+BEGIN_SRC cpp
+char buf[2048];
+memset(buf, 0 ,2048);
+memcpy(buf,datagram.data(),size);
+buf[size] = '\0';
+msg=QString(buf);
+emit SignalForRM_DataRec(msg);
+#+END_SRC
+[[https://www.cnblogs.com/do-your-best/p/11140491.html][数组指针和指针数组]]
+*** QT
+QT 获取系统时间Qdatetime
+sleep(1) 暂停一秒
+Qtimer [[https://www.cnblogs.com/doker/p/11150053.html][{1}]]
+QByteArray [[https://www.e-learn.cn/content/qita/695559][{1}]] [[https://bbs.csdn.net/topics/360039473?list=1504051][{2}]]
+QVector [[https://blog.csdn.net/zhangxuechao_/article/details/81942336][{1}]]
+QList
+QlinkedList
+QVarLengthArray
+Qmap
+Qhash [[https://blog.csdn.net/weixin_39832367/article/details/85710986][{1}]]
+Qfile
+evenFilter/installEvenFilter
+QBuffer
+Qdatastream [[https://wenku.baidu.com/view/d5bf96425727a5e9846a6174.html][{1}]] [[https://blog.csdn.net/Aidam_Bo/article/details/85213030][{2}]]
+#+BEGIN_SRC c++
+QDataStream in (&array, QIODevice::ReadOnly);
+in.setVersion(QDataStream::Qt_4_8);
+out<<(quint32) 0;
+out.device()->seek(0);
+out << (quint32)(block.size()- sizeof(quint32));
+out << (unsigned char)0x02;
+
+//this -> show;
+//qApp -> processEvents();
+#+END_SRC
+
+reinterpret_cast, static_cast, dynamic_cast and const_cast are the c++ cast alternatives.
+const_cast to remove const/volatile from a const variable.
+dynamic_cast to perform runtime validity checks when casting in between polymorphic types
+static_cast to perform e.g up/down-cast in a inheritance hierarchy, but with no runtime checks, or to explicitly perform conversions that could be implicit (e.g. float to int)
+reinterpret_cast to convert in between unrelated types.
+
+QLabel [[https://blog.csdn.net/qq_37233607/article/details/78160822][{1}]]
+
+QDebug()
+Q_ASSERT()
+QListWidget [[https://blog.csdn.net/Q1302182594/article/details/46120321][{1}]]
+QNetworkInterface [[https://blog.csdn.net/qq78442761/article/details/81187013][{1}]]
+*** Google
+ProtoBuf
