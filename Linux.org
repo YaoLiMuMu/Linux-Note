@@ -119,6 +119,16 @@ echo "..." > filename # cover wirte
 echo "..." >> filename # add wirte
 dmesg > boot.msg # save device boot messages to boot.msg
 dmesg | less # less dmesg
+shutdown -h now # poweroff
+shutdown -P now # poweroff
+shutdown -h # poweroff 1 minute later
+shutdown -r now # reboot now
+shotdown -h 20 # poweroff 20 seconds later
+reboot
+reboot -f # force reboot
+halt # poweroff
+init 6 # reboot
+init 0 # turn off system
 #+END_SRC
 *** Git 
 command
@@ -340,10 +350,20 @@ offlinedl add <link1> <link2> # offline downloadXS
 **** iproute2 
 [[https://www.jianshu.com/p/d129238d3853][iproute2 from jianshu]]
 #+BEGIN_SRC bash
-ip add # show ip 
+ip a # show ip 
 ip link show # show ip
+ip -4 a # show ipv4 informations
+ip a show wlp3s0 # check specific network device
+ip -details link show wlp3s0 # check specific network device
+ip link ls up # show all working network device
 ip route show # show route
 ip -s link # show all links
+ip a add 192.168.1.101/255.255.255.0 dev eth0 # set eth0 ip 192.168.1.101/255.255.255.0
+ip a add 192.168.1.101/24 dev eth0 # set eth0 ip as 192.168.1.101/255.255.255.0
+ip a del 192.168.1.101/24 dev eth0 # delete eth0 ip
+ip -s -s a f to 192.168.1.0/24 # delete all ip
+ip link set dev eth0 down # disable eth0
+ip link set dev eth0 up # enable eth0
 #+END_SRC
 **** openssh-server ssh and mosh tutorial [[https://www.linuxidc.com/Linux/2014-06/103008.htm][1]] [[https://blog.csdn.net/u013452337/article/details/80847113][2]]
 #+BEGIN_SRC bash
@@ -623,6 +643,13 @@ p7zip -d filename
 **** w3m
 [[https://www.cnblogs.com/l137/p/3405967.html][emacs w3m]]
 [[https://www.linuxidc.com/Linux/2014-02/97078.htm][w3m]]
+**** wine
+#+BEGIN_SRC bash
+wine: cannot find L"C:\\windows\\system32\\udpInterfaceTest_V1.0.2.9.exe"
+# solution
+wine control.exe 
+add/remove programs # select program install
+#+END_SRC
 *** wireshark
 根据端口过滤
 ip.src==192.168.0.2 and ip.dst==192.168.0.233 and tcp.port==965
