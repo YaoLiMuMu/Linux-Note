@@ -382,7 +382,7 @@ scp /path/filename username@servername:/path/
 # upload file
 scp username@servername:/path/filename /var/www/local_dir
 #download file
-scp username@servername:/var/www/remote_dir(remote) /var/www/local_dir(local)
+scp -r username@servername:/var/www/remote_dir(remote) /var/www/local_dir(local)
 # download directory
 scp -r local_dir username@servername:remote_dir
 # upload directory
@@ -474,7 +474,6 @@ set fenc=utf8 nobomb ff=unix # set file format
 | #G      | turn to line #                  |
 | C-g     | current line number             |
 | #       | search word like current cursor |
-<<<<<<< HEAD
 **** RIME [[https://www.cnblogs.com/BlackStorm/p/Install-IBUS-RIME-Input-Method-On-Ubuntu-16-04-LTS.html][1]] [[http://zhizhi.betahouse.us/2018/10/17/rime-setup/][2]] [[https://www.jianshu.com/p/cffc0ea094a7][3]] 
 #+BEGIN_SRC bash
 sudo apt install ibus-rime
@@ -488,8 +487,6 @@ gsettings set org.freedesktop.ibus.panel lookup-table-orientation 0 # horizontal
 [[https://www.findhao.net/res/1746][rime add customized thesaurus]]
 [[https://www.jianshu.com/p/58ea12e8886d][1]]
 [[https://www.jianshu.com/p/cffc0ea094a7][2]]
-=======
->>>>>>> origin/master
 **** Arm [[https://blog.csdn.net/qq_33475105/article/details/81489792][1]]
 **** minicom [[https://blog.csdn.net/qq_38880380/article/details/77662637][1]]
 #+BEGIN_SRC bash
