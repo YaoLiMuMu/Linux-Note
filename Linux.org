@@ -130,6 +130,10 @@ halt # poweroff
 init 6 # reboot
 init 0 # turn off system
 #+END_SRC
+**** Vim
+#+BEGIN_SRC bash
+%! sudo tee % /dev/null # 在vim保存需要权限的文件
+#+END_SRC
 *** Git 
 command
 | command                                             | description                            |
