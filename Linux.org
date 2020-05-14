@@ -170,6 +170,7 @@ command
 | git reset --hard <name> [origin/master]             | head branch to target vision           |
 | git merge origin/master --allow-unrelated-histories | force merge                            |
 | git pull --rebase origin master                     | rebase to branch                       |
+| git remote show origin                              | show remote origin                     |
 #+BEGIN_SRC bash
 git config --global user.name "username"
 git config --global user.email "email address"
@@ -294,6 +295,28 @@ vim /etc/network/interfaces
    iface eht0 inet dhcp
    pre-up iptables-restore < /etc/iptables.up.rules # load rule from iptables.up.rules
    post-down iptables-save > /etc/iptables.up.rules # save rule before restore system
+sudo nautilus # super user for files exploer
+#+END_SRC
+#+BEGIN_SRC bash
+dmidecode -t bios #Getting SMBIOS data from sysfs
+sudo dmidecode -t memory|head -45 |tail -23 # 查看内存条和内存槽
+dmesg|grep -i Ethernet # 查看网卡信息
+lspci |head -10 # 查看主板PCI硬件槽信息
+cat /proc/cpuinfo|grep name |cut -f2 -d: | uniq -c #查看CPU信息
+cat /proc/cpuinfo|grep "cores"| uniq  # 查看CPU核数
+cat /proc/cpuinfo|head -20 # 查看CPU详情
+lscpu # list of all cpu infomation
+cat /proc/cpuinfo|grep MHz| uniq  #查看CPU主频
+getconf LONG_BIT # 查看CPU运行模式
+cat /proc/cpuinfo|grep flags| grep 'lm' |wc -l # 查看CPU是否支持64bit, >0表示支持64bit计算, lm表示long mode(64bit)
+cat /proc/meminfo|head -20 #查看内存条详细
+free -m # 查看内存使用情况
+sudo fdisk -l|grep Disk # 查看挂接分区状态
+lsblk # 硬盘分区分布
+mount | column -t #查看挂接分区
+swapon -s # 查看挂接分区状态
+df -hT # 硬盘使用情况
+ip link show # 所有网络接口
 #+END_SRC
 *** Hotkey
 | keybinding | description                               |
@@ -302,7 +325,7 @@ vim /etc/network/interfaces
 | S-Pstrc    | Save a screenshot of an area to Pictures  |
 | M-Pstrc    | Save a screenshot of a window to Pictures |
 | C-Pstrc    | copy a screenshot to clipboard            |
-| S-C-Pstrc  | copy a screenshot of an area to clipboard |
+| S-C-Pstrc  | copy a screeNshot of an area to clipboard |
 *** Applications
 **** BaiduPCS-Go [[https://github.com/iikira/BaiduPCS-Go#linux--macos][iikira]]
 #+BEGIN_SRC bash
@@ -539,7 +562,15 @@ sudo ln -s ~/Downloads/edrawmax-9-amd64/EdrawMax edrawmax
 | C-v         | pageup                          |
 | M-v         | pageon                          |
 | M-<         | begin of text                   |
-| M->         | end of text                     |  
+| M->         | end of text                     |
+| M-c         | capitalize-word                 |
+| M-u         | upcase-word                     |
+| M-l         | downcase-word                   |
+| M-- M-c     | capitalize-forward-word         |
+| M-- M-u     | upcase-forward-word             |
+| M-- M-l     | downcase-forward-word           |
+| C-x C-u     | downcase-region                 |
+| C-x C-l     | upcase-region                   |
 #+CAPTION: Pictures link
 #+ATTR.*: :width 100
 #+ATTR_foo: :width 600px
@@ -549,7 +580,12 @@ sudo ln -s ~/Downloads/edrawmax-9-amd64/EdrawMax edrawmax
 #+BEGIN_SRC elisp
 (setq org-image-actual-width nil)
 (setq org-image-actual-width '(400))
-#+END_SRC    
+#+END_SRC
+M-x replace-string 
+***** org mode  
+| C-c .   | select date to add timestamp |
+| C-C C-s | add schedule date            |
+| C-c C-d | add Deadline date            |
 **** samba 
 [[https://blog.csdn.net/qq_16551373/article/details/78171475][share files between windows and ubuntu]]
 [[https://www.cnblogs.com/snoopys/p/6118488.html][simple tutorial]]
@@ -651,6 +687,16 @@ wine: cannot find L"C:\\windows\\system32\\udpInterfaceTest_V1.0.2.9.exe"
 wine control.exe 
 add/remove programs # select program install
 #+END_SRC
+**** vscode+latexworkshop [[https://zhuanlan.zhihu.com/p/90526218][{1}]]
+latex-workshop.latex.recipes Edit in settings.json
+| Command | Description              |
+| C-S-x   | Extensions               |
+| C-,     | Setting                  |
+| C-k C-s | Keyboard Shortcuts       |
+| C-M-x   | Total Commands           |
+| C-M-c   | clean up auxiliary flies |
+| C-M-v   | preview pdf              |
+| C-M-j   | forward search           |
 *** wireshark
 根据端口过滤
 ip.src==192.168.0.2 and ip.dst==192.168.0.233 and tcp.port==965
@@ -842,4 +888,14 @@ PasswordAuthentication no -> yes
 sudo service sshd restart
 su 
 passwd ubuntu # reset password
+#+END_SRC
+*** Openocd+tcl
+#+BEGIN_SRC bash
+openocd -f ~/cpp/openocd-0.10.0/tcl/interface/jlink.cfg -f tm4c129.cfg ##connect
+telnet localhost 4444 # telnet' connection on tcp/4444
+halt # stop cpu
+mdw 0 12 #从0地址读12个数（32位）
+mww 0 0x00000201 #向某地址写数（32位
+reg #查看寄存器
+shoudown # disconnect
 #+END_SRC
