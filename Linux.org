@@ -26,10 +26,10 @@
 | C-c         | quit current task                 |
 | C-z         | background running                |
 | C-S-f       | find                              |
-|             |                                   |
 **** commands
 #+BEGIN_SRC bash
 ~/ # /home/madhouse
+echo $HOME # show home 
 pwd # show location
 mkdir # make a new directory
 mkdir -p # parents no error if existing, make parent directories as needed
@@ -48,6 +48,7 @@ ln -snf src dst # create new location symbolic link
 sudo apt install <application> # install application
 sudo apt remove <application> # uninstall application,reserve config
 sudo apt-get <name> remove # uninstall application and config
+/etc/apt/sources.list # ubuntu sources file location
 sudo apt update # refresh source
 sudo apt upgrade # upgrade all application
 sudo apt autoremove <name> # uninstall no required packages
@@ -130,9 +131,37 @@ halt # poweroff
 init 6 # reboot
 init 0 # turn off system
 #+END_SRC
+#+BEGIN_SRC bash
+logsave test.log ./usb_can # save Terminal print informations as test.log
+./usb_can 2>&1 | tee mylog.log # 
+ftp [hostname| ip-address] # login ftp sever
+get [remote-file] [local-file] # gei remote file
+mget [remote-directory] [local-file] # get remote files
+mget *.* # get all files
+put [local-file] [remote-file] # put file to remote
+mput [local-file] # puts files to remote
+bye # disconnect sever
+find /home/madhouse -name BMSCAN.org # search for BMSCAN.org in /home/madhosue
+find /home/madhouse -name *.conf # search for .conf files in home
+find /home/madhouse -name ".*" -ls # ls all files and directories begin with "."
+find ~ -name *v2g* # search for filename including "v2g" in ~ directory
+locate BMSCAN.org # find BMSCAN.org location
+find ./ -type d # find all directories in current directory
+find ./ -type f # find all files in current directory
+find ./ -type f -inname ".*" # search for all files begin with ".", inname -- Ignore case
+find ./ -path '*Yaoli*' -name '*.json' # find .json file in directory whom name including "Yaoli"
+find ./ -type d -exec chomod 777 # execute premission to all directories
+find ./ -size +5M # find all files size > 5M
+find ./ -size -5M # find all files size < 5M
+find ./ -mtime -5 # find all files modified within 5 days
+find ./ -mtime +5 # find all files modified more than 5 days
+find $HOME -name ".org" -ls > foo.txt # find and save log
+find ~ -name "*698.45*" # 递归查找
+#+END_SRC
 **** Vim
 #+BEGIN_SRC bash
 %! sudo tee % /dev/null # 在vim保存需要权限的文件
+w !sudo tee % # vim E212 cant open file for writing 报错解决
 #+END_SRC
 *** Git 
 command
@@ -184,6 +213,13 @@ git reset --soft [vision id] # head branch to target vision, keep staging area a
 git revert # create commit and hard branch to target vision
 git log # view recent operation log about current branch
 git clone [repository address] [/path/directory] # clone github repository to target directory 
+#+END_SRC
+#+BEGIN_SRC bash
+git commit <RET> # into nano edit commit
+# edit your commit messages logging
+C-x # modified log buffer
+Y # Yes to Save
+git config --global core.editor vim # 修复默认commit log 文本编辑器为vim
 #+END_SRC
 *** Linux command [[https://blog.csdn.net/qintaiwu/article/details/73384755][1]]
 #+NAME: <TXT file Chinese messy code>
@@ -318,6 +354,44 @@ swapon -s # 查看挂接分区状态
 df -hT # 硬盘使用情况
 ip link show # 所有网络接口
 #+END_SRC
+#+BEGIN_SRC bash
+grep: Global Search Regular Expression amd Print out the line
+grep [option] pattern [file...] # [option] 表示命令选项 pattern 表示要匹配的模式(字符串,变量)
+grep -rl "BFunc_SetIsoResEnable" ./ # 查找包含BFunc_..字符串的二进制文本文件, ./表示本文件夹
+grep -i "hello world" test1.txt test2.txt # 多文件查询, -i 忽略大小写
+grep -e 只打印匹配的文本行数量, 不显示匹配内容
+grep -a "GPIO_PORTN_BA" PIODrv.c 二进制文件等价于文本文件进行内容匹配
+grep -h 当搜索多个文件时, 不显示匹配文件名前缀
+grep -n 列出所有匹配的文本行, 并显示行号
+grep -l 只列出含有匹配的文本行的文件的文件名，而不显示具体的匹配内容
+grep -s 若无法检索到, 无需显示不存在和无法读取文件的错误信息, -no-warning
+grep -v 只显示不匹配的文本行
+grep -w 匹配整个单词
+grep -x 匹配整个文本行
+grep -r 递归搜索当前目录和子目录
+grep -q 禁止输出任何匹配结果，而是以退出码的形式表示搜索是否成功
+grep -b 打印匹配的文本行到文件头的偏移量，以字节为单位
+grep -E 支持扩展正则表达式
+grep -P 支持Perl正则表达式
+grep -F 不支持正则表达式，将模式按照字面意思匹配
+grep -e "hello" -e "mail" -r /home/madhouse 在文件夹下搜索hello或mail
+grep -E "hello|mail" -r /home/madhouse  在文件夹下搜索hello或mail
+egrep "hello|mail" -r /home/madhouse  在文件夹下搜索hello或mail
+grep -i "hello" -rl /home/madhouse |xargs grep -i "mail" 在文件夹下同时搜索hello和mail
+ps -ef | grep "emacs" 查看当前包含emacs字符的进程
+rfkill list all 查询设备驱动是否被堵塞 当Hard blocked: true 表示被堵塞
+vim /etc/modprobe.d/blacklist.conf 增加 blacklist 黑名单
+#+END_SRC
+#+BEGIN_SRC bash
+#----------------------/home/tyrone/myshell.ksh---------------------
+#! /bin/ksh, 一个脚本软件备份和全局替换字符hello world
+grep "hello world" -rl /home/madhouse | xargs grep -l "mailx" > /home/madhouse/result.txt
+cat result.txt | while read line
+do
+    cp ${line} ${line}.bak20200711
+    sed -i "s/hello world/letitia/g" `grep "hello world" -rl ${line}`
+done
+#+END_SRC
 *** Hotkey
 | keybinding | description                               |
 | C-d        | exit bash                                 |
@@ -371,9 +445,13 @@ d <filename1> <filename2> # download
 upload <local-dir> <remote-dir> #upload
 share l # share
 offlinedl add <link1> <link2> # offline downloadXS
+config set -appid=266719 # 变更appid为266719
+config set -appid=309847 # 变更appid为309847
 #+END_SRC
 **** Goldendict 
 [[http://blog.sina.com.cn/s/blog_933b54980102x6hr.html][Reference]]
+C-F11-C-F11 Mainwindow
+C-c C-g Scan Popup
 **** iproute2 
 [[https://www.jianshu.com/p/d129238d3853][iproute2 from jianshu]]
 #+BEGIN_SRC bash
@@ -581,11 +659,27 @@ sudo ln -s ~/Downloads/edrawmax-9-amd64/EdrawMax edrawmax
 (setq org-image-actual-width nil)
 (setq org-image-actual-width '(400))
 #+END_SRC
-M-x replace-string 
+M-x replace-string
+M-x revert-buffer-with-coding-system  select GB18030 转化文件编码方式
+C-x <RET> r revert-buffer-with-coding-system  select GB18030 转化文件编码方式
+# match text in current file
+M-x list-matching-lines 
+# search ngx_http_ssl string in .c file in current directory
+M-x grep Enter
+grep -nH -e "ngx_http_ssl" *.c
+# match abcde string in test file type in destination directory 
+M-x rgrep Enter
+abcde
+file type
+directory
+# find file name in directory
+M-x find-name-dired
 ***** org mode  
 | C-c .   | select date to add timestamp |
 | C-C C-s | add schedule date            |
 | C-c C-d | add Deadline date            |
+# To insert a vertical bar into a table field, use \vert
+# If \vert is not automatically converted to |, call "C-c C-x \" org-toggle-pretty-entities 
 **** samba 
 [[https://blog.csdn.net/qq_16551373/article/details/78171475][share files between windows and ubuntu]]
 [[https://www.cnblogs.com/snoopys/p/6118488.html][simple tutorial]]
@@ -697,11 +791,95 @@ latex-workshop.latex.recipes Edit in settings.json
 | C-M-c   | clean up auxiliary flies |
 | C-M-v   | preview pdf              |
 | C-M-j   | forward search           |
+**** Doxygen
+#+BEGIN_SRC bash
+sudo apt install doxygen # 安装Doxygen
+sudo apt install doxygen-gui # 安装GUI桌面软件
+doxywizard # 打开GUI桌面软件
+# 自动导出文档
+doxygen /home/madhouse/Yaoli/6.6KW/v2g_source/v2g\ 0804/v2g/code/Application/Doxyfile
+#+END_SRC
 *** wireshark
-根据端口过滤
+wireshark支持过滤协议:tcp, udp, arp, icmp, http, smtp, ftp, dns, msnms, ip, ssl, oicq, bootp等
+# 根据端口过滤
 ip.src==192.168.0.2 and ip.dst==192.168.0.233 and tcp.port==965
-根据包长过滤
+# 根据包长过滤
 ip.src==192.168.0.2 and ip.dst==192.168.0.233 and tcp.len==12
+# 显示所有源或目标地址是192.168.1.1的报文
+ip.addr == 192.168.1.1
+# 根据MAC地址进行过滤
+显示所有源或目标MAC物理地址是9c:5a:44:06:ad:3f的报文
+eth.addr == 9c:5a:44:06:ad:3f
+显示MAC前三字节是00:06:5B的报文
+eth.addr[0:3]==00:06:5B
+显示所有源MAC物理地址是9c:5a:44:06:ad:3f的报文
+eth.src == 9c:5a:44:06:ad:3f 
+显示所有目标MAC物理地址是9c:5a:44:06:ad:3f的报文
+eth.dst == 9c:5a:44:06:ad:3f
+示显目的地址是192.168.1.2 或192.168.1.3 端口是80 的TCP 数据
+tcp.port == 80 && (ip.dst==192.168.1.2 || ip.dst==192.168.1.3)
+# 过滤整个网段, 如下所示
+显示192.168整个网段
+ip.src == 192.168.0.0/16
+过滤192.168整个网段
+ip.src != 192.168.0.0/16
+http 显示http 或者 tcp
+http or telnet 显示http和telnet, 或者 tcp || udp
+not tcp 不显示, 或者 !tcp
+src portrange 2000-2500 显示来源为UDP或TCP，并且端口号在2000至2500范围内的封包
+udp.length < 30 || udp.length >= 20 数据段长度过滤
+显示udp本身固定长度8加上udp下面那块数据包之和等于26
+udp.length == 26
+tcp.len >= 7   指的是ip数据包(tcp下面那块数据),不包括tcp本身
+除了以太网头固定长度14,其它都算是ip.len,即从ip本身到最后
+ip.len == 94 
+整个数据帧长度,从eth开始到最后
+frame.len == 119 
+tcp contains “httppp” 显示payload中包含”httppp”字符串的tcp封包。
+http.request.uri contains “online” 显示请求的uri包含”online”的http封包
+16进制形式，tcp头部一般是20字节，所以这个是对payload的前三个字节进行过滤
+tcp[20:3] == 47:45:54 
+16进制形式，udp头部一般是8字节，所以这个是对payload的前四个字节进行过滤
+udp[8:4] == 02:00:0a:03 
+upper(http.request.uri) contains “ONLINE” 对比是否含有ONLINE
+lower(http.request.uri) contains “online” 对比是否含有online
+# matches(匹配)和contains(包含某字符串)语法
+ip.src==192.168.1.107 and udp[8:5] matches "\\x02\\x12\\x21\\x00\\x22"
+ip.src==192.168.1.107 and udp contains 02:12:21:00:22
+ip.src==192.168.1.107 and tcp contains "GET"
+udp contains 7c:7c:7d:7d 匹配payload中含有0x7c7c7d7d的UDP数据包，不一定是从第一字节匹配。
+# 抓包前在capture-> option-> Enter a capture filter 设置过滤(host), 仅捕获符合条件的包, 可以避免产生较大的捕获文件和内存占用, 但是不能完整复现测试时的网络环境;
+host 192.168.1.1 抓取地址192.168.1.1收到和发出的所有数据包
+src host 192.168.1.1 抓取源地址192.168.1.1发出的所有数据包
+dst host 192.168.1.1 抓取目标地址192.168.1.1收到的所有数据包
+src host hostname 根据主机名过滤
+ether host 9c:5a:44:06:ad:3f 根据MAC地址进行过滤
+net 192.168.1 抓取192.168.1整个网段
+src net 192.168 抓取源地址192.168网段发出的数据包
+dst net 192 抓取目标地址192网段收到的所有数据包
+(tcp port 80) and ((dst host 192.168.1.2) or (dst host 192.168.1.3)) 抓取目的地址是192.168.1.2 或192.168.1.3 端口是80 的TCP 数据
+(tcp) and ((dst net 192.168) and (not dst host 192.168.1.2)) 抓取所有目的网络是192.168，但目的主机不是192.168.1.2 的TCP 数据
+显示目的网络是192.168，但目的主机不是192.168.1.2 的TCP 数据
+tcp && ip.src==192.168.0.0/16 && !(ip.src==192.168.1.2)
+抓取主机192.168.1.1除了和主机192.168.1.2之外所有主机通信的数据包
+host 192.168.1.1 and ! 192.168.1.2
+显示主机192.168.1.1除了和主机192.168.1.2之外所有主机通信的数据包
+ip.addr==192.168.1.1&&!ip.addr==192.168.1.2
+抓取主机192.168.1.1接收或发出的telnet包，telnet使用tcp 23端口
+tcp port 23 and host 192.168.1.1
+显示主机192.168.1.1接收或发出的telnet包，telnet使用tcp 23端口
+tcp.port==23&&ip.addr==192.168.1.1
+keyword below:
+| "eq"  | "=="  |
+| "and" | "&&"  |
+| "or"  | "\vert\vert"  |
+| "!"   | "not" |
+| "!="  | "ne"  |
+| "<"   | "lt"  |
+| "<="  | "le"  |
+| ">"   | "gt"  |
+| ">="  | "ge"  |
+
 *** Linux Customize
 **** turn CapsLock to Left Ctrl [[https://www.cnblogs.com/ethan87/p/10219093.html][1]]
 #+BEGIN_SRC bash
@@ -756,7 +934,7 @@ Type=Application                                #type
 Categories=Application;Network;Security;        #categories in which this app should be listed.
 Comment[en_US]=yEd Graph Editor                 #comment which appears as a tooltip.
 #+END_SRC
-****  
+**** hotspot
 [[https://blog.csdn.net/u012491646/article/details/80219973][ubuntu 18 share hotspot]]
 **** Github+Hexo
 #+BEGIN_SRC bash
@@ -873,7 +1051,17 @@ sudo apt install auctex
 #+LATEX_HEADER: \usepackage{ctex}
 #+LATEX_COMPILER: xelatex
 #+BEGIN_SRC tex
-/usepackage[unicode=true,colorlinks=no,pdfborder=no]{hyperref}
+  \usepackage[unicode=true,colorlinks=no,pdfborder=no]{hyperref}
+  \tiny                           % tiny fontsize
+  \scriptsize                     % scriptsize
+  \footnotesize                   % footnotesize
+  \small                          % small fontsize
+  \normalsize                     % normalsize
+  \large                          % large fontsize
+  \Large                          % super large fontsize
+  \LARGE                          % super super large fontsize
+  \huge                           % huge fontsize
+  \Huge                           % super fontsize
 #+END_SRC
 [[https://emacs-china.org/t/org-mode-latex-org/8044/2][23]]
 *** VPS
@@ -889,13 +1077,22 @@ sudo service sshd restart
 su 
 passwd ubuntu # reset password
 #+END_SRC
-*** Openocd+tcl
+*** Openocd+tcl [[https://e2e.ti.com/support/microcontrollers/other/f/908/t/328661?Tiva-tm4c-129X-dk-openocd][{1}]]
 #+BEGIN_SRC bash
+cd ~/cpp/openocd-0.10.0 
+openocd -f 3su1.cfg # connect to board
+telnet localhost 4444 # telnet connection on tcp/4444
+halt # stop cpu
+flash write_image erase /home/madhouse/Downloads/2020.05.12.mot # erase flash and write image, support .bin .hex .mot .elf mem builder file
+flash write_image erase /home/madhouse/v2g.hex # erase flash and write image
+reset # reset cpu
+### 
 openocd -f ~/cpp/openocd-0.10.0/tcl/interface/jlink.cfg -f tm4c129.cfg ##connect
-telnet localhost 4444 # telnet' connection on tcp/4444
 halt # stop cpu
 mdw 0 12 #从0地址读12个数（32位）
-mww 0 0x00000201 #向某地址写数（32位
+mww 0 0x00000201 #向某地址写数32位
 reg #查看寄存器
+flash banks # list bank number
+flash erase_check 0 # check flash #0 bank erase state
 shoudown # disconnect
 #+END_SRC
