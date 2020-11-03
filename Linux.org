@@ -26,6 +26,9 @@
 | C-c         | quit current task                 |
 | C-z         | background running                |
 | C-S-f       | find                              |
+| C-S-t       | new Tab                           |
+| C-PgUp/PgDn | switch Tabs                       |
+| S-PgUp/PgDn | Page Up/Down                      |
 **** commands
 #+BEGIN_SRC bash
 ~/ # /home/madhouse
@@ -158,11 +161,26 @@ find ./ -mtime +5 # find all files modified more than 5 days
 find $HOME -name ".org" -ls > foo.txt # find and save log
 find ~ -name "*698.45*" # 递归查找
 #+END_SRC
+#+begin_src bash
+google-chrome # run chrome
+whereis google-chrome # get google-chrome patch
+whereis emacs # get emacs patch
+#+end_src
+#+begin_src bash
+htop
+crontab -l
+nslookup ix.xo
+#+end_src
 **** Vim
 #+BEGIN_SRC bash
 %! sudo tee % /dev/null # 在vim保存需要权限的文件
 w !sudo tee % # vim E212 cant open file for writing 报错解决
 #+END_SRC
+| hotkey | description |
+| C-s    | lock screen |
+| C-q    | exit lock   |
+| u      | undo        |
+| C-r    | redo        |
 *** Git 
 command
 | command                                             | description                            |
@@ -392,6 +410,9 @@ do
     sed -i "s/hello world/letitia/g" `grep "hello world" -rl ${line}`
 done
 #+END_SRC
+#+begin_src bash
+unzip -O GBK xxx.zip # 解压时指定字符集，可以是CP936，GBK，GB18030
+#+end_src
 *** Hotkey
 | keybinding | description                               |
 | C-d        | exit bash                                 |
@@ -592,6 +613,7 @@ gsettings set org.freedesktop.ibus.panel lookup-table-orientation 0 # horizontal
 [[https://www.findhao.net/res/1746][rime add customized thesaurus]]
 [[https://www.jianshu.com/p/58ea12e8886d][1]]
 [[https://www.jianshu.com/p/cffc0ea094a7][2]]
+[[https://lpwmm.blog.csdn.net/article/details/108297339][ubuntu 20 ibus-rime input tool]]
 **** Arm [[https://blog.csdn.net/qq_33475105/article/details/81489792][1]]
 **** minicom [[https://blog.csdn.net/qq_38880380/article/details/77662637][1]]
 #+BEGIN_SRC bash
@@ -895,6 +917,7 @@ xrandr --output VGA-0 --same-as LVDS --mode 1280x1024 # set display resolution
 xrandr --output VGA-0 --right-of LVDS --auto # right display
 xrandr --output VGA-0 --off # turn off monitor
 xrandr --output VGA-0 --auto --output LVDS --off # turn on VGA, turn off LVDS
+xrandr --output DP-1 --left-of eDP-1 --auto # 左边扩展
 #+END_SRC
 **** Internal network penetration
 [[https://blog.csdn.net/weixin_36562804/article/details/81737521][VPS + ssh reverse proxy + autossh 1]] [[https://blog.csdn.net/asahinokawa/article/details/85480803][2]] [[https://blog.csdn.net/dy200811/article/details/52847543][3]] [[http://arondight.me/2016/02/17/%25E4%25BD%25BF%25E7%2594%25A8SSH%25E5%258F%258D%25E5%2590%2591%25E9%259A%25A7%25E9%2581%2593%25E8%25BF%259B%25E8%25A1%258C%25E5%2586%2585%25E7%25BD%2591%25E7%25A9%25BF%25E9%2580%258F/][4]]

@@ -1,7 +1,9 @@
 (require 'package)                      ;auto-load package
 (add-to-list 'package-archives '("melpa" . "http://elpa.emacs-china.org/melpa/"))
+(add-to-list 'load-path "~/.emacs.d/elpa/xelb-0.18/")
+(add-to-list 'load-path "~/.emacs.d/elpa/exwm-0.24/")
 (package-initialize)
-(require 'cl)
+(require 'cl-lib)
 (defvar my/packages '(			;packages list adn syc
 		      company		;complete anything
 		      ;; --- better editor ---
@@ -32,16 +34,24 @@
 		      py-autopep8
 		      ;; matlab-mode
                       ein
+                      ;; emacs X window manager
+                      exwm
+                      pyim
+                      posframe
+                      emms
+                      pdf-tools
 		      ;; --- minor mode ---
 		      nodejs-repl
 		      ;; exec-path-from-shell
 		      ;; --- themes ---
 		      monokai-theme
+                      powerline
+                      base16-theme
 		      ;;solarized-theme
 		      ) "Default packages")
 (setq package-selected-packages my/packages)
 (defun my/package-installed-p ()
-  (loop for pkg in my/packages
+  (cl-loop for pkg in my/packages       ;在cl-lib中cl-loop替代cl的loop
 	when (not (package-installed-p pkg)) do (return nil)
 	finally (return t)))
 (unless (my/package-installed-p)
@@ -59,10 +69,8 @@
  '(company-idle-delay 0.2)
  '(company-minimum-prefix-length 2)
  '(menu-bar-mode nil)
- '(org-agenda-files
-   '("~/Yaoli/GB Certification/test.org" "/home/madhouse/Yaoli/Org mode/Schedule.org" "/home/madhouse/Yaoli/Org mode/sticker.org"))
  '(package-selected-packages
-   '(edit-indirect w3m company hungry-delete counsel swiper smartparens popwin browse-kill-ring magit org-pomodoro bing-dict expand-region iedit auto-yasnippet helm-ag which-key evil-nerd-commenter js2-mode markdown-mode xcscope web-mode elpy flycheck py-autopep8 ein nodejs-repl monokai-theme))
+   '(emms posframe base16-theme pdf-tools exwm company hungry-delete counsel swiper smartparens popwin browse-kill-ring magit org-pomodoro bing-dict expand-region iedit auto-yasnippet helm-ag which-key evil-nerd-commenter js2-mode markdown-mode xcscope web-mode htmlize elpy flycheck py-autopep8 ein nodejs-repl monokai-theme))
  '(popwin:popup-window-position 'right)
  '(popwin:popup-window-width 40)
  '(safe-local-variable-values
@@ -89,13 +97,17 @@
 (prefer-coding-system 'utf-8)
 (set-language-environment 'utf-8)
 (setq inhibit-startup-message t)
-(tool-bar-mode -1)			;disable tool bar
-(scroll-bar-mode -1)			;disable scroll bar
+(if (display-graphic-p)
+    (progn
+      (tool-bar-mode -1)
+      (scroll-bar-mode -1)))
+;; (tool-bar-mode -1)			;disable tool bar
+;; (scroll-bar-mode -1)			;disable scroll bar
 (global-linum-mode 1)			;turn on line number mode
 (setq initial-scratch-message "Name: Madhouse 
 Email: wo347522772@hotmail.com & yl347522772@gmail.com 
 Tel: +8617689447702
-")					;(setq inhibit-startup-message 1)
+")
 ;;(setq frame-title-format "%b --The final death is when there is no one left in the living world who remembers you, you disappear")
 ;; a shortcut to set up to emacs
 (defun open-my-file()
@@ -123,7 +135,8 @@ Tel: +8617689447702
 (global-set-key (kbd "M-s r") 'recentf-open-files)
 (delete-selection-mode 1)
 ;; (setq visible-bell t)	 		;turn off alarm sound
-;; (setq initial-frame-alist (quote ((fullscreen . maximized)))) ;fullscreen
+;; fullscreen
+;; (setq initial-frame-alist (quote ((fullscreen . maximized))))
 ;; highline in org mode
 (require 'org)       
 (setq org-src-fontify-natively t)
@@ -304,6 +317,7 @@ Tel: +8617689447702
 (setq display-time-use-mail-icon t)	;enable mail setting close to minibuffer time bar
 (setq display-time-interval 10)		;set time refresh frequency
 (setq ido-save-directory-list-file nil) ;don't save ido mode directory list
+(setq default-tab-width 4)              ; tab space 4
 (setq-default indent-tabs-mode nil)
 ;; encryption display password when shell, telnet and w3m modes
 (add-hook 'comint-output-filter-functions
@@ -382,19 +396,18 @@ Tel: +8617689447702
       (setq css-indent-offset (if (= css-indent-offset 2) 4 2)))
   (setq indent-tabs-mode nil))
 (global-set-key (kbd "C-c t i") 'my-toggle-web-indent)
-;(defun occur-dwim ()
-;  "Call `occur' with a sane default."
-;  (interactive)
-;  (push (if (region-active-p)
-;	    (buffer-substring-no-properties
-;	     (region-beginning)
-;	     (region-end))
-;	  (let ((sym (thing-at-point 'symbol)))
-;	    (when (stringp sym)
-;	      (regexp-quote sym))))
-;	regexp-history)
-;  (call-interactively 'occur))
-;(global-set-key (kbd "M-s o") 'occur-dwim)
+(defun occur-dwim ()
+  "Call `occur' with a sane default."
+  (interactive)
+  (push (if (region-active-p)
+	    (buffer-substring-no-properties
+	     (region-beginning)
+	     (region-end))
+	  (let ((sym (thing-at-point 'symbol)))
+	    (when (stringp sym)
+	      (regexp-quote sym))))
+	regexp-history)
+  (call-interactively 'occur));(global-set-key (kbd "M-s o") 'occur-dwim)
 (global-set-key (kbd "C-=") 'er/expand-region)
 (global-set-key (kbd "M-s e") 'iedit-mode)
 (with-eval-after-load 'company
@@ -411,7 +424,7 @@ Tel: +8617689447702
 (global-set-key (kbd "C-x g") 'magit-status)
 (which-key-mode 1)
 (evilnc-default-hotkeys)
-(server-start)
+;(server-start)
 (defun qiang-comment-dwim-line (&optional arg)
   (interactive "*P")
   (comment-normalize-vars)
@@ -538,20 +551,20 @@ Tel: +8617689447702
 ;; ;; tune rescale so that Chinese character width = 2 * English character width
 ;; (setq face-font-rescale-alist '(("monospace" . 1.0) ("WenQuanYi" . 1.23)))
 ;; w3m
-(require 'w3m)
-(setq w3m-home-page "http://www.baidu.com") 
-(setq w3m-default-display-inline-images t)
-(setq w3m-default-toggle-inline-images t)
-;;显示图标  
-(setq w3m-show-graphic-icons-in-header-line t) 
-(setq w3m-show-graphic-icons-in-mode-line t)
-;;启用cookie  
-(setq w3m-use-cookies t)
-;设定w3m运行的参数，分别为使用cookie和使用框架 
-(setq w3m-command-arguments '("-cookie" "-F"))
-(setq org-enforce-todo-dependencies t)
-(setq org-default-notes-file (concat org-directory "~/Yaoli/ideaCapture.org")) 
-(define-key global-map "\C-cc" 'org-capture)
+;; (require 'w3m)                          
+;; (setq w3m-home-page "http://www.baidu.com")
+;; (setq w3m-default-display-inline-images t)
+;; (setq w3m-default-toggle-inline-images t)
+;; ;;显示图标  
+;; (setq w3m-show-graphic-icons-in-header-line t) 
+;; (setq w3m-show-graphic-icons-in-mode-line t)
+;; ;;启用cookie  
+;; (setq w3m-use-cookies t)
+;; ;设定w3m运行的参数，分别为使用cookie和使用框架 
+;; (setq w3m-command-arguments '("-cookie" "-F"))
+;; (setq org-enforce-todo-dependencies t)
+;; (setq org-default-notes-file (concat org-directory "~/Yaoli/ideaCapture.org")) 
+;; (define-key global-map "\C-cc" 'org-capture)
 
 (setq org-agenda-ndays 30)
 (setq org-agenda-include-diary t)
@@ -593,10 +606,22 @@ Tel: +8617689447702
  'org-babel-load-languages
  '(;; other Babel languages
    (R . t)
-   (shell . t)
    (python . t)
    (octave . t)
    (plantuml . t))))
+
+(when (>= emacs-major-version 26)
+ (with-eval-after-load 'org
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '(;; other Babel languages
+   (shell . t)))))
+(when (< emacs-major-version 26)
+ (with-eval-after-load 'org
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '(;; other Babel languages
+   (sh . t)))))
 (setq org-plantuml-jar-path
       (expand-file-name "/home/madhouse/Downloads/plantuml.jar"))
 ;; Enable plantuml-mode for PlantUML files
@@ -607,7 +632,77 @@ Tel: +8617689447702
 ;; htmlize
 (require 'htmlize)
 ;; ox-freemind export
+;; https://code.orgmode.org/bzg/org-mode/src/master/contrib/lisp/ox-freemind.el
 (add-to-list 'load-path "~/.emacs.d/elpa/ox-freemind")
 (require 'ox-freemind)
-;;(setq org-export-backends '(freemind odt latex icalendar html ascii))
-(setq debug-on-error t)
+(setq org-export-backends '(freemind odt latex icalendar html ascii))
+;; (setq debug-on-error t)
+
+;; set coding config, last is highest priority.
+;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Recognize-Coding.html#Recognize-Coding
+(prefer-coding-system 'cp950)
+(prefer-coding-system 'gb2312)
+(prefer-coding-system 'cp936)
+(prefer-coding-system 'gb18030)
+(prefer-coding-system 'utf-16)
+(prefer-coding-system 'utf-8-dos)
+(prefer-coding-system 'utf-8-unix)
+;; <e <s <c 自动补块
+(when (>= emacs-major-version 26) (require 'org-tempo))
+;; word auto wrap
+(add-hook 'org-mode-hook
+	  (lambda()
+	    (setq truncate-lines nil))) 
+;; ispell call aspell that as external spell checker
+(setq-default ispell-program-name "aspell")
+;; c++-mode, c-mode, emacs-lisp-mode, LaTex-mode, org-mode call flyspell-prog-mode
+(add-hook 'c++-mode-hook (lambda () (flyspell-prog-mode)))
+(add-hook 'c-mode-hook (lambda () (flyspell-prog-mode)))
+(add-hook 'emacs-lisp-mode-hook (lambda () (flyspell-prog-mode)))
+(add-hook 'LaTeX-mode-hook (lambda () (flyspell-prog-mode)))
+;; (add-hook 'org-mode-hook (lambda () (flyspell-prog-mode)))
+;; Emacs X Window Manager
+(require 'exwm)
+(require 'exwm-config)
+(require 'exwm-xim)
+(exwm-xim-enable)
+(push ?\C-\\ exwm-input-prefix-keys)   ;; 使用Ctrl + \ 切换输入法
+;; (exwm-enable)
+;; Do not use (exwm-config-default) in your .emacs when you have a customized configuration
+;; (exwm-config-default)
+;; theme and highlight
+(powerline-default-theme)
+;; (load-theme `base16-spacemacs t)
+;; (load-theme 'base16-default-dark t)
+;; (load-theme 'base16-zenburn t)
+(load-theme 'base16-monokai t)
+;; pyim 中文输入法
+(require 'pyim)
+(require 'liberime nil t)
+(setq default-input-method "pyim")
+(with-eval-after-load "liberime"
+  (liberime-try-select-schema "double_pinyin")
+  (setq pyim-default-scheme 'rime-quanpin))
+(global-set-key (kbd "C-\\") 'toggle-input-method) ;; 使用 Ctrl + \ 作为切换输入法状态的按键
+  ;; 为 'posframe, 速度很快并且菜单不会变形，不过需要用户
+  ;; 手动安装 posframe 包。
+  (setq pyim-page-tooltip 'posframe)
+  ;; 选词框显示7个候选词
+(setq pyim-page-length 7)
+;; emms
+(require 'emms-player-mplayer)
+(setq emms-player-list '(emms-player-mplayer)) ;; 使用mplayer 命令作为后端
+(emms-mode-line-enable) ;; 当前的播放会显示在modeline
+
+;; (setq shr-external-browser "google-chrome")
+;; #linuxba #c_lang_cn ##C++ ##C++ #emacs 
+(defun wenshan-erc ()
+  "Log into freenode with less keystrokes"
+  (interactive)
+  (let
+      ((password-cache nil))
+    (erc
+     :server "irc.freenode.net"
+     :port "6667"
+     :nick "yaolimumu"                ;set your username here
+     :password (password-read (format "Your password for freenode? ")))))
