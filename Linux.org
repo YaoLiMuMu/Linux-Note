@@ -1,34 +1,37 @@
 *** Terminal command [[https://www.cnblogs.com/nucdy/p/5251659.html][1]]
 **** shortcut
-| keybindings | description                       |
-| C-a         | set cursor to the begin of line   |
-| C-e         | set cursor to the end of line     |
-| C-k         | kill all after current cursor     |
-| C-u         | kill all before current cursor    |
-| C-d         | delete char after current cursor  |
-| C-h         | delete char before current cursor |
-| C-w         | delete word after current cursor  |
-| C-y         | yank which kill by C-u\C-d\C-w    |
-| C-l         | clear all record                  |
-| C-r         | read history commands             |
-| C-b         | backward                          |
-| C-f         | forward                           |
-| C-t         | turn char to forward char         |
-| C-left      | backward word                     |
-| C-right     | forward word                      |
-| S-C-t       | new table                         |
-| S-C-t       | close table                       |
-| S-C-c       | copy                              |
-| S-C-v       | paste                             |
-| M-number    | select table                      |
-| S-C-n       | new window                        |
-| S-C-q       | quit                              |
-| C-c         | quit current task                 |
-| C-z         | background running                |
-| C-S-f       | find                              |
-| C-S-t       | new Tab                           |
-| C-PgUp/PgDn | switch Tabs                       |
-| S-PgUp/PgDn | Page Up/Down                      |
+| keybindings | description                               |
+| C-a         | set cursor to the begin of line           |
+| C-e         | set cursor to the end of line             |
+| C-k         | kill all after current cursor             |
+| C-u         | kill all before current cursor            |
+| C-d         | delete char after current cursor          |
+| C-h         | delete char before current cursor         |
+| C-w         | delete word after current cursor          |
+| C-y         | yank which kill by C-u\C-d\C-w            |
+| C-l         | clear all record                          |
+| C-r         | read history commands                     |
+| C-b         | backward                                  |
+| C-f         | forward                                   |
+| C-t         | turn char to forward char                 |
+| C-left      | backward word                             |
+| C-right     | forward word                              |
+| S-C-t       | new table                                 |
+| S-C-t       | close table                               |
+| S-C-c       | copy                                      |
+| S-C-v       | paste                                     |
+| M-number    | select table                              |
+| S-C-n       | new window                                |
+| S-C-q       | quit                                      |
+| C-c         | quit current task                         |
+| C-z         | background running                        |
+| C-S-f       | find                                      |
+| C-S-t       | new Tab                                   |
+| C-PgUp/PgDn | switch Tabs                               |
+| S-PgUp/PgDn | Page Up/Down                              |
+| C-h b       | list all bindings available in the buffer |
+| C-h m       | get a list of keybindings                 |
+| C-h k       | keybindings destription                   |
 **** commands
 #+BEGIN_SRC bash
 ~/ # /home/madhouse
@@ -230,7 +233,9 @@ git reset --hard [vision id] # head branch to target vision, delete staging area
 git reset --soft [vision id] # head branch to target vision, keep staging area and working copy
 git revert # create commit and hard branch to target vision
 git log # view recent operation log about current branch
-git clone [repository address] [/path/directory] # clone github repository to target directory 
+git clone [repository address] [/path/directory] # clone github repository to target directory
+git commit -m ' <RET> ' # commit with quote
+git commit --amend # modify commit description
 #+END_SRC
 #+BEGIN_SRC bash
 git commit <RET> # into nano edit commit
@@ -239,37 +244,37 @@ C-x # modified log buffer
 Y # Yes to Save
 git config --global core.editor vim # 修复默认commit log 文本编辑器为vim
 #+END_SRC
-*** Linux command [[https://blog.csdn.net/qintaiwu/article/details/73384755][1]]
-#+NAME: <TXT file Chinese messy code>
-#+BEGIN_SRC bash
-gsettings set org.gnome.gedit.preferences.encodings candidate-encodings "['GB18030', 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"  #TXT file Chinese messy code
-#+END_SRC
-PPA:Personal Package Archives
-#+BEGIN_SRC bash
+*** linux command [[https://blog.csdn.net/qintaiwu/article/details/73384755][1]]
+#+name: <txt file chinese messy code>
+#+begin_src bash
+gsettings set org.gnome.gedit.preferences.encodings candidate-encodings "['gb18030', 'utf-8', 'current', 'iso-8859-15', 'utf-16']"  #txt file chinese messy code
+#+end_src
+ppa:personal package archives
+#+begin_src bash
 sudo add-apt-repository ppa:user/ppa-name # add ppa source
 sudo apt-get update # refresh source
 sudo add-apt-repository -r ppa:user/ppa-name # remove ppa source
 sudo apt-get update # refresh source
 sudo apt-get update -f install # force install
 sudo apt -f install # fix dependencies
-#+END_SRC
-#+BEGIN_SRC bash
+#+end_src
+#+begin_src bash
 cat <filename> # show text 
 cat -n <filename> # show text with line number
 cat -b <filename> # show text with line number,blank line without number
-cat -T <filename> # show text without tabs
+cat -t <filename> # show text without tabs
 echo "..." >> filename # add ... to file
 more <filename>   # show text, <return> key:next page
-less <filename>   # show textXS
+less <filename>   # show textxs
 cp <filename1> <filename2> # copy file1 to file2
 cp -v <filename1> <filename2> # copy file and print
-$LOGNAME # account username
+$logname # account username
 tail -n 5 <filename> # print last 5 lines of file
 ls -altr # list of all directories according time and invert
 grep [option] pattern file # regular expression
-#+END_SRC
-#+NAME: <file permission setup>
-#+BEGIN_SRC bash
+#+end_src
+#+name: <file permission setup>
+#+begin_src bash
 ls -lh <filename> # check file permissions
 ls -ld <folder> # check folder permissions
 sudo chmod 600 xxx # u read and write
@@ -289,20 +294,20 @@ sudo chmod +x xxx # all execute
 sudo useradd username # add user
 passwd ****** # set user password
 vim /etc/sudoers
-username ALL=(ALL:ALL) All # add root permission
+username all=(all:all) all # add root permission
 userdel -r username # delete user
-#+END_SRC
-#+BEGIN_SRC bash
+#+end_src
+#+begin_src bash
 w # view current user
 who # view current user
 whoami # view user
 lastog # view all user
 lastlog|last -n 15 # view last 15 user logs
-#+END_SRC
+#+end_src
 ufw: uncomplicated firewall
-#+BEGIN_SRC bash
+#+begin_src bash
 sudo ufw status # check firewall status
-Status: inactive # unwork
+status: inactive # unwork
 sudo ufw version # check firwell version
 sudo ufw enable # enable firwell
 sudo ufw default deny # enable firewal and deny all input port
@@ -323,25 +328,25 @@ sudo ufw logging on|off # turn on/off firwell log
 sudo ufw default allow #  enable firewall mostly open all input port
 sudo ufw status numbered # cleck firewall rule
 vim /etc/ufw/ufw.conf # firewall confiration file
-#+END_SRC
+#+end_src
 ubuntu iptables [[https://www.cnblogs.com/davidwang456/p/3540837.html][{iptables destription}]] 
-#+BEGIN_SRC bash
-iptables -P INPUT DROP # drop all input packet
-iptables -P FORWARD DROP # drop all forward packet (mostly nat)
-iptables -P OUTPUT DROP # drop all output packet
-iptables -L -n # check all input, forward and output, -line-number
+#+begin_src bash
+iptables -p input drop # drop all input packet
+iptables -p forward drop # drop all forward packet (mostly nat)
+iptables -p output drop # drop all output packet
+iptables -l -n # check all input, forward and output, -line-number
 sevrice iptables save # save iptables setting
 iptables-save # save iptables setting
 iptables-restore # restore iptables setting
-iptables -A INPUT -p tcp --dport 22 j ACCEPT 
+iptables -a input -p tcp --dport 22 j accept 
 # append rule accept download tcp packet from port 22
-iptables -A OUTPUT -p tcp --sport 22 i ACCEPT
+iptables -a output -p tcp --sport 22 i accept
 # append rule accept sent tcp packet from port 22 
-iptables -A INPUT -p tcp -s 192.168.1.2 -j DROP
+iptables -a input -p tcp -s 192.168.1.2 -j drop
 # append rule drop tcp packet from 192.168.1.2 
-iptables -A INPUT -p udp --dport 60002 -j ACCEPT
+iptables -a input -p udp --dport 60002 -j accept
 # append rule accept udp packet to port 60002
-iptables -D INPUT 2 # delete input line number 2
+iptables -d input 2 # delete input line number 2
 sudo iptables-save > /etc/iptables.up.rules 
 # save firewall rule to iptables.up.rules
 vim /etc/network/interfaces
@@ -350,35 +355,35 @@ vim /etc/network/interfaces
    pre-up iptables-restore < /etc/iptables.up.rules # load rule from iptables.up.rules
    post-down iptables-save > /etc/iptables.up.rules # save rule before restore system
 sudo nautilus # super user for files exploer
-#+END_SRC
-#+BEGIN_SRC bash
-dmidecode -t bios #Getting SMBIOS data from sysfs
+#+end_src
+#+begin_src bash
+dmidecode -t bios #getting smbios data from sysfs
 sudo dmidecode -t memory|head -45 |tail -23 # 查看内存条和内存槽
-dmesg|grep -i Ethernet # 查看网卡信息
-lspci |head -10 # 查看主板PCI硬件槽信息
-cat /proc/cpuinfo|grep name |cut -f2 -d: | uniq -c #查看CPU信息
-cat /proc/cpuinfo|grep "cores"| uniq  # 查看CPU核数
-cat /proc/cpuinfo|head -20 # 查看CPU详情
+dmesg|grep -i ethernet # 查看网卡信息
+lspci |head -10 # 查看主板pci硬件槽信息
+cat /proc/cpuinfo|grep name |cut -f2 -d: | uniq -c #查看cpu信息
+cat /proc/cpuinfo|grep "cores"| uniq  # 查看cpu核数
+cat /proc/cpuinfo|head -20 # 查看cpu详情
 lscpu # list of all cpu infomation
-cat /proc/cpuinfo|grep MHz| uniq  #查看CPU主频
-getconf LONG_BIT # 查看CPU运行模式
-cat /proc/cpuinfo|grep flags| grep 'lm' |wc -l # 查看CPU是否支持64bit, >0表示支持64bit计算, lm表示long mode(64bit)
+cat /proc/cpuinfo|grep mhz| uniq  #查看cpu主频
+getconf long_bit # 查看cpu运行模式
+cat /proc/cpuinfo|grep flags| grep 'lm' |wc -l # 查看cpu是否支持64bit, >0表示支持64bit计算, lm表示long mode(64bit)
 cat /proc/meminfo|head -20 #查看内存条详细
 free -m # 查看内存使用情况
-sudo fdisk -l|grep Disk # 查看挂接分区状态
+sudo fdisk -l|grep disk # 查看挂接分区状态
 lsblk # 硬盘分区分布
 mount | column -t #查看挂接分区
 swapon -s # 查看挂接分区状态
-df -hT # 硬盘使用情况
+df -ht # 硬盘使用情况
 ip link show # 所有网络接口
-#+END_SRC
-#+BEGIN_SRC bash
-grep: Global Search Regular Expression amd Print out the line
+#+end_src
+#+begin_src bash
+grep: global search regular expression amd print out the line
 grep [option] pattern [file...] # [option] 表示命令选项 pattern 表示要匹配的模式(字符串,变量)
-grep -rl "BFunc_SetIsoResEnable" ./ # 查找包含BFunc_..字符串的二进制文本文件, ./表示本文件夹
+grep -rl "bfunc_setisoresenable" ./ # 查找包含bfunc_..字符串的二进制文本文件, ./表示本文件夹
 grep -i "hello world" test1.txt test2.txt # 多文件查询, -i 忽略大小写
 grep -e 只打印匹配的文本行数量, 不显示匹配内容
-grep -a "GPIO_PORTN_BA" PIODrv.c 二进制文件等价于文本文件进行内容匹配
+grep -a "gpio_portn_ba" piodrv.c 二进制文件等价于文本文件进行内容匹配
 grep -h 当搜索多个文件时, 不显示匹配文件名前缀
 grep -n 列出所有匹配的文本行, 并显示行号
 grep -l 只列出含有匹配的文本行的文件的文件名，而不显示具体的匹配内容
@@ -389,18 +394,18 @@ grep -x 匹配整个文本行
 grep -r 递归搜索当前目录和子目录
 grep -q 禁止输出任何匹配结果，而是以退出码的形式表示搜索是否成功
 grep -b 打印匹配的文本行到文件头的偏移量，以字节为单位
-grep -E 支持扩展正则表达式
-grep -P 支持Perl正则表达式
-grep -F 不支持正则表达式，将模式按照字面意思匹配
+grep -e 支持扩展正则表达式
+grep -p 支持perl正则表达式
+grep -f 不支持正则表达式，将模式按照字面意思匹配
 grep -e "hello" -e "mail" -r /home/madhouse 在文件夹下搜索hello或mail
-grep -E "hello|mail" -r /home/madhouse  在文件夹下搜索hello或mail
+grep -e "hello|mail" -r /home/madhouse  在文件夹下搜索hello或mail
 egrep "hello|mail" -r /home/madhouse  在文件夹下搜索hello或mail
 grep -i "hello" -rl /home/madhouse |xargs grep -i "mail" 在文件夹下同时搜索hello和mail
 ps -ef | grep "emacs" 查看当前包含emacs字符的进程
-rfkill list all 查询设备驱动是否被堵塞 当Hard blocked: true 表示被堵塞
+rfkill list all 查询设备驱动是否被堵塞 当hard blocked: true 表示被堵塞
 vim /etc/modprobe.d/blacklist.conf 增加 blacklist 黑名单
-#+END_SRC
-#+BEGIN_SRC bash
+#+end_src
+#+begin_src bash
 #----------------------/home/tyrone/myshell.ksh---------------------
 #! /bin/ksh, 一个脚本软件备份和全局替换字符hello world
 grep "hello world" -rl /home/madhouse | xargs grep -l "mailx" > /home/madhouse/result.txt
@@ -409,32 +414,40 @@ do
     cp ${line} ${line}.bak20200711
     sed -i "s/hello world/letitia/g" `grep "hello world" -rl ${line}`
 done
-#+END_SRC
-#+begin_src bash
-unzip -O GBK xxx.zip # 解压时指定字符集，可以是CP936，GBK，GB18030
 #+end_src
-*** Hotkey
+#+begin_src bash
+unzip -o gbk xxx.zip # 解压时指定字符集，可以是cp936，gbk，gb18030
+command 1 ; command 2 # 首先运行command1，然后运行command2
+command 1 && command 2 # 当command1运行成功并结束，然后运行command2
+command 1 || command 2 # 当command1运行失败时才运行command2
+#+end_src
+make a hexdump or reverse
+#+begin_src bash
+xxd fliename # 
+od -An -vtx1 -w100 cutecom.log | cut -c2- | fgrep -v 0a
+#+end_src
+*** hotkey
 | keybinding | description                               |
-| C-d        | exit bash                                 |
-| Pstrc      | Save a screenshot to Pictures             |
-| S-Pstrc    | Save a screenshot of an area to Pictures  |
-| M-Pstrc    | Save a screenshot of a window to Pictures |
-| C-Pstrc    | copy a screenshot to clipboard            |
-| S-C-Pstrc  | copy a screeNshot of an area to clipboard |
-*** Applications
-**** BaiduPCS-Go [[https://github.com/iikira/BaiduPCS-Go#linux--macos][iikira]]
-#+BEGIN_SRC bash
+| c-d        | exit bash                                 |
+| pstrc      | save a screenshot to pictures             |
+| s-pstrc    | save a screenshot of an area to pictures  |
+| m-pstrc    | save a screenshot of a window to pictures |
+| c-pstrc    | copy a screenshot to clipboard            |
+| s-c-pstrc  | copy a screenshot of an area to clipboard |
+*** applications
+**** baidupcs-go [[https://github.com/iikira/baidupcs-go#linux--macos][iikira]]
+#+begin_src bash
 ## add go path; install baidupcs-go
 wget https://dl.google.com/go/go1.10.2.linux-amd64.tar.gz # download packages from github
 sudo tar -c /usr/local -zxvf go1.10.2.linux-amd64.tar.gz # unzip packages
 vim ~/.bashrc
-export GOPATH=$HOME/go # address gp path
-# export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+export gopath=$home/go # address gp path
+# export path=$path:/usr/local/go/bin:$gopath/bin
 source ~/.bashrc # execute config file
 sudo apt install golang # install golanguage
-go get -u -v github.com/iikira/BaiduPCS-Go # go direct install badiupcs-go from github
-sudo ln -s ~/go/bin/BaiduPCS-Go baidupcs #  create link(baidupcs) for BaiduPCS
-baidupcs # run Baidupcs-Go
+go get -u -v github.com/iikira/baidupcs-go # go direct install badiupcs-go from github
+sudo ln -s ~/go/bin/baidupcs-go baidupcs #  create link(baidupcs) for baidupcs
+baidupcs # run baidupcs-go
 login # login
 logout # logout
 loglist # account list
@@ -451,7 +464,7 @@ ls -desc # show file descending order
 ls -time # show file according time
 ls -name # show file according name
 ls -size # show file according size
-config set -savedir ~/Downloads # set download location
+config set -savedir ~/downloads # set download location
 search <name> # search file about <name>
 d <filename1> <filename2> # download
   --test          test download link
@@ -465,17 +478,17 @@ d <filename1> <filename2> # download
   -p value        threads
 upload <local-dir> <remote-dir> #upload
 share l # share
-offlinedl add <link1> <link2> # offline downloadXS
+offlinedl add <link1> <link2> # offline downloadxs
 config set -appid=266719 # 变更appid为266719
 config set -appid=309847 # 变更appid为309847
-#+END_SRC
-**** Goldendict 
-[[http://blog.sina.com.cn/s/blog_933b54980102x6hr.html][Reference]]
-C-F11-C-F11 Mainwindow
-C-c C-g Scan Popup
+#+end_src
+**** goldendict 
+[[http://blog.sina.com.cn/s/blog_933b54980102x6hr.html][reference]]
+c-f11-c-f11 mainwindow
+c-c c-g scan popup
 **** iproute2 
 [[https://www.jianshu.com/p/d129238d3853][iproute2 from jianshu]]
-#+BEGIN_SRC bash
+#+begin_src bash
 ip a # show ip 
 ip link show # show ip
 ip -4 a # show ipv4 informations
@@ -490,9 +503,9 @@ ip a del 192.168.1.101/24 dev eth0 # delete eth0 ip
 ip -s -s a f to 192.168.1.0/24 # delete all ip
 ip link set dev eth0 down # disable eth0
 ip link set dev eth0 up # enable eth0
-#+END_SRC
-**** openssh-server ssh and mosh tutorial [[https://www.linuxidc.com/Linux/2014-06/103008.htm][1]] [[https://blog.csdn.net/u013452337/article/details/80847113][2]]
-#+BEGIN_SRC bash
+#+end_src
+**** openssh-server ssh and mosh tutorial [[https://www.linuxidc.com/linux/2014-06/103008.htm][1]] [[https://blog.csdn.net/u013452337/article/details/80847113][2]]
+#+begin_src bash
 ps -e|grep ssh # ssh-agent and sshd
 sudo /etc/init.d/ssh start # start ssh server
 pidof sshd
@@ -501,9 +514,9 @@ ssh -p 2222 username@hosrname # port 2222 login
 ssh [-l login_name] [-p port] [user@hostname] # general format
 ssh -l login_name hostname # user login
 ssh login_name@hostname # user login
-#+END_SRC
-#+NAME: transform files
-#+BEGIN_SRC bash
+#+end_src
+#+name: transform files
+#+begin_src bash
 scp /path/filename username@servername:/path/
 # upload file
 scp username@servername:/path/filename /var/www/local_dir
@@ -512,49 +525,50 @@ scp -r username@servername:/var/www/remote_dir(remote) /var/www/local_dir(local)
 # download directory
 scp -r local_dir username@servername:remote_dir
 # upload directory
-#+END_SRC
-[[https://www.cnblogs.com/joshua317/articles/4740881.html][Talk is cheap, Show me the code]]
-#+BEGIN_SRC bash
+#+end_src
+[[https://www.cnblogs.com/joshua317/articles/4740881.html][talk is cheap, show me the code]]
+#+begin_src bash
 vim /etc/ssh/sshd_config
-#Port 22
-Port 12333
-#PermitRootLogin yes
-Permitrootlogin no
+#port 22
+port 12333
+#permitrootlogin yes
+permitrootlogin no
 service sshd restart
-~/.ssh/known_hosts # RSA public
-/etc/ssh/ssh_known_hosts # server RSA public
+~/.ssh/known_hosts # rsa public
+/etc/ssh/ssh_known_hosts # server rsa public
 ssh-keygen
 cd ~/.ssh/
 ssh-copy-id username@servername
 vim /etc/ssh/sshd_config
-->RSAAuthentication yes
-->PubkeyAuthentication yes
-->AuthorizedKeysFile .ssh/authorized_keys
+->rsaauthentication yes
+->pubkeyauthentication yes
+->authorizedkeysfile .ssh/authorized_keys
 ssh user@host 'mkdir -p .ssh && cat >> .ssh/authorized_keys' < ~/.ssh/id_rsa.pub
-#+END_SRC
+#+end_src
 [[https://blog.csdn.net/weiwei_pig/article/details/50954334][can't used root account login ssh server -permission denied, please try again]]
-#+NAME:
+#+name:
 **** mosh
 mosh connect on a udp port between 60000 and 61000
-#+BEGIN_SRC bash
-sudo iptables -A INPUT -p udp --dport 60002 -j ACCEPT # server
+#+begin_src bash
+sudo iptables -a input -p udp --dport 60002 -j accept # server
 mosh -p 60002 username@servername # login
 sudo apt install mosh
 mosh login_name@hostname # login
-#+END_SRC
+#+end_src
 **** gdb [[https://www.cnblogs.com/chenmingjun/p/8280889.html][1]]
-#+BEGIN_SRC bash
+#+begin_src bash
 gcc -o test test.c -g
 g++ hello.c -o hello
-#+END_SRC
+#+end_src
 **** make [[https://blog.csdn.net/qq_35451572/article/details/81092902][1]] 
 
-**** Qt [[https://www.jianshu.com/p/a21d32c5e789][1]]
-#+BEGIN_SRC 
+**** qt [[https://www.jianshu.com/p/a21d32c5e789][1]]
+#+begin_src 
 apt install libgl1-mesa-dev
-#+END_SRC
-**** Vim
-#+BEGIN_SRC bash
+linuxdeployqt ./usb_can -appimage -unsupported-bundle-everything
+#+end_src
+**** vim
+#+begin_src bash
 wq # write and quit
 wq! # force write and quit
 w <filename> # save with name
@@ -567,14 +581,14 @@ set nu # show line number
 ?name # search ->n next
 q! # quit without save
 set fenc=utf8 nobomb ff=unix # set file format
-#+END_SRC
+#+end_src
 | command | description                     |
-| C-b     | pageup                          |
-| C-f     | pageon                          |
-| C-d     | turn up half a page             |
-| C-u     | turn on half a page             |
+| c-b     | pageup                          |
+| c-f     | pageon                          |
+| c-d     | turn up half a page             |
+| c-u     | turn on half a page             |
 | 0       | begin of text                   |
-| G       | end of text                     |
+| g       | end of text                     |
 | $       | end of line                     |
 | ^       | begin of line                   |
 | w       | next begin of word              |
@@ -583,8 +597,8 @@ set fenc=utf8 nobomb ff=unix # set file format
 | #l      | turn to char #                  |
 | x       | delete                          |
 | #x      | delete # chars                  |
-| X       | backspace                       |
-| #X      | backspace # chars               |
+| x       | backspace                       |
+| #x      | backspace # chars               |
 | dd      | delete current line             |
 | #dd     | delete # line                   |
 | yw      | copy to buffer                  |
@@ -593,15 +607,15 @@ set fenc=utf8 nobomb ff=unix # set file format
 | #yy     | copy # lines to buffer          |
 | p       | paste                           |
 | r       | replace                         |
-| R       | replace continuously            |
+| r       | replace continuously            |
 | u       | undone                          |
 | cw      | delete word                     |
 | c#w     | delete # words                  |
-| #G      | turn to line #                  |
-| C-g     | current line number             |
+| #g      | turn to line #                  |
+| c-g     | current line number             |
 | #       | search word like current cursor |
-**** RIME [[https://www.cnblogs.com/BlackStorm/p/Install-IBUS-RIME-Input-Method-On-Ubuntu-16-04-LTS.html][1]] [[http://zhizhi.betahouse.us/2018/10/17/rime-setup/][2]] [[https://www.jianshu.com/p/cffc0ea094a7][3]] 
-#+BEGIN_SRC bash
+**** rime [[https://www.cnblogs.com/blackstorm/p/install-ibus-rime-input-method-on-ubuntu-16-04-lts.html][1]] [[http://zhizhi.betahouse.us/2018/10/17/rime-setup/][2]] [[https://www.jianshu.com/p/cffc0ea094a7][3]] 
+#+begin_src bash
 sudo apt install ibus-rime
 sudo apt install librime-data-pinyin-simp
 sudo apt-get install librime-data-double-pinyin
@@ -609,68 +623,70 @@ cd ~/.config/ibus/rime
 vim default.custom.yaml
 "menu/page_size": 7
 gsettings set org.freedesktop.ibus.panel lookup-table-orientation 0 # horizontal 
-#+END_SRC
+#+end_src
 [[https://www.findhao.net/res/1746][rime add customized thesaurus]]
 [[https://www.jianshu.com/p/58ea12e8886d][1]]
 [[https://www.jianshu.com/p/cffc0ea094a7][2]]
 [[https://lpwmm.blog.csdn.net/article/details/108297339][ubuntu 20 ibus-rime input tool]]
-**** Arm [[https://blog.csdn.net/qq_33475105/article/details/81489792][1]]
+**** arm [[https://blog.csdn.net/qq_33475105/article/details/81489792][1]]
 **** minicom [[https://blog.csdn.net/qq_38880380/article/details/77662637][1]]
-#+BEGIN_SRC bash
+#+begin_src bash
 sudo apt install minicom
 sudo minicom -s # setup
 sudo minicom # running
-#+END_SRC
-**** SAPGUI [[https://blogs.sap.com/2015/07/04/sap-gui-for-java-installation-and-configuration/][1]] [[https://www.icloud.com/#iclouddrive/0Kwlf84ytOdz5PLbfxg8eWZZQ][JAVA 750]] [[https://wenku.baidu.com/view/1e730049360cba1aa811da9a.html][3]]
-[[https://wi-labor.informatik.hs-fulda.de/download/SAP%2520GUI/7.40/Java%2520740-10/][SAP DUI 7.40 Java]]
+#+end_src
+**** sapgui [[https://blogs.sap.com/2015/07/04/sap-gui-for-java-installation-and-configuration/][1]] [[https://www.icloud.com/#iclouddrive/0kwlf84ytodz5plbfxg8ewzzq][java 750]] [[https://wenku.baidu.com/view/1e730049360cba1aa811da9a.html][3]]
+[[https://wi-labor.informatik.hs-fulda.de/download/sap%2520gui/7.40/java%2520740-10/][sap dui 7.40 java]]
 [[https://wi-labor.informatik.hs-fulda.de/][wi-labor]]
-[[https://blog.csdn.net/budaha/article/details/51479414][SAP GUI JAVA Configration]]
-#+BEGIN_SRC bash
-cd /opt/SAPClients/SAPGUI/bin/
-./guistart conn=/H/ip-address/S/3200 # login
-cd /opt/SAPClients/SAPGUI7.40rev10/bin 
+[[https://blog.csdn.net/budaha/article/details/51479414][sap gui java configration]]
+#+begin_src bash
+cd /opt/sapclients/sapgui/bin/
+./guistart conn=/h/ip-address/s/3200 # login
+cd /opt/sapclients/sapgui7.40rev10/bin 
 ./guilogon # logon
-#+END_SRC
-conn=/H/192.168.3.51/S3200
-**** EdrawMax [[https://www.edrawsoft.com/download-edrawmax-linux.php][1]]
-#+BEGIN_SRC bash
+#+end_src
+conn=/h/192.168.3.51/s3200
+**** edrawmax [[https://www.edrawsoft.com/download-edrawmax-linux.php][1]]
+#+begin_src bash
 tar -zxvf edrawmax-9-amd64.tar.gz
-chmod +x EdrawMax
-sudo ./EdrawMax
+chmod +x edrawmax
+sudo ./edrawmax
 cd /usr/local/bin
-sudo ln -s ~/Downloads/edrawmax-9-amd64/EdrawMax edrawmax
-#+END_SRC
-**** Emacs [[https://www.cnblogs.com/qlwy/archive/2012/06/15/2551034.html][1]]
+sudo ln -s ~/downloads/edrawmax-9-amd64/edrawmax edrawmax
+#+end_src
+**** emacs [[https://www.cnblogs.com/qlwy/archive/2012/06/15/2551034.html][1]]
 | keybindings | description                     |
-| C-c C-x C-v | show figure                     |
-| C-x C-c     | exit                            |
-| C-x C-w     | save as                         |
-| C-x C-v     | exit buffer and open new buffer |
-| C-x i       | insert file                     |
-| C-x b       | switch buffer                   |
-| C-x C-b     | buffer list                     |
-| C-c C-z     | stop shell process              |
-| C-x 2       | left and right windows          |
-| C-x 3       | up and down windows             |
-| C-x 0       | exit current window             |
-| C-x o       | switch windows                  |
-| C-x 1       | exit others windows             |
-| C-x 5 2     | new window                      |
-| C-x 5 f     | new window and open file        |
-| C-a         | begin of current line           |
-| C-e         | end of current line             |
-| C-v         | pageup                          |
-| M-v         | pageon                          |
-| M-<         | begin of text                   |
-| M->         | end of text                     |
-| M-c         | capitalize-word                 |
-| M-u         | upcase-word                     |
-| M-l         | downcase-word                   |
-| M-- M-c     | capitalize-forward-word         |
-| M-- M-u     | upcase-forward-word             |
-| M-- M-l     | downcase-forward-word           |
-| C-x C-u     | downcase-region                 |
-| C-x C-l     | upcase-region                   |
+| c-c c-x c-v | show figure                     |
+| c-x c-c     | exit                            |
+| c-x c-w     | save as                         |
+| c-x c-v     | exit buffer and open new buffer |
+| c-x i       | insert file                     |
+| c-x b       | switch buffer                   |
+| c-x c-b     | buffer list                     |
+| c-c c-z     | stop shell process              |
+| c-x 2       | left and right windows          |
+| c-x 3       | up and down windows             |
+| c-x 0       | exit current window             |
+| c-x o       | switch windows                  |
+| c-x 1       | exit others windows             |
+| c-x 5 2     | new window                      |
+| c-x 5 f     | new window and open file        |
+| c-a         | begin of current line           |
+| c-e         | end of current line             |
+| c-v         | pageup                          |
+| m-v         | pageon                          |
+| m-<         | begin of text                   |
+| m->         | end of text                     |
+| m-c         | capitalize-word                 |
+| m-u         | upcase-word                     |
+| m-l         | downcase-word                   |
+| m-- m-c     | capitalize-forward-word         |
+| m-- m-u     | upcase-forward-word             |
+| m-- m-l     | downcase-forward-word           |
+| c-x c-u     | downcase-region                 |
+| c-x c-l     | upcase-region                   |
+| M-i         | indentate                       |
+| M-%         | Query-Replace                   |
 #+CAPTION: Pictures link
 #+ATTR.*: :width 100
 #+ATTR_foo: :width 600px
@@ -697,9 +713,12 @@ directory
 # find file name in directory
 M-x find-name-dired
 ***** org mode  
-| C-c .   | select date to add timestamp |
-| C-C C-s | add schedule date            |
-| C-c C-d | add Deadline date            |
+| C-c .   | select date to add timestamp              |
+| C-C C-s | add schedule date                         |
+| C-c C-d | add Deadline date                         |
+| C-M \   | indent-according-to-mode                  |
+| C-j     | org-return-indent(newline and indent)     |
+| M-j     | default-indent-new-line(using in comment) |
 # To insert a vertical bar into a table field, use \vert
 # If \vert is not automatically converted to |, call "C-c C-x \" org-toggle-pretty-entities 
 **** samba 
@@ -821,6 +840,8 @@ doxywizard # 打开GUI桌面软件
 # 自动导出文档
 doxygen /home/madhouse/Yaoli/6.6KW/v2g_source/v2g\ 0804/v2g/code/Application/Doxyfile
 #+END_SRC
+M-x org-table-create-or-convert-from-region
+# convert region to table
 *** wireshark
 wireshark支持过滤协议:tcp, udp, arp, icmp, http, smtp, ftp, dns, msnms, ip, ssl, oicq, bootp等
 # 根据端口过滤
@@ -902,13 +923,29 @@ keyword below:
 | ">"   | "gt"  |
 | ">="  | "ge"  |
 
-*** Linux Customize
+** Linux Customize
 **** turn CapsLock to Left Ctrl [[https://www.cnblogs.com/ethan87/p/10219093.html][1]]
 #+BEGIN_SRC bash
 sudo vim /usr/share/X11/xkb/keycodes/evdev
 CAPS=37;
 LCTL=66;
 #+END_SRC
+#+begin_example
+chmod  change attributes from a file/folder
+permission to:  owner      group      other     
+                /¯¯¯\      /¯¯¯\      /¯¯¯\
+octal:            6          6          6
+binary:         1 1 0      1 1 0      1 1 0
+what to permit: r w x      r w x      r w x
+ 
+binary         - 1: enabled, 0: disabled
+ 
+what to permit - r: read, w: write, x: execute
+ 
+permission to  - owner: the user that create the file/folder
+                 group: the users from group that owner is member
+                 other: all other users
+#+end_example
 **** ubuntu HDMI monitor [[https://blog.csdn.net/tianmaxingkong_/article/details/50570538][1]] [[https://forum.ubuntu.org.cn/viewtopic.php?t=486885][2]]
 #+BEGIN_SRC bash
 xrandr # check connecting device
@@ -1018,6 +1055,21 @@ sleep 300 && notify-send "Back to work"
 sleep 1500 && zenity --warning --text="Your pomodoro session just needed, Have a well deserved 5 minutes break"; 
 sleep 300 && zenity --warning --text="Back to work"
 #+END_SRC
+#+begin_src 
+
+#+end_src
+**** subversion(SVN) 
+     #+begin_src bash
+     git svn init svn://username@host/filepath # 创建本地git本地仓库
+     svn ls https://xxx # 版本库下的文件和目录列表
+     svn checkout url --usrname=*** --password=*** path # url: 服务器地址 path: 本地电脑目录
+     svn checkout url # 再次登录同步, 已经验证过用户名和密码
+     #+end_src
+     #+begin_comment
+     https://192.168.3.111
+     USER： yao.lin
+     PWD：lin247NEBULA
+     #+end_comment
 *** Latex
 **** language
 [[https://www.sharelatex.com/][ShareLatex]] [[https://www.overleaf.com/][Overleaf]]
