@@ -34,70 +34,71 @@
 | C-h k       | keybindings destription                   |
 **** commands
 #+BEGIN_SRC bash
-~/ # /home/madhouse
-echo $HOME # show home 
-pwd # show location
-mkdir # make a new directory
-mkdir -p # parents no error if existing, make parent directories as needed
-mkdir -m # mode=MODE set file mode (as in chmod), not a=rwx - umask
-cd # enter target directory 
-ls # list of directories
-ls -a # list of all directories, including hidden file
-ls -l # list of all directories and file with limition
-ls -lht # list of all directories and size
-du -sh  # size of current directory
-mv filename dir # move file to target directory
-ln src  dst # create hard link                               |
-ln -s src dst # create symbolic link
-ln -snf src dst # create new location symbolic link              
-~/ # /home/madhouse/
-sudo apt install <application> # install application
-sudo apt remove <application> # uninstall application,reserve config
-sudo apt-get <name> remove # uninstall application and config
-/etc/apt/sources.list # ubuntu sources file location
-sudo apt update # refresh source
-sudo apt upgrade # upgrade all application
-sudo apt autoremove <name> # uninstall no required packages
-sudo apt full-upgrade # upgrade all application and packages
-apt search <name> # search application
-apt show # list of install deteails
-apt list # list of all application
-apt edit-sources # list of all source
-apt-get autoclean # clean packages
-apt-get clean # clean packages and cache
-dpkg -i xxx.deb # install
-dpkg -r xxx.deb # uninstall
-dpkg -r -purge xxx.deb # uninstall and delete configration
-dpkg -info xxx.deb # get information about deb package
-dpkg -l # list install packages
-dpkg --get-selections|grep <name> # search application about name
-dpkg -l |grep ^rc|awk '{print $2}' |sudo xargs dpkg -P xxx # clean residual file
-dpkg -l <package name> # list of all directories of package
-wget <link-address> # download in current directory
-wget -O <dir> <link> # download link on the dir
-wget -i file.txt # execute links on the txt file (download many files)
-wget -b <link> # download link on background, generate web-log file on current directory
-wget -o <link> # download link on background, generate web-log file on current directory
-wget -c <link> # contient to download
-wget --limit-rate=100k -O  <link> # limit download rate =100kb
-wget --spider <link> # test download link
-wget --tries=3 <link> # define retry download 3 times
-wget --mirror -p --convert-links -P <local-dir> <link> # download web all links and packages,and convert links to local directory
-wget --reject=png --mirror -p --convert-links -P <local-dir> <link> # download reject target file(png)
-wget -Q5m -i file.txt # download reject size over 5Mb
-wget -r -A .png <link> # download target file(png) from web
-wget --file-user=USERNAME --file-password=PASSWORD <url> # download from FTP
-dpkg -i .deb # install deb package
-sudo dpkg -l # list of all apt
-touch <filename> # create file 
-mkdir <foldername> # create folder
-rm <filename> # remove file
-rm -d <filename> # remove file and hard link
-rm -f # force remove
-rm -r # recursive remove
-rm -v # remove and check verbose
-rm -rf # clean currnt folder
-rmdirr <foldername> # remove folder
+  ~/ # /home/madhouse
+  echo $HOME # show home 
+  pwd # show location
+  mkdir # make a new directory
+  mkdir -p # parents no error if existing, make parent directories as needed
+  mkdir -m # mode=MODE set file mode (as in chmod), not a=rwx - umask
+  cd # enter target directory 
+  ls # list of directories
+  ls -a # list of all directories, including hidden file
+  ls -l # list of all directories and file with limition
+  ls -lht # list of all directories and size
+  du -sh  # size of current directory
+  mv filename dir # move file to target directory
+  ln src  dst # create hard link                               |
+  ln -s src dst # create symbolic link
+  ln -snf src dst # create new location symbolic link              
+  ~/ # /home/madhouse/
+  sudo apt install <application> # install application
+  sudo apt remove <application> # uninstall application,reserve config
+  sudo apt-get <name> remove # uninstall application and config
+  /etc/apt/sources.list # ubuntu sources file location
+  sudo apt update # refresh source
+  sudo apt upgrade # upgrade all application
+  sudo apt autoremove <name> # uninstall no required packages
+  sudo apt full-upgrade # upgrade all application and packages
+  apt search <name> # search application
+  apt show # list of install deteails
+  apt list # list of all application
+  apt edit-sources # list of all source
+  apt-get autoclean # clean packages
+  apt-get clean # clean packages and cache
+  dpkg -i xxx.deb # install
+  dpkg -r xxx.deb # uninstall
+  dpkg -r -purge xxx.deb # uninstall and delete configration
+  dpkg -info xxx.deb # get information about deb package
+  dpkg -l # list install packages
+  dpkg --get-selections|grep <name> # search application about name
+  dpkg -l |grep ^rc|awk '{print $2}' |sudo xargs dpkg -P xxx # clean residual file
+  dpkg -l <package name> # list of all directories of package
+  wget <link-address> # download in current directory
+  wget -O <dir> <link> # download link on the dir
+  wget -i file.txt # execute links on the txt file (download many files)
+  wget -b <link> # download link on background, generate web-log file on current directory
+  wget -o <link> # download link on background, generate web-log file on current directory
+  wget -c <link> # contient to download
+  wget --limit-rate=100k -O  <link> # limit download rate =100kb
+  wget --spider <link> # test download link
+  wget --tries=3 <link> # define retry download 3 times
+  wget --mirror -p --convert-links -P <local-dir> <link> # download web all links and packages,and convert links to local directory
+  wget --reject=png --mirror -p --convert-links -P <local-dir> <link> # download reject target file(png)
+  wget -Q5m -i file.txt # download reject size over 5Mb
+  wget -r -A .png <link> # download target file(png) from web
+  wget --file-user=USERNAME --file-password=PASSWORD <url> # download from FTP
+  dpkg -i .deb # install deb package
+  sudo dpkg -l # list of all apt
+  touch <filename> # create file 
+  mkdir <foldername> # create folder
+  rm <filename> # remove file
+  rm -d <filename> # remove file and hard link
+  rm -f # force remove
+  rm -r # recursive remove
+  rm -v # remove and check verbose
+  rm -rf # clean currnt folder
+  rmdirr <foldername> # remove folder
+  sudo du -sh *  ##查看目录文件大小
 #+END_SRC
 kill processes [[http://www.cnblogs.com/anno-ymy/p/10517512.html][1]]
 /proc/ record all processes PID
@@ -140,7 +141,8 @@ init 0 # turn off system
 #+BEGIN_SRC bash
 logsave test.log ./usb_can # save Terminal print informations as test.log
 ./usb_can 2>&1 | tee mylog.log # 
-ftp [hostname| ip-address] # login ftp sever
+ftp [hostname| ip-address] # login ftp sever, ftp default port: 21
+ftp ip port # login ftp server (ip & port)
 get [remote-file] [local-file] # gei remote file
 mget [remote-directory] [local-file] # get remote files
 mget *.* # get all files
@@ -164,6 +166,29 @@ find ./ -mtime +5 # find all files modified more than 5 days
 find $HOME -name ".org" -ls > foo.txt # find and save log
 find ~ -name "*698.45*" # 递归查找
 #+END_SRC
+#+begin_src bash
+  # ftp command
+    ftp # start ftp client
+    ftp> open # open server
+    (to) 192.168.1.117
+    login name
+    password
+    pwd
+    cd ./
+    ls
+    put mput
+    get mget
+    help
+    deiete
+  # tftp
+    cd /srv/tftp # store file to send
+Usage: tftp [OPTION] ... HOST [PORT]
+Option:
+        -l FILE Local FILE
+        -r FILE Remote FILE
+        -g      Get file
+        -p      Put file
+#+end_src
 #+begin_src bash
 google-chrome # run chrome
 whereis google-chrome # get google-chrome patch
@@ -331,30 +356,33 @@ vim /etc/ufw/ufw.conf # firewall confiration file
 #+end_src
 ubuntu iptables [[https://www.cnblogs.com/davidwang456/p/3540837.html][{iptables destription}]] 
 #+begin_src bash
-iptables -p input drop # drop all input packet
-iptables -p forward drop # drop all forward packet (mostly nat)
-iptables -p output drop # drop all output packet
-iptables -l -n # check all input, forward and output, -line-number
-sevrice iptables save # save iptables setting
-iptables-save # save iptables setting
-iptables-restore # restore iptables setting
-iptables -a input -p tcp --dport 22 j accept 
-# append rule accept download tcp packet from port 22
-iptables -a output -p tcp --sport 22 i accept
-# append rule accept sent tcp packet from port 22 
-iptables -a input -p tcp -s 192.168.1.2 -j drop
-# append rule drop tcp packet from 192.168.1.2 
-iptables -a input -p udp --dport 60002 -j accept
-# append rule accept udp packet to port 60002
-iptables -d input 2 # delete input line number 2
-sudo iptables-save > /etc/iptables.up.rules 
-# save firewall rule to iptables.up.rules
-vim /etc/network/interfaces
-   auto eth0
-   iface eht0 inet dhcp
-   pre-up iptables-restore < /etc/iptables.up.rules # load rule from iptables.up.rules
-   post-down iptables-save > /etc/iptables.up.rules # save rule before restore system
-sudo nautilus # super user for files exploer
+    iptables -p input drop # drop all input packet
+    iptables -p forward drop # drop all forward packet (mostly nat)
+    iptables -p output drop # drop all output packet
+    iptables -l -n # check all input, forward and output, -line-number
+    sevrice iptables save # save iptables setting
+    iptables-save # save iptables setting
+    iptables-restore # restore iptables setting
+    iptables -a input -p tcp --dport 22 j accept
+
+  iptables -I INPUT -ptcp --dport 9501 -j ACCEPT
+ sudo iptables -L
+    # append rule accept download tcp packet from port 22
+    iptables -a output -p tcp --sport 22 i accept
+    # append rule accept sent tcp packet from port 22 
+    iptables -a input -p tcp -s 192.168.1.2 -j drop
+    # append rule drop tcp packet from 192.168.1.2 
+    iptables -a input -p udp --dport 60002 -j accept
+    # append rule accept udp packet to port 60002
+    iptables -d input 2 # delete input line number 2
+    sudo iptables-save > /etc/iptables.up.rules 
+    # save firewall rule to iptables.up.rules
+    vim /etc/network/interfaces
+       auto eth0
+       iface eht0 inet dhcp
+       pre-up iptables-restore < /etc/iptables.up.rules # load rule from iptables.up.rules
+       post-down iptables-save > /etc/iptables.up.rules # save rule before restore system
+    sudo nautilus # super user for files exploer
 #+end_src
 #+begin_src bash
 dmidecode -t bios #getting smbios data from sysfs
@@ -378,32 +406,33 @@ df -ht # 硬盘使用情况
 ip link show # 所有网络接口
 #+end_src
 #+begin_src bash
-grep: global search regular expression amd print out the line
-grep [option] pattern [file...] # [option] 表示命令选项 pattern 表示要匹配的模式(字符串,变量)
-grep -rl "bfunc_setisoresenable" ./ # 查找包含bfunc_..字符串的二进制文本文件, ./表示本文件夹
-grep -i "hello world" test1.txt test2.txt # 多文件查询, -i 忽略大小写
-grep -e 只打印匹配的文本行数量, 不显示匹配内容
-grep -a "gpio_portn_ba" piodrv.c 二进制文件等价于文本文件进行内容匹配
-grep -h 当搜索多个文件时, 不显示匹配文件名前缀
-grep -n 列出所有匹配的文本行, 并显示行号
-grep -l 只列出含有匹配的文本行的文件的文件名，而不显示具体的匹配内容
-grep -s 若无法检索到, 无需显示不存在和无法读取文件的错误信息, -no-warning
-grep -v 只显示不匹配的文本行
-grep -w 匹配整个单词
-grep -x 匹配整个文本行
-grep -r 递归搜索当前目录和子目录
-grep -q 禁止输出任何匹配结果，而是以退出码的形式表示搜索是否成功
-grep -b 打印匹配的文本行到文件头的偏移量，以字节为单位
-grep -e 支持扩展正则表达式
-grep -p 支持perl正则表达式
-grep -f 不支持正则表达式，将模式按照字面意思匹配
-grep -e "hello" -e "mail" -r /home/madhouse 在文件夹下搜索hello或mail
-grep -e "hello|mail" -r /home/madhouse  在文件夹下搜索hello或mail
-egrep "hello|mail" -r /home/madhouse  在文件夹下搜索hello或mail
-grep -i "hello" -rl /home/madhouse |xargs grep -i "mail" 在文件夹下同时搜索hello和mail
-ps -ef | grep "emacs" 查看当前包含emacs字符的进程
-rfkill list all 查询设备驱动是否被堵塞 当hard blocked: true 表示被堵塞
-vim /etc/modprobe.d/blacklist.conf 增加 blacklist 黑名单
+  grep: global search regular expression amd print out the line
+  grep [option] pattern [file...] # [option] 表示命令选项 pattern 表示要匹配的模式(字符串,变量)
+  grep -rl "bfunc_setisoresenable" ./ # 查找包含bfunc_..字符串的二进制文本文件, ./表示本文件夹
+  grep -rl "bfunc_setisoresenable" -l # 查找包含bfunc_..字符串的二进制文本文件, -l表示包含子文件
+  grep -i "hello world" test1.txt test2.txt # 多文件查询, -i 忽略大小写
+  grep -e 只打印匹配的文本行数量, 不显示匹配内容
+  grep -a "gpio_portn_ba" piodrv.c 二进制文件等价于文本文件进行内容匹配
+  grep -h 当搜索多个文件时, 不显示匹配文件名前缀
+  grep -n 列出所有匹配的文本行, 并显示行号
+  grep -l 只列出含有匹配的文本行的文件的文件名，而不显示具体的匹配内容
+  grep -s 若无法检索到, 无需显示不存在和无法读取文件的错误信息, -no-warning
+  grep -v 只显示不匹配的文本行
+  grep -w 匹配整个单词
+  grep -x 匹配整个文本行
+  grep -r 递归搜索当前目录和子目录
+  grep -q 禁止输出任何匹配结果，而是以退出码的形式表示搜索是否成功
+  grep -b 打印匹配的文本行到文件头的偏移量，以字节为单位
+  grep -e 支持扩展正则表达式
+  grep -p 支持perl正则表达式
+  grep -f 不支持正则表达式，将模式按照字面意思匹配
+  grep -e "hello" -e "mail" -r /home/madhouse 在文件夹下搜索hello或mail
+  grep -e "hello|mail" -r /home/madhouse  在文件夹下搜索hello或mail
+  egrep "hello|mail" -r /home/madhouse  在文件夹下搜索hello或mail
+  grep -i "hello" -rl /home/madhouse |xargs grep -i "mail" 在文件夹下同时搜索hello和mail
+  ps -ef | grep "emacs" 查看当前包含emacs字符的进程
+  rfkill list all 查询设备驱动是否被堵塞 当hard blocked: true 表示被堵塞
+  vim /etc/modprobe.d/blacklist.conf 增加 blacklist 黑名单
 #+end_src
 #+begin_src bash
 #----------------------/home/tyrone/myshell.ksh---------------------
@@ -509,8 +538,8 @@ ip link set dev eth0 up # enable eth0
 ps -e|grep ssh # ssh-agent and sshd
 sudo /etc/init.d/ssh start # start ssh server
 pidof sshd
-ssh username@hosrname # root client login
-ssh -p 2222 username@hosrname # port 2222 login
+ssh username@hostname # root client login
+ssh -p 2222 username@hostname # port 2222 login
 ssh [-l login_name] [-p port] [user@hostname] # general format
 ssh -l login_name hostname # user login
 ssh login_name@hostname # user login
@@ -655,38 +684,40 @@ cd /usr/local/bin
 sudo ln -s ~/downloads/edrawmax-9-amd64/edrawmax edrawmax
 #+end_src
 **** emacs [[https://www.cnblogs.com/qlwy/archive/2012/06/15/2551034.html][1]]
-| keybindings | description                     |
-| c-c c-x c-v | show figure                     |
-| c-x c-c     | exit                            |
-| c-x c-w     | save as                         |
-| c-x c-v     | exit buffer and open new buffer |
-| c-x i       | insert file                     |
-| c-x b       | switch buffer                   |
-| c-x c-b     | buffer list                     |
-| c-c c-z     | stop shell process              |
-| c-x 2       | left and right windows          |
-| c-x 3       | up and down windows             |
-| c-x 0       | exit current window             |
-| c-x o       | switch windows                  |
-| c-x 1       | exit others windows             |
-| c-x 5 2     | new window                      |
-| c-x 5 f     | new window and open file        |
-| c-a         | begin of current line           |
-| c-e         | end of current line             |
-| c-v         | pageup                          |
-| m-v         | pageon                          |
-| m-<         | begin of text                   |
-| m->         | end of text                     |
-| m-c         | capitalize-word                 |
-| m-u         | upcase-word                     |
-| m-l         | downcase-word                   |
-| m-- m-c     | capitalize-forward-word         |
-| m-- m-u     | upcase-forward-word             |
-| m-- m-l     | downcase-forward-word           |
-| c-x c-u     | downcase-region                 |
-| c-x c-l     | upcase-region                   |
-| M-i         | indentate                       |
-| M-%         | Query-Replace                   |
+| keybindings | description                      |
+| c-c c-x c-v | show figure                      |
+| c-x c-c     | exit                             |
+| c-x c-w     | save as                          |
+| c-x c-v     | exit buffer and open new buffer  |
+| c-x i       | insert file                      |
+| c-x b       | switch buffer                    |
+| c-x c-b     | buffer list                      |
+| c-c c-z     | stop shell process               |
+| c-x 2       | left and right windows           |
+| c-x 3       | up and down windows              |
+| c-x 0       | exit current window              |
+| c-x o       | switch windows                   |
+| c-x 1       | exit others windows              |
+| c-x 5 2     | new window                       |
+| c-x 5 f     | new window and open file         |
+| c-a         | begin of current line            |
+| c-e         | end of current line              |
+| c-v         | pageup                           |
+| m-v         | pageon                           |
+| m-<         | begin of text                    |
+| m->         | end of text                      |
+| m-c         | capitalize-word                  |
+| m-u         | upcase-word                      |
+| m-l         | downcase-word                    |
+| m-- m-c     | capitalize-forward-word          |
+| m-- m-u     | upcase-forward-word              |
+| m-- m-l     | downcase-forward-word            |
+| c-x c-u     | downcase-region                  |
+| c-x c-l     | upcase-region                    |
+| M-i         | indentate                        |
+| M-%         | Query-Replace                    |
+| C-x h       | mark whole buffer(select all)    |
+| M-\         | Delete all space in cursor place |
 #+CAPTION: Pictures link
 #+ATTR.*: :width 100
 #+ATTR_foo: :width 600px
@@ -712,16 +743,30 @@ file type
 directory
 # find file name in directory
 M-x find-name-dired
+# insert string on each line of the rectangle.
+M-x string-insert-rectangle <RET> string <RET>
+M-x delete-whitespace-rectangle
+C-x r t string <RET>  replace rectangle contents with string on each lines
+C-x <SPC> Rectangle Mark mode
+M-x flush-lines <RET> ^$ <RET> remove lines that match a blank line
 ***** org mode  
-| C-c .   | select date to add timestamp              |
-| C-C C-s | add schedule date                         |
-| C-c C-d | add Deadline date                         |
-| C-M \   | indent-according-to-mode                  |
-| C-j     | org-return-indent(newline and indent)     |
-| M-j     | default-indent-new-line(using in comment) |
+| C-c .       | select date to add timestamp              |
+| C-C C-s     | add schedule date                         |
+| C-c C-d     | add Deadline date                         |
+| C-M \       | indent-according-to-mode                  |
+| C-j         | org-return-indent(newline and indent)     |
+| M-j         | default-indent-new-line(using in comment) |
+| C-u C-c C-c | lists convert checkbox                    |
 # To insert a vertical bar into a table field, use \vert
 # If \vert is not automatically converted to |, call "C-c C-x \" org-toggle-pretty-entities 
-**** samba 
+**** TaskJuggler [[https://orgmode.org/worg/org-tutorials/org-taskjuggler.html][[1]​]]
+#+begin_src bash
+sudo gem install taskjuggler
+(add-to-list 'load-path "~/.emacs.d/elpa/ox-taskjuggler")
+(require 'ox-taskjuggler)
+#+end_src
+M-x org-taskjuggler-export-process-and-open 同目录下的report/
+**** samba
 [[https://blog.csdn.net/qq_16551373/article/details/78171475][share files between windows and ubuntu]]
 [[https://www.cnblogs.com/snoopys/p/6118488.html][simple tutorial]]
 #+BEGIN_SRC bash
@@ -1171,3 +1216,6 @@ flash banks # list bank number
 flash erase_check 0 # check flash #0 bank erase state
 shoudown # disconnect
 #+END_SRC
+*** QCAD
+F F change all font
+M G change all text height
