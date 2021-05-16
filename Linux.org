@@ -455,6 +455,31 @@ make a hexdump or reverse
 xxd fliename # 
 od -An -vtx1 -w100 cutecom.log | cut -c2- | fgrep -v 0a
 #+end_src
+#+begin_src bash
+Usage: tar -[cxtzjahmvO] [-X FILE] [-T FILE] [-f TARFILE] [-C DIR] [FILE]...
+Create, extract, or list files from a tar file
+Operation:
+        c       Create
+        x       Extract
+        t       List
+        f       Name of TARFILE ('-' for stdin/out)
+        C       Change to DIR before operation
+        v       Verbose
+        z       (De)compress using gzip
+        j       (De)compress using bzip2
+        a       (De)compress using lzma
+        O       Extract to stdout
+        h       Follow symlinks
+        m       Don't restore mtime
+        exclude File to exclude
+        X       File with names to exclude
+        T       File with names to include
+
+tar -cvf filename.tar.gz directory_name # compress and create tar.gz file
+tar -cjvf filename.tar.bz2 directory_name # compress and create tar.bz2 file
+tar -zxvf xxx.tar.gz # extract tar.gz
+tar -jxvf xxx.tar.bz2 # extract tar.bz2
+#+end_src
 *** hotkey
 | keybinding | description                               |
 | c-d        | exit bash                                 |
@@ -1219,3 +1244,29 @@ shoudown # disconnect
 *** QCAD
 F F change all font
 M G change all text height
+*** arm-linux-gnueabihf-gcc & sshd (cross compile)
+Starting sshd: /var/empty/sshd must be owned by root and not group or world-writable
+#+begin_src bash
+chown -R root.root /var/empty/sshd
+chmod 744 /var/empty/sshd
+#+end_src
+Permissions 0777 for '/etc/ssh/ssh_host_rsa_key' are too open
+#+begin_src bash
+chmod 600 sshd_config ssh_host_dsa_key ssh_host_key ssh_host_rsa_key
+chmod 620 moduli
+chmod 644 ssh_config ssh_host_dsa_key.pub ssh_host_key.pub ssh_host_rsa_key.pub
+#+end_src
+Disabling protocol version 1. Could not load host key [[http://blog.chinaunix.net/uid-20541719-id-3044883.html][[1]​]]
+#+begin_src bash
+vim /usr/local/etc/sshd_config
+HostKey for protocol version 1
+HostKey /usr/local/etc/ssh_host_key
+# HostKeys for protocol version 2
+HostKey /usr/local/etc/ssh_host_rsa_key
+HostKey /usr/local/etc/ssh_host_dsa_key
+#+end_src
+Permission denied (publickey,password,keyboard-interactive) [[https://blog.csdn.net/sements/article/details/84106094][sshd migration problems]]
+#+begin_src bash
+vim /usr/local/etc/sshd_config
+PermitRootLogin yes
+#+end_src
