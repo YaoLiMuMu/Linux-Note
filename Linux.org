@@ -1274,7 +1274,7 @@ PermitRootLogin yes
 #+end_src
 vi /usr/local/sanway/rc.user
 /usr/sbin/sshd &
-*** Holer
+*** Intranet Penetration ([[https://github.com/wisdom-projects/holer][Holer]] & [[http://xiaomy.net/][网云穿]]) 
     #+begin_src bash
     nohup ./holer-linux-armv5 -k HOLER_CLIENT-822404317F9D8ADD &
     #+end_src
@@ -1284,3 +1284,44 @@ vi /usr/local/sanway/rc.user
     #+begin_src bash
      0 1 * * * /home/sanwy/msgpack.sh #每天凌晨一点执行msgpack.sh该文件
     #+end_src
+*** restart network command
+    #+begin_src bash
+    sudo service network-manager restart # 重启网络服务
+    sudo systemctl restart NetworkManager.service # 重启网络服务
+    sudo nmcli networking off # 关闭网络
+    sudo nmcli networking on # 开启网络
+    sudo ifdown -a && sudo ifup -a # 重启所有网口
+    #+end_src
+*** crontab [[https://blog.csdn.net/ycf921244819/article/details/80520217][[1]​]]
+    #+begin_src bash
+    cat /etc/crontab
+    # Example of job definition:
+# .---------------- minute (0 - 59)
+# |  .------------- hour (0 - 23)
+# |  |  .---------- day of month (1 - 31)
+# |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...
+# |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
+# |  |  |  |  |
+# *  *  *  *  * user-name command to be executed
+17 *	* * *	root    cd / && run-parts --report /etc/cron.hourly
+25 6	* * *	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )
+47 6	* * 7	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.weekly )
+52 6	1 * *	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
+    #+end_src
+使用(-)可以划定范围
+ 如：0 0-3 * * *  脚本        表示每天0-3点整执行脚本
+使用(,)可以枚举时间
+ 如: 0,15,30,45 * * * * 脚本    表示每个小时的0分，15分，45分，30分会执行脚本
+使用(/)可以指定间隔
+ 如：* */8 * * * 脚本         表示每8小时执行脚本
+组合用法
+0-20/10 * * * * 脚本        表示在前20分钟内每隔10分钟执行脚本
+————————————————
+crontab -u //设定特定用户的定时服务
+crontab -l //列出当前用户定时服务内容
+crontab -r //删除当前用户的定时服务
+crontab -e //编辑当前用户的定时服务
+    #+begin_src shell
+     * * * * * user_name command to be executed
+    #+end_src``
+user_name 表示执行定时任务的用户  不指定默认当
