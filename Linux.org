@@ -1250,7 +1250,7 @@ M G change all text height
     
 Starting sshd: /var/empty/sshd must be owned by root and not group or world-writable
 #+begin_src bash
-chown -R root.root /var/empty
+chown root.root /var/empty
 #+end_src
 Permissions 0777 for '/etc/ssh/ssh_host_rsa_key' are too open
 #+begin_src bash
@@ -1323,6 +1323,7 @@ crontab -r //删除当前用户的定时服务
 crontab -e //编辑当前用户的定时服务
     #+begin_src shell
      * * * * * user_name command to be executed
+     33 0 * * * /home/sanway/msgpack.sh
     #+end_src``
     user_name 表示执行定时任务的用户  不指定默认当
     #+begin_src bash
