@@ -1324,4 +1324,8 @@ crontab -e //编辑当前用户的定时服务
     #+begin_src shell
      * * * * * user_name command to be executed
     #+end_src``
-user_name 表示执行定时任务的用户  不指定默认当
+    user_name 表示执行定时任务的用户  不指定默认当
+    #+begin_src bash
+    crond 
+    #+end_src
+    
