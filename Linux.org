@@ -568,6 +568,9 @@ ssh -p 2222 username@hostname # port 2222 login
 ssh [-l login_name] [-p port] [user@hostname] # general format
 ssh -l login_name hostname # user login
 ssh login_name@hostname # user login
+ssh login_name@hostname -v # ssh with debug1
+ssh login_name@hostname -vv # ssh with debug1, debug2
+ssh login_name@hostname -vvv # ssh with debug1, debug2, debug3
 #+end_src
 #+name: transform files
 #+begin_src bash
@@ -1273,7 +1276,7 @@ vim /usr/local/etc/sshd_config
 PermitRootLogin yes
 #+end_src
 vi /usr/local/sanway/rc.user
-/usr/sbin/sshd &
+/usr/local/sbin/sshd &
 *** Intranet Penetration ([[https://github.com/wisdom-projects/holer][Holer]] & [[http://xiaomy.net/][网云穿]]) 
     #+begin_src bash
     nohup ./holer-linux-armv5 -k HOLER_CLIENT-822404317F9D8ADD &
