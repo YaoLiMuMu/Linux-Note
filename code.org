@@ -107,6 +107,49 @@ QListWidget [[https://blog.csdn.net/Q1302182594/article/details/46120321][{1}]]
 QNetworkInterface [[https://blog.csdn.net/qq78442761/article/details/81187013][{1}]]
 *** Google
 ProtoBuf
+*** Python
+Python Operator
+| Operator | Operate          | Example        | Value | Priority |
+| **       | index            | 2 ** 3         |     8 |        1 |
+| %        | modulo           | 22 % 6         |     6 |        2 |
+| //       | round            | 22 // 8        |     2 |        2 |
+| /        | divide           | 22 / 8         |  2.75 |        2 |
+| *        | multiply         | 3 * 5          |    15 |        2 |
+| -        | minus            | 5 - 2          |     3 |        3 |
+| +        | Plus             | 2 + 2          |     4 |        3 |
+| ==       | equal            |                |       |        4 |
+| !=       | not equal        |                |       |        4 |
+| <        | less than        |                |       |        4 |
+| >        | greater than     |                |       |        4 |
+| <=       | equal or less    |                |       |        4 |
+| >=       | equal or greater |                |       |        4 |
+| and      |                  | True and False | Flase |        6 |
+| or       |                  | True or False  |  True |        7 |
+| not      |                  | not True       | False |        5 |
+Python Data Structure
+| Data  | Example        |
+| int   | -2, 0, 8       |
+| float | -1.35 0.8, 4.5 |
+| strs  | 'aa', 'Hello'  |
+| True  | Boolean, true  |
+| Flase | Boolean, false |
+strs * int 
+#+begin_src python
+>>> 'Alice'*5
+'AliceAliceAliceAliceAlice'
+#+end_src
+Python Functions
+| Functions | Description                          | Example              |
+| print()   | print strings, input strs or int eg. | print{'Hellw world'} |
+| input()   | input strings, output string         | my name = input()    |
+| len()     | length of string,  output int        | len('hello')         |
+| str()     | convert to str                       |                      |
+| int()     | convert to int                       |                      |
+| float()   | convert to float                     |                      |
+| help()    | help on built-on function            |                      |
+| round()   | round                                |                      |
+| list()    | convert to list                      |                      |
+csv module
 *** Shell
 #+begin_src bash
 cat /etc/shells # 查看当前 Linux 系统的可用 Shell
