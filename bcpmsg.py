@@ -155,7 +155,7 @@ for file in csvfiles:
                 item[4] = 'CCS: I=' + str(CCSCurrent) + 'A'
             elif match(sh.lower(), BHM_FrameID): # filter BHM messages
                 BHM_Voltage = (int(str(item[2])[3:5], 16)*256 + int(str(item[2])[0:2], 16))/10
-                item[3] = 'BHM:车端最高电压=' + str(BHM_Voltage) + 'V'
+                item[3] = 'BHM:自检电压=' + str(BHM_Voltage) + 'V'
             elif match(sh.lower(), CML_FrameID): # filter CML messages
                 CML_Max_Voltage = (int(str(item[2])[3:5], 16)*256 + int(str(item[2])[0:2], 16))/10
                 CML_Min_Voltage = (int(str(item[2])[9:11], 16)*256 + int(str(item[2])[6:8], 16))/10
@@ -177,7 +177,7 @@ for file in csvfiles:
                     item[3] = 'BCS->RTS...'
             elif match(sh.lower(), SAJ1939_CTS_FrameID):
                 if match(item[2].lower(), '01*') and MsgBcpDict[0] == 1:    # filter BCP messages[1]
-                    item[3] = 'Max Ucell = ' + str((int(str(item[2])[6:8], 16)*256 + int(str(item[2])[3:5], 16))/10) + ' V'
+                    item[3] = 'Max Ucell = ' + str((int(str(item[2])[6:8], 16)*256 + int(str(item[2])[3:5], 16))/100) + ' V'
                     item[4] = 'Max I = ' + str(round((400 - (int(str(item[2])[12:14], 16)*256 + int(str(item[2])[9:11], 16))/10), 1)) + ' A'
                     item[5] = 'Cap = ' + str((int(str(item[2])[18:20], 16)*256 + int(str(item[2])[15:17], 16))/10) + ' Kwh'
                     MsgBcpDict[1] = int(str(item[2])[21:23], 16)
@@ -199,7 +199,18 @@ for file in csvfiles:
                     item[5] = 'BRM:额定容量=' + str((int(str(item[2])[18:20], 16)*256 + int(str(item[2])[15:17], 16))/10) + 'Ah'
                     MsgBrmDict[1] = MsgBrmDict[1] + 1
                 if match(item[2].lower(), '02*') and MsgBrmDict[1] == 1:
-                    
+                    item[3] = 'BRM:电池生产商=' + chr(int(str(item[2])[6:8], 16)) + chr(int(str(item[2])[9:11], 16)) + chr(int(str(item[2])[12:14], 16)) + chr(int(str(item[2])[15:17], 16))
+                    MsgBrmDict[1] = MsgBrmDict[1] + 1
+                if match(item[2].lower(), '03*') and MsgBrmDict[1] == 2:
+                    MsgBrmDict[1] = MsgBrmDict[1] + 1
+                if match(item[2].lower(), '04*') and MsgBrmDict[1] == 3:
+                    item[3] = 'BRM:电池充电次数='
+                    MsgBrmDict[1] = MsgBrmDict[1] + 1
+                if match(item[2].lower(), '05*') and MsgBrmDict[1] == 4:
+                    MsgBrmDict[1] = MsgBrmDict[1] + 1
+                if match(item[2].lower(), '06*') and MsgBrmDict[1] == 5:
+                    item[3] = 'BRM:VIN='
+                    MsgBrmDict[1] = MsgBrmDict[1] + 1
             elif match(sh.lower(), SAJ1939_EndofMsgAck):
                 if match(item[2].lower(), BCP_End_ACK):
                     MsgBcpDict[0] = 0
@@ -293,11 +304,11 @@ for file in csvfiles:
     plt.title('Charging Curve')
     #添加注释 参数名xy：箭头注释中箭头所在位置，参数名xytext：注释文本所在位置，
     #arrowprops在xy和xytext之间绘制箭头, shrink表示注释点与注释文本之间的图标距离
-
-    plt.annotate('i am commment', xy=(2,680), xytext=(2, 680),
-                arrowprops=dict(facecolor='black', shrink=0.01), )
-    Axis2.legend(loc=0)
-    DoubleAxis.legend(loc=0)
+    # DoubleAxis.annotate('i am commment', xy=(CCS_Axis[0][0],680), xytext=(CCS_Axis[0][0], 700),
+    #             arrowprops=dict(facecolor='black', shrink=0.01), )
+    # DoubleAxis.text(CCS_Axis[0][0], 680, 'Hello', ha='center', va='bottom', fontsize=10)
+    Axis2.legend(loc=6)
+    DoubleAxis.legend(loc=7)
     plt.savefig(path + '/csvfiles/' + file +'.png') # 在show之前才能保存
     plt.show()
     print ("all picture is starting")
