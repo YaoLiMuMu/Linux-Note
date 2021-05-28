@@ -64,6 +64,12 @@ def BEM_Parser(msgstring):
             if ((int(msgstring[3*i:(3*i+2)], 16)) >> j) & 0x01 == 0x01:
                 backString = backString + '|' + faultBitList[i][j]
     return backString
+def Battery_Type(type_index):
+    Battery_Type = [ '', '铅酸电池', '镍氢电池', '磷酸铁锂电池', '锰酸锂电池', '钴酸锂电池', '三元材料电池', '聚合物锂离子电池', '钛酸锂电池', '其他电池']
+    if type_index > 8:
+        return Battery_Type[9]
+    else:
+        return Battery_Type[type_index]
 # configuration variable
 path = '.'
 MsgDateTime = '*'
@@ -86,7 +92,7 @@ BSM_FrameID = '*181356f4*'  #[OK]
 BSD_FrameID = '*181c56f4*'  #[OK]
 BCP_First_Frame_Data = '10 0d 00 02 ff 00 06 00*'
 BCP_End_ACK = '13 0d 00 02 ff 00 06 00*'
-BRM_First_Frame_Data = '10 31 00 07 ff 00 02 00*'
+BRM_First_Frame_Data = '*00 02 00*'     # compatiable with the old standard
 BRM_End_ACK = '13 31 00 07 ff 00 02 00*'
 BCS_First_Frame_Data = '10 09 00 02 ff 00 11 00*'
 BCS_End_ACK = '13 09 00 02 ff 00 11 00*'
@@ -181,14 +187,19 @@ for file in csvfiles:
                     item[4] = 'SOC = ' + str(round(((int(str(item[2])[12:14], 16)*256 + int(str(item[2])[9:11], 16))/10), 1)) + '%'
                     item[5] = 'Now U = ' + str((int(str(item[2])[18:20], 16)*256 + int(str(item[2])[15:17], 16))/10) + ' V'
                 if match(item[2].lower(), '01*') and MsgBcsDict[0] == 1:    # filter BCS messages[1]
-                    item[3] = 'BCS:车端电压=' + str((int(str(item[2])[6:8], 16)*256 + int(str(item[2])[3:5], 16))/100) + ' V'
+                    item[3] = 'BCS:车端电压=' + str((int(str(item[2])[6:8], 16)*256 + int(str(item[2])[3:5], 16))/10) + ' V'
                     item[4] = 'BCS:车端电流=' + str(round((400 - (int(str(item[2])[12:14], 16)*256 + int(str(item[2])[9:11], 16))/10), 1)) + ' A'
                     item[5] = 'BCS:当前SOC=' + str(int(str(item[2])[21:23], 16)) + '%'
                     MsgBcsDict[1] = MsgBcsDict[1] + 1
                 if match(item[2].lower(), '02*') and MsgBcsDict[1] == 1:    # filter BCS messages[2]
                     item[3] = 'BCS:剩余时间=' + str(int(str(item[2])[6:8], 16)*256 + int(str(item[2])[3:5], 16)) + 'min'
                 if match(item[2].lower(), '01*') and MsgBrmDict[0] == 1:    # filter BRM messages[1]
-                    item[3] = 'BRM:协议版本=V'
+                    item[3] = 'BRM:协议版本=V' + str(int(str(item[2])[3:5], 16)) + '.' + str(int(str(item[2])[6:8], 16)) + str(int(str(item[2])[9:11], 16))
+                    item[4] = 'BRM:电池类型=' + Battery_Type(int(str(item[2])[12:14], 16))
+                    item[5] = 'BRM:额定容量=' + str((int(str(item[2])[18:20], 16)*256 + int(str(item[2])[15:17], 16))/10) + 'Ah'
+                    MsgBrmDict[1] = MsgBrmDict[1] + 1
+                if match(item[2].lower(), '02*') and MsgBrmDict[1] == 1:
+                    
             elif match(sh.lower(), SAJ1939_EndofMsgAck):
                 if match(item[2].lower(), BCP_End_ACK):
                     MsgBcpDict[0] = 0
@@ -217,7 +228,7 @@ for file in csvfiles:
             elif match(sh.lower(), BST_FrameID):
                 item[4] = 'BST:中止原因=' + BST_Parser(item[2])
                 if stopStamp == False:
-                    item[3] = '车端主动中止'
+                    item[3] = '车端主动中止->>'
                     stopStamp = True
             elif match(sh.lower(), CST_FrameID):
                 item[4] = 'CST:中止原因=' + CST_Parser(item[2])
