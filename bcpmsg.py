@@ -10,6 +10,9 @@ import datetime
 import matplotlib.pyplot as plt
 from fnmatch import fnmatchcase as match # grep compare
 from matplotlib.pyplot import MultipleLocator, tripcolor
+from pandas.plotting import register_matplotlib_converters
+register_matplotlib_converters()
+
 # customized function
 def BST_Parser(msgstring):
     faultBitList=[['SOC达到目标值', 'SOC不可信', '电压达到设定值', '电压不可信', '单体电压达到限值', '单体电压不可信', '收到充电机中止', 'CST不可信'], \
@@ -20,7 +23,7 @@ def BST_Parser(msgstring):
     for i in range(len(faultBitList)):
         for j in range(len(faultBitList[i])):
             if ((int(msgstring[3*i:(3*i+2)], 16)) >> j) & 0x01 == 0x01:
-                backString = backString + '|' + faultBitList[i][j]
+                backString = backString + '<' + faultBitList[i][j]
     return backString
 def CST_Parser(msgstring):
     faultBitList=[['充电机达设定条件', '设定条件不可信', '人工中止', '人工中止不可信', '故障中止', '故障中止不可信', '收到BMS中止', 'BST不可信'], \
@@ -31,7 +34,7 @@ def CST_Parser(msgstring):
     for i in range(len(faultBitList)):
         for j in range(len(faultBitList[i])):
             if ((int(msgstring[3*i:(3*i+2)], 16)) >> j) & 0x01 == 0x01:
-                backString = backString + '|' + faultBitList[i][j]
+                backString = backString + '<' + faultBitList[i][j]
     return backString
 def BSM_Parser(msgstring):
     faultBitList=[['单体电压过高', '单体电压过低', 'SOC过高', 'SOC过低', '电池过流', '过流不可信', '电池过温', '过温不可信'], \
@@ -40,7 +43,7 @@ def BSM_Parser(msgstring):
     for i in range(len(faultBitList)):
         for j in range(len(faultBitList[i])):
             if ((int(msgstring[3*i:(3*i+2)], 16)) >> j) & 0x01 == 0x01:
-                backString = backString + '|' + faultBitList[i][j]
+                backString = backString + '<' + faultBitList[i][j]
     return backString
 def CEM_Parser(msgstring):
     faultBitList=[['BRM超时', 'BRM不可信'], \
@@ -51,7 +54,7 @@ def CEM_Parser(msgstring):
     for i in range(len(faultBitList)):
         for j in range(len(faultBitList[i])):
             if ((int(msgstring[3*i:(3*i+2)], 16)) >> j) & 0x01 == 0x01:
-                backString = backString + '|' + faultBitList[i][j]
+                backString = backString + '<' + faultBitList[i][j]
     return backString
 def BEM_Parser(msgstring):
     faultBitList=[['CRM_00超时', 'CRM_00不可信', 'CRM_AA超时', 'CRM_AA不可信'], \
@@ -62,7 +65,7 @@ def BEM_Parser(msgstring):
     for i in range(len(faultBitList)):
         for j in range(len(faultBitList[i])):
             if ((int(msgstring[3*i:(3*i+2)], 16)) >> j) & 0x01 == 0x01:
-                backString = backString + '|' + faultBitList[i][j]
+                backString = backString + '<' + faultBitList[i][j]
     return backString
 def Battery_Type(type_index):
     Battery_Type = [ '', '铅酸电池', '镍氢电池', '磷酸铁锂电池', '锰酸锂电池', '钴酸锂电池', '三元材料电池', '聚合物锂离子电池', '钛酸锂电池', '其他电池']
@@ -70,6 +73,13 @@ def Battery_Type(type_index):
         return Battery_Type[9]
     else:
         return Battery_Type[type_index]
+def str_to_ascii(input_string, index, number):
+    outputString = ''
+    for i in range(number):
+        if int(input_string[3*(index+i):3*(index+i)+2], 16) > 127:
+            return 'Invalid'
+        outputString = outputString + chr(int(input_string[3*(index+i):3*(index+i)+2], 16))
+    return outputString
 # configuration variable
 path = '.'
 MsgDateTime = '*'
@@ -101,12 +111,14 @@ SAJ1939_CTS_FrameID = '*1ceb56f4*'
 SAJ1939_EndofMsgAck = '*1cecf456*'
 os.makedirs('csvfiles', exist_ok=True) # make directory to store analysis results
 # Loop through every file in the current working directory
+print('请将解析工具放在.csv文件同目录下, 生成结果与图形自动保存在同目录的csvfiles文件中...')
+print('注意!!!csv文件需要包含表头:', triple_variable)
 csvfiles = os.listdir(path)
 csvfiles.sort() #排序
 for file in csvfiles:
     if not file.endswith('.csv'):
         continue # skip non-csv files
-    print('scaning csv file from ' + file + ' ...')
+    print('>>>> scaning csv file from ' + file + ' ...')
     if match(file.lower(), '*bms*'):
         framebuffer = pd.read_csv(file, names=[triple_variable[0], "id", triple_variable[1], triple_variable[2]], header=None, index_col=False)
         framebuffer.drop('id', inplace=True, axis=1)
@@ -123,6 +135,7 @@ for file in csvfiles:
     MsgBrmDict = [0, 0, 0]
     MsgBcsDict = [0, 0, 0]
     stopStamp = False
+    TimeoutFlag = False
     for item in buffer:
         sh = item[0]
         if match(sh, '*Gun*'):
@@ -139,8 +152,8 @@ for file in csvfiles:
                     BCL_Axis[0].append(datetime.datetime.strptime(timestamp,'%Y-%m-%d %H:%M:%S'))
                 else:
                     BCL_Axis[0].append(datetime.datetime.strptime(timestamp,'%H:%M:%S.%f'))
-                item[3] = '需求电压=' + str(BCLVoltage) + 'V'
-                item[4] = '需求电流=' + str(BCLCurrent) + 'A'
+                item[3] = 'BCL:需求电压=' + str(BCLVoltage) + 'V'
+                item[4] = 'BCL:需求电流=' + str(BCLCurrent) + 'A'
             elif match(sh.lower(), CCS_FrameID): # filter CCS messages
                 CCSVoltage = (int(str(item[2])[3:5], 16)*256 + int(str(item[2])[0:2], 16))/10
                 CCSCurrent = round((400 - (int(str(item[2])[9:11], 16)*256 + int(str(item[2])[6:8], 16))/10), 1)
@@ -161,10 +174,10 @@ for file in csvfiles:
                 CML_Min_Voltage = (int(str(item[2])[9:11], 16)*256 + int(str(item[2])[6:8], 16))/10
                 CML_Max_Current = 400 - (int(str(item[2])[15:17], 16)*256 + int(str(item[2])[12:14], 16))/10
                 CML_Min_Current = 400 - (int(str(item[2])[21:23], 16)*256 + int(str(item[2])[18:20], 16))/10
-                item[3] = 'Max U = ' + str(CML_Max_Voltage)
-                item[4] = 'Min U = ' + str(CML_Min_Voltage)
-                item[5] = 'Max I = ' + str(CML_Max_Current)
-                item[6] = 'Min I = ' + str(CML_Min_Current)
+                item[3] = 'CML:最高电压=' + str(CML_Max_Voltage) + 'V'
+                item[4] = 'CML:最低电压=' + str(CML_Min_Voltage) + 'V'
+                item[5] = 'CML:最大电流=' + str(CML_Max_Current) + 'A'
+                item[6] = 'CML:最小电流=' + str(CML_Min_Current) + 'A'
             elif match(sh.lower(), SAJ1939_RTS_FrameID):
                 if match(item[2], BCP_First_Frame_Data):
                     MsgBcpDict[0] = 1
@@ -177,39 +190,46 @@ for file in csvfiles:
                     item[3] = 'BCS->RTS...'
             elif match(sh.lower(), SAJ1939_CTS_FrameID):
                 if match(item[2].lower(), '01*') and MsgBcpDict[0] == 1:    # filter BCP messages[1]
-                    item[3] = 'Max Ucell = ' + str((int(str(item[2])[6:8], 16)*256 + int(str(item[2])[3:5], 16))/100) + ' V'
-                    item[4] = 'Max I = ' + str(round((400 - (int(str(item[2])[12:14], 16)*256 + int(str(item[2])[9:11], 16))/10), 1)) + ' A'
-                    item[5] = 'Cap = ' + str((int(str(item[2])[18:20], 16)*256 + int(str(item[2])[15:17], 16))/10) + ' Kwh'
-                    MsgBcpDict[1] = int(str(item[2])[21:23], 16)
+                    item[3] = 'BCP:单体上限=' + str((int(str(item[2])[6:8], 16)*256 + int(str(item[2])[3:5], 16))/100) + ' V'
+                    item[4] = 'BCP:最大电流=' + str(round((400 - (int(str(item[2])[12:14], 16)*256 + int(str(item[2])[9:11], 16))/10), 1)) + ' A'
+                    item[5] = 'BCP:电池能量=' + str((int(str(item[2])[18:20], 16)*256 + int(str(item[2])[15:17], 16))/10) + ' Kwh'
+                    MsgBcpDict[2] = int(str(item[2])[21:23], 16)
                     MsgBcpDict[1] = MsgBcpDict[1] + 1
-                if match(item[2].lower(), '02*') and MsgBcpDict[1] == 1:    # filter BCP messages[2]
-                    item[3] = 'Max U = ' + str((int(str(item[2])[3:5], 16)*256 + MsgBcpDict[1])/10) + ' V'
-                    item[4] = 'SOC = ' + str(round(((int(str(item[2])[12:14], 16)*256 + int(str(item[2])[9:11], 16))/10), 1)) + '%'
-                    item[5] = 'Now U = ' + str((int(str(item[2])[18:20], 16)*256 + int(str(item[2])[15:17], 16))/10) + ' V'
-                if match(item[2].lower(), '01*') and MsgBcsDict[0] == 1:    # filter BCS messages[1]
+                elif match(item[2].lower(), '02*') and MsgBcpDict[1] == 1:    # filter BCP messages[2]
+                    item[3] = 'BCP:电压上限=' + str((int(str(item[2])[3:5], 16)*256 + MsgBcpDict[2])/10) + 'V'
+                    item[4] = 'BCP:当前SOC=' + str(round(((int(str(item[2])[12:14], 16)*256 + int(str(item[2])[9:11], 16))/10), 1)) + '%'
+                    item[5] = 'BCP:当前电压=' + str((int(str(item[2])[18:20], 16)*256 + int(str(item[2])[15:17], 16))/10) + 'V'
+                elif match(item[2].lower(), '01*') and MsgBcsDict[0] == 1:    # filter BCS messages[1]
                     item[3] = 'BCS:车端电压=' + str((int(str(item[2])[6:8], 16)*256 + int(str(item[2])[3:5], 16))/10) + ' V'
                     item[4] = 'BCS:车端电流=' + str(round((400 - (int(str(item[2])[12:14], 16)*256 + int(str(item[2])[9:11], 16))/10), 1)) + ' A'
                     item[5] = 'BCS:当前SOC=' + str(int(str(item[2])[21:23], 16)) + '%'
                     MsgBcsDict[1] = MsgBcsDict[1] + 1
-                if match(item[2].lower(), '02*') and MsgBcsDict[1] == 1:    # filter BCS messages[2]
+                elif match(item[2].lower(), '02*') and MsgBcsDict[1] == 1:    # filter BCS messages[2]
                     item[3] = 'BCS:剩余时间=' + str(int(str(item[2])[6:8], 16)*256 + int(str(item[2])[3:5], 16)) + 'min'
-                if match(item[2].lower(), '01*') and MsgBrmDict[0] == 1:    # filter BRM messages[1]
+                elif match(item[2].lower(), '01*') and MsgBrmDict[0] == 1:    # filter BRM messages[1]
                     item[3] = 'BRM:协议版本=V' + str(int(str(item[2])[3:5], 16)) + '.' + str(int(str(item[2])[6:8], 16)) + str(int(str(item[2])[9:11], 16))
                     item[4] = 'BRM:电池类型=' + Battery_Type(int(str(item[2])[12:14], 16))
                     item[5] = 'BRM:额定容量=' + str((int(str(item[2])[18:20], 16)*256 + int(str(item[2])[15:17], 16))/10) + 'Ah'
                     MsgBrmDict[1] = MsgBrmDict[1] + 1
-                if match(item[2].lower(), '02*') and MsgBrmDict[1] == 1:
-                    item[3] = 'BRM:电池生产商=' + chr(int(str(item[2])[6:8], 16)) + chr(int(str(item[2])[9:11], 16)) + chr(int(str(item[2])[12:14], 16)) + chr(int(str(item[2])[15:17], 16))
+                elif match(item[2].lower(), '02*') and MsgBrmDict[1] == 1:
+                    item[3] = 'BRM:电池产商=' + str_to_ascii(item[2], 2, 4)
                     MsgBrmDict[1] = MsgBrmDict[1] + 1
-                if match(item[2].lower(), '03*') and MsgBrmDict[1] == 2:
+                elif match(item[2].lower(), '03*') and MsgBrmDict[1] == 2:
+                    MsgBrmDict[2] = int(str(item[2])[21:23], 16)*256 + int(str(item[2])[18:20], 16)
                     MsgBrmDict[1] = MsgBrmDict[1] + 1
-                if match(item[2].lower(), '04*') and MsgBrmDict[1] == 3:
-                    item[3] = 'BRM:电池充电次数='
+                elif match(item[2].lower(), '04*') and MsgBrmDict[1] == 3:
+                    item[3] = 'BRM:充电次数=' + str(int(item[2][3:5], 16)*16*256 + MsgBrmDict[2])
+                    MsgBrmDict[2] = ''
+                    MsgBrmDict[2] = MsgBrmDict[2] + str_to_ascii(item[2], 4, 4)
                     MsgBrmDict[1] = MsgBrmDict[1] + 1
-                if match(item[2].lower(), '05*') and MsgBrmDict[1] == 4:
+                elif match(item[2].lower(), '05*') and MsgBrmDict[1] == 4:
+                    MsgBrmDict[2] = MsgBrmDict[2] + str_to_ascii(item[2], 1, 7)
                     MsgBrmDict[1] = MsgBrmDict[1] + 1
-                if match(item[2].lower(), '06*') and MsgBrmDict[1] == 5:
-                    item[3] = 'BRM:VIN='
+                elif match(item[2].lower(), '06*') and MsgBrmDict[1] == 5:
+                    MsgBrmDict[2] = MsgBrmDict[2] + str_to_ascii(item[2], 1, 6)
+                    if match(MsgBrmDict[2], '*Invalid*'):
+                        MsgBrmDict[2] = '无效'
+                    item[3] = 'BRM:VIN=' + MsgBrmDict[2]
                     MsgBrmDict[1] = MsgBrmDict[1] + 1
             elif match(sh.lower(), SAJ1939_EndofMsgAck):
                 if match(item[2].lower(), BCP_End_ACK):
@@ -217,6 +237,9 @@ for file in csvfiles:
                     MsgBcpDict[1] = 0
                     MsgBcpDict[2] = 0
                 if match(item[2].lower(), BRM_End_ACK):
+                    if TimeoutFlag == True:
+                        item[3] = '通信重连成功[OK]'
+                        TimeoutFlag = False
                     MsgBrmDict[0] = 0
                     MsgBrmDict[1] = 0
                     MsgBrmDict[2] = 0
@@ -237,24 +260,22 @@ for file in csvfiles:
             elif match(sh.lower(), CHM_FrameID):
                 item[3] = 'CHM:自检版本=V' + str(int(str(item[2])[0:2], 16)) + '.' + str(int(str(item[2])[3:5], 16)) + str(int(str(item[2])[6:8], 16))
             elif match(sh.lower(), BST_FrameID):
-                item[4] = 'BST:中止原因=' + BST_Parser(item[2])
+                item[4] = 'BST:中止原因' + BST_Parser(item[2])
                 if stopStamp == False:
                     item[3] = '车端主动中止->>'
                     stopStamp = True
             elif match(sh.lower(), CST_FrameID):
-                item[4] = 'CST:中止原因=' + CST_Parser(item[2])
+                item[4] = 'CST:中止原因' + CST_Parser(item[2])
                 if stopStamp == False:
-                    item[3] = '桩端主动中止'
+                    item[3] = '桩端主动中止...'
                     stopStamp = True
-            elif match(sh.lower(), BEM_FrameID):
-                item[3] = 'BEM:'
             elif match(sh.lower(), CRM_FrameID):
                 if match(item[2].lower(), 'aa*'):
                     item[3] = 'CRM:车辆辨识成功'
                 else:
                     item[3] = 'CRM:车辆未能辨识'
-                    item[4] = '充电机编号:' + str(item[2])[3:14].replace(' ', '') # replace space
-                    item[5] = '区域编码:' + chr(int(str(item[2])[15:17], 16)) + chr(int(str(item[2])[18:20], 16)) + chr(int(str(item[2])[21:23], 16))
+                    item[4] = 'CRM:充电机编号:' + str(item[2])[3:14].replace(' ', '') # replace space
+                    item[5] = 'CRM:区域编码:' + str_to_ascii(item[2], 5, 3)
             elif match(sh.lower(), CSD_FrameID):
                 item[3] = 'CSD:累计时长=' + str(int(str(item[2])[3:5], 16)*256 + int(str(item[2])[0:2], 16)) + 'min'
                 item[4] = 'CSD:充电机编号=' + str(item[2])[12:23].replace(' ', '') # replace space
@@ -268,9 +289,15 @@ for file in csvfiles:
                 item[4] = 'BSD:单体最高电压=' + str((int(str(item[2])[12:14], 16)*256 + int(str(item[2])[9:11], 16))/100) + 'V'
                 item[5] = 'BSD:最高温度=' + str(int(str(item[2])[18:20], 16) - 50) + '℃'
             elif match(sh.lower(), BEM_FrameID):
-                item[3] = 'BEM:桩端报文超时=' + BEM_Parser(item[2])
+                item[4] = 'BEM:桩端报文超时=' + BEM_Parser(item[2])
+                if TimeoutFlag == False:
+                    item[3] = '车端发现超时重连中...'
+                    TimeoutFlag == True
             elif match(sh.lower(), CEM_FrameID):
-                item[3] = 'CEM:车端报文超时=' + CEM_Parser(item[2])
+                item[4] = 'CEM:车端报文超时=' + CEM_Parser(item[2])
+                if TimeoutFlag == False:
+                    item[3] = '桩端发现超时重连中...'
+                    TimeoutFlag == True
             data.append(item)
     csvFilesobj = open(os.path.join('csvfiles', file), 'w', newline='') # create copy file in csvfiles direstory
     csvWriter = csv.writer(csvFilesobj)
@@ -311,4 +338,4 @@ for file in csvfiles:
     DoubleAxis.legend(loc=7)
     plt.savefig(path + '/csvfiles/' + file +'.png') # 在show之前才能保存
     plt.show()
-    print ("all picture is starting")
+    print ('<<<< ' + path + '/csvfiles/' + file + 'file conversion completed')
