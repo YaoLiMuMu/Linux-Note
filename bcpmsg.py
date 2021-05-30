@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+# @Time : 2021/05/31 03:19
+# @Auther : yaolimumu
+# @Site : Nebula
+# @File : bms resolution.py
+# @Software : Python3
+
 # bms message(.csv files) automatic analysis script
 from numpy.core.arrayprint import ComplexFloatingFormat
 import pandas as pd
@@ -15,6 +21,11 @@ register_matplotlib_converters()
 
 # customized function
 def BST_Parser(msgstring):
+    """
+    :param msgstring: fixed parameter, BST message
+    :param test1: 固定参数, 默认参数, 不定长参数, 关键字参数
+    :return: BST fault
+    """
     faultBitList=[['SOC达到目标值', 'SOC不可信', '电压达到设定值', '电压不可信', '单体电压达到限值', '单体电压不可信', '收到充电机中止', 'CST不可信'], \
     ['绝缘故障', '绝缘不可信', '输出连接器过温', '连接器过温不可信', 'BMS元件过温', 'BMS元件不可信', '充电连接器故障', '充电连接器不可信'], \
     ['电池组过温', '电池组温度不可信', '高压继电器故障', '高通继电器不可信', 'CC2检测故障', 'CC2不可信', '其他故障', '其他不可信'], \
@@ -339,3 +350,4 @@ for file in csvfiles:
     plt.savefig(path + '/csvfiles/' + file +'.png') # 在show之前才能保存
     plt.show()
     print ('<<<< ' + path + '/csvfiles/' + file + 'file conversion completed')
+# TODO(yaolimumu): double-x axis xticks rotation=45

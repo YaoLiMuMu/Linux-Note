@@ -107,7 +107,7 @@ QListWidget [[https://blog.csdn.net/Q1302182594/article/details/46120321][{1}]]
 QNetworkInterface [[https://blog.csdn.net/qq78442761/article/details/81187013][{1}]]
 *** Google
 ProtoBuf
-*** Python
+*** Python [[https://www.python.org/dev/peps/pep-0008/#documentation-strings][[1]​]] [[https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/contents/][[2]​]]
 Python Operator
 | Operator | Operate          | Example        | Value | Priority |
 | **       | index            | 2 ** 3         |     8 |        1 |
@@ -214,6 +214,44 @@ chown [-cfhvR] [--help] [--version] user[:group] file...
     #+begin_src bash
     chown root /var/run
     #+end_src
+*** Git version control management [[https://www.cnblogs.com/jiaoshou/p/11808361.html][[1]​]] [[https://www.cnblogs.com/jiaoshou/p/11190619.html][[2]​]] [[https://zhuanlan.zhihu.com/p/132348944][[3]​]]
+|-- master
+    |-- hotfix-* --^, *为任务单号
+    |-- release
+        |-- develop
+        |   |-- feature-* --^, *为任务单号
+        |-- bugfix=* --^ *为任务单号
+Commit message: Header, Body, Footer
+example:
+<type>(<scope>): <subject>
+// 
+<body>
+// 
+<footer>
+
+Header: <type> <scope>:<subject>
+tyoe:   <feat> A new feature
+        <fix> A bug fix
+        <docs> Documentation only changes
+        <style> Changes that do not affect the meaning of the code
+        <refactor> A code change that neither fixes a bug nor adds a feature
+        <perf> improves performance
+        <test> Adding missing tests or correcting existing tests
+        <build> Changes that affect the build system or external dependencies
+        <ci> Changes to our CI configuration files and scripts
+        <chore> Other changes that don't modify src or test files
+        <revert> Reverts a previous commit
+scope:  component
+        filename
+        data layer
+        controller layer
+        view layer
+        user layer
+        README
+subject:Write a short, imperative tense description of the change
+<body>: Provide a longer description of change
+<Footer>: BREAKING CHANGE: ...  与上版不兼容
+          Closes #123, #235     close issue
 *** vscode
 C-S L 批量修改变量名或函数名
 C-S K kill a line
