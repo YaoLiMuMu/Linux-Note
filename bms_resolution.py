@@ -3,7 +3,8 @@
 # @Time : 2021/05/31 03:19
 # @Auther : yaolimumu
 # @Site : Nebula
-# @File : bms resolution.py
+# @File : bms_resolution.py
+# @Version: V0.0.1
 # @Software : Python3
 
 # bms message(.csv files) automatic analysis script
@@ -136,7 +137,7 @@ for file in csvfiles:
     else:
         framebuffer = pd.read_csv(file, usecols=[triple_variable[0], triple_variable[1], triple_variable[2]])
     framebuffer.insert(3,'TEXT1', '') # add a column as TEXT1
-    framebuffer['TEXT2'], framebuffer['TEXT3'], framebuffer['TEXT4'] = ['', '', ''] # add columns as TEXT2, TEXT3 = np.NaN
+    framebuffer['TEXT2'], framebuffer['TEXT3'], framebuffer['Fault'] = ['', '', ''] # add columns as TEXT2, TEXT3 = np.NaN
     buffer= np.array(framebuffer)
     data=[]
     data.append([triple_variable[0], triple_variable[1], triple_variable[2], 'TEXT1', 'TEXT2', 'TEXT3', 'TEXT4']) # add csv header
@@ -180,15 +181,16 @@ for file in csvfiles:
             elif match(sh.lower(), BHM_FrameID): # filter BHM messages
                 BHM_Voltage = (int(str(item[2])[3:5], 16)*256 + int(str(item[2])[0:2], 16))/10
                 item[3] = 'BHM:自检电压=' + str(BHM_Voltage) + 'V'
+                if BHM_Voltage < 200.0:
+                    item[6] = 'Fault:BHM最高电压过低'
+                    print('<<<< ' + file + item[6])
             elif match(sh.lower(), CML_FrameID): # filter CML messages
                 CML_Max_Voltage = (int(str(item[2])[3:5], 16)*256 + int(str(item[2])[0:2], 16))/10
                 CML_Min_Voltage = (int(str(item[2])[9:11], 16)*256 + int(str(item[2])[6:8], 16))/10
                 CML_Max_Current = 400 - (int(str(item[2])[15:17], 16)*256 + int(str(item[2])[12:14], 16))/10
                 CML_Min_Current = 400 - (int(str(item[2])[21:23], 16)*256 + int(str(item[2])[18:20], 16))/10
-                item[3] = 'CML:最高电压=' + str(CML_Max_Voltage) + 'V'
-                item[4] = 'CML:最低电压=' + str(CML_Min_Voltage) + 'V'
-                item[5] = 'CML:最大电流=' + str(CML_Max_Current) + 'A'
-                item[6] = 'CML:最小电流=' + str(CML_Min_Current) + 'A'
+                item[3] = 'CML:电压范围=' + str(CML_Min_Voltage) + '~' + str(CML_Max_Voltage) + 'V'
+                item[4] = 'CML:电流范围=' + str(CML_Min_Current) + '~' + str(CML_Max_Current) + 'A'
             elif match(sh.lower(), SAJ1939_RTS_FrameID):
                 if match(item[2], BCP_First_Frame_Data):
                     MsgBcpDict[0] = 1
@@ -204,6 +206,9 @@ for file in csvfiles:
                     item[3] = 'BCP:单体上限=' + str((int(str(item[2])[6:8], 16)*256 + int(str(item[2])[3:5], 16))/100) + ' V'
                     item[4] = 'BCP:最大电流=' + str(round((400 - (int(str(item[2])[12:14], 16)*256 + int(str(item[2])[9:11], 16))/10), 1)) + ' A'
                     item[5] = 'BCP:电池能量=' + str((int(str(item[2])[18:20], 16)*256 + int(str(item[2])[15:17], 16))/10) + ' Kwh'
+                    if (400 - (int(str(item[2])[12:14], 16)*256 + int(str(item[2])[9:11], 16))/10) <= 0.0:
+                        item[6] = 'Fault:BCP最大电流非法'
+                        print('<<<< ' + file + item[6])
                     MsgBcpDict[2] = int(str(item[2])[21:23], 16)
                     MsgBcpDict[1] = MsgBcpDict[1] + 1
                 elif match(item[2].lower(), '02*') and MsgBcpDict[1] == 1:    # filter BCP messages[2]
