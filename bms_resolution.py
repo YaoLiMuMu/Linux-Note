@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# @Time : 2021/05/31 03:19
+# @Time : 2021/06/01 03:19
 # @Auther : yaolimumu
 # @Site : Nebula
 # @File : bms_resolution.py
-# @Version: V0.0.2
+# @Version: V0.0.3
 # @Software : Python3
 
 # bms message(.csv files) automatic analysis script
@@ -149,7 +149,14 @@ for file in csvfiles:
     MsgBrmDict = [0, 0, 0]
     MsgBcsDict = [0, 0, 0]
     CST_Period = []
+    CTS_Period = []
+    CCS_Period = []
     Not_First_CST = False
+    Not_First_CTS = False
+    Not_First_CCS = False
+    cst_receive_flag = False
+    cts_receive_flag = False
+    ccs_receive_flag = False
     stopStamp = False
     TimeoutFlag = False
     for item in buffer:
@@ -180,6 +187,12 @@ for file in csvfiles:
                     CCS_Axis[0].append(datetime.datetime.strptime(timestamp,'%Y-%m-%d %H:%M:%S').time())
                 else:
                     CCS_Axis[0].append(datetime.datetime.strptime(timestamp,'%H:%M:%S.%f').time())
+                    if Not_First_CCS:
+                        GetAfterTime = datetime.datetime.strptime(str(item[0]).strip('[]'),'%H:%M:%S.%f')
+                        CCS_Period.append((GetAfterTime - GetBeforeTime_CCS).microseconds/1000 + (GetAfterTime - GetBeforeTime_CCS).seconds*1000)
+                    GetBeforeTime_CCS = datetime.datetime.strptime(item[0].strip('[]'),'%H:%M:%S.%f')
+                    Not_First_CCS = True
+                    ccs_receive_flag = True
                 item[3] = 'CCS: U=' + str(CCSVoltage) + 'V' 
                 item[4] = 'CCS: I=' + str(CCSCurrent) + 'A'
             elif match(sh.lower(), BHM_FrameID): # filter BHM messages
@@ -291,6 +304,7 @@ for file in csvfiles:
                         CST_Period.append((GetAfterTime - GetBeforeTime).microseconds/1000 + (GetAfterTime - GetBeforeTime).seconds*1000)
                     GetBeforeTime = datetime.datetime.strptime(item[0].strip('[]'),'%H:%M:%S.%f')
                     Not_First_CST = True
+                    cst_receive_flag = True
                 item[4] = 'CST:中止原因' + CST_Parser(item[2])
                 if stopStamp == False:
                     item[3] = '桩端主动中止...'
@@ -318,26 +332,52 @@ for file in csvfiles:
                 item[4] = 'BEM:桩端报文超时=' + BEM_Parser(item[2])
                 if TimeoutFlag == False:
                     item[3] = '车端发现超时重连中...'
-                    TimeoutFlag == True
+                    TimeoutFlag = True
+                    Not_First_CTS = False   # reconnect message calculate initizal
+                    Not_First_CCS = False
             elif match(sh.lower(), CEM_FrameID):
                 item[4] = 'CEM:车端报文超时=' + CEM_Parser(item[2])
                 if TimeoutFlag == False:
                     item[3] = '桩端发现超时重连中...'
-                    TimeoutFlag == True
+                    TimeoutFlag = True
+                    Not_First_CTS = False   # reconnect message calculate initizal
+                    Not_First_CCS = False
             elif match(sh.lower(), CTS_FrameID):
                 item[3] = 'CTS:同步时间...' 
                 item[4] = 'CTS:' + item[2][18:20] + item[2][15:17] + '-' + item[2][12:14] + '-' + item[2][9:11] + ' ' + item[2][6:8]  + ':' + item[2][3:5] + ':' + item[2][0:2]
+                if not match(file.lower(), '*bms*'):
+                    if Not_First_CTS:
+                        GetAfterTime = datetime.datetime.strptime(str(item[0]).strip('[]'),'%H:%M:%S.%f')
+                        CTS_Period.append((GetAfterTime - GetBeforeTime_CTS).microseconds/1000 + (GetAfterTime - GetBeforeTime_CTS).seconds*1000)
+                    GetBeforeTime_CTS = datetime.datetime.strptime(item[0].strip('[]'),'%H:%M:%S.%f')
+                    Not_First_CTS = True
+                    cts_receive_flag = True
             data.append(item)
     # print(round(np.mean(CST_Period),1), np.maximum(CST_Period), np.std(CST_Period), np.min(CST_Period))
     data.append([])
     data.append(['Message Type', 'Period(ms)', 'mean', 'max', 'min', 'std', 'cv'])
-    if (not match(file.lower(), '*bms*')) and Not_First_CST :
-        calcu_mean = round(np.mean(CST_Period), 1)
-        calcu_min = np.min(CST_Period)
-        calcu_max = np.max(CST_Period)
-        calcu_std = round(np.std(CST_Period), 1)
-        calcu_cv = round(np.std(CST_Period)/np.mean(CST_Period), 1)
-        data.append(['CST', '10', str(calcu_mean), str(calcu_max), str(calcu_min), str(calcu_std), str(calcu_cv)])
+    if (not match(file.lower(), '*bms*')):
+        if cst_receive_flag:
+            calcu_mean = round(np.mean(CST_Period), 1)
+            calcu_min = np.min(CST_Period)
+            calcu_max = np.max(CST_Period)
+            calcu_std = round(np.std(CST_Period), 1)
+            calcu_cv = round(np.std(CST_Period)/np.mean(CST_Period), 2)
+            data.append(['CST', '10', str(calcu_mean), str(calcu_max), str(calcu_min), str(calcu_std), str(calcu_cv)])
+        if cts_receive_flag:
+            calcu_mean = round(np.mean(CTS_Period), 1)
+            calcu_min = np.min(CTS_Period)
+            calcu_max = np.max(CTS_Period)
+            calcu_std = round(np.std(CTS_Period), 1)
+            calcu_cv = round(np.std(CTS_Period)/np.mean(CTS_Period), 2)
+            data.append(['CTS', '250', str(calcu_mean), str(calcu_max), str(calcu_min), str(calcu_std), str(calcu_cv)])
+        if ccs_receive_flag:
+            calcu_mean = round(np.mean(CCS_Period), 1)
+            calcu_min = np.min(CCS_Period)
+            calcu_max = np.max(CCS_Period)
+            calcu_std = round(np.std(CCS_Period), 1)
+            calcu_cv = round(np.std(CCS_Period)/np.mean(CCS_Period), 2)
+            data.append(['CCS', '50', str(calcu_mean), str(calcu_max), str(calcu_min), str(calcu_std), str(calcu_cv)])
     csvFilesobj = open(os.path.join('csvfiles', file), 'w', newline='') # create copy file in csvfiles direstory
     csvWriter = csv.writer(csvFilesobj)
     for row in data:
