@@ -96,7 +96,8 @@ def str_to_ascii(input_string, index, number):
 path = '.'
 MsgDateTime = '*'
 MsgType = 2 # Type 1 USBCAN capture CSV, Typy 2 TCU capture CSV
-triple_variable = ('SYS_MS', 'MAKE_CAN_ID(HEX)', 'DATA(HEX)')
+cantest_triple_variable = ('SYS_MS', 'MAKE_CAN_ID(HEX)', 'DATA(HEX)')
+chinese_triple_variable = ('时间', '帧ID', '帧数据')
 BHM_FrameID = '*182756f4*'  #[OK]
 BCL_FrameID = '*181056f4*'  #[OK]
 CCS_FrameID = '*1812f456*'  #[OK]
@@ -109,8 +110,8 @@ CST_FrameID = '*101af456*'  #[OK]
 BST_FrameID = '*101956f4*'  #[OK]
 CRM_FrameID = '*1801f456*'  #[OK]
 CSD_FrameID = '*181df456*'  #[OK]
-CEM_FrameID = '*081ff456*'  #[OK]
-BEM_FrameID = '*081e56f4*'  #[OK]
+CEM_FrameID = '*81ff456*'  #[OK]
+BEM_FrameID = '*81e56f4*'  #[OK]
 BSM_FrameID = '*181356f4*'  #[OK]
 BSD_FrameID = '*181c56f4*'  #[OK]
 BCP_First_Frame_Data = '10 0d 00 02 ff 00 06 00*'
@@ -122,27 +123,45 @@ BCS_End_ACK = '13 09 00 02 ff 00 11 00*'
 SAJ1939_RTS_FrameID = '*1cec56f4*'
 SAJ1939_CTS_FrameID = '*1ceb56f4*'
 SAJ1939_EndofMsgAck = '*1cecf456*'
+tcu_msg_table = {'tcu_heartbeat':'*1840e*'}
+ccu_msg_table = {'ccu_heartbeat':'*18418ae*'}
+special_vehicle_profile= {'*18ecff81*':'盛丰三枪(CATL)', '*18f30281*':'盛丰三枪(CATL)'}
 os.makedirs('csvfiles', exist_ok=True) # make directory to store analysis results
 # Loop through every file in the current working directory
-print('请将解析工具放在.csv文件同目录下, 解析结果与图形自动保存在同目录的csvfiles文件中...')
-print('注意!!!csv文件需要包含表头:', triple_variable)
+print('请将解析工具放在.csv文件同目录下, 解析结果与图形自动保存在同目录的csvfiles文件夹中...')
+print('注意!!!csv文件需要包含表头:', cantest_triple_variable)
 csvfiles = os.listdir(path)
 csvfiles.sort() #排序
 for file in csvfiles:
     if not file.endswith('.csv'):
         continue # skip non-csv files
     print('>>>> scaning csv file from ' + file + ' ...')
+    format_flag = True
     if match(file.lower(), '*bms*'):
-        framebuffer = pd.read_csv(file, names=[triple_variable[0], "id", triple_variable[1], triple_variable[2]], header=None, index_col=False)
+        framebuffer = pd.read_csv(file, names=[cantest_triple_variable[0], "id", cantest_triple_variable[1], cantest_triple_variable[2]], header=None, index_col=False)
         framebuffer.drop('id', inplace=True, axis=1)
     else:
-        framebuffer = pd.read_csv(file, usecols=[triple_variable[0], triple_variable[1], triple_variable[2]])
+        framebuffer = pd.read_csv(file)
+        user_col = list(framebuffer.columns.values)
+        for index in range(len(user_col)):
+            if user_col[index] == cantest_triple_variable[0]:
+                framebuffer = pd.read_csv(file, usecols=[cantest_triple_variable[0], cantest_triple_variable[1], cantest_triple_variable[2]])
+                break
+            elif user_col[index] == chinese_triple_variable[0]:
+                framebuffer = pd.read_csv(file, usecols=[chinese_triple_variable[0], chinese_triple_variable[1], chinese_triple_variable[2]])
+                break
+            else:
+                if index == len(user_col) - 1:
+                    print('<<<< ' + file +' 文件格式无效')
+                    format_flag = False
+    if not format_flag:
+        continue
     framebuffer.insert(3,'TEXT1', '') # add a column as TEXT1
     framebuffer['TEXT2'], framebuffer['TEXT3'], framebuffer['Fault'] = ['', '', ''] # add columns as TEXT2, TEXT3 = np.NaN
     framebuffer = framebuffer.dropna(how='any', axis=0) # delete/drop 'NaN' 
     buffer= np.array(framebuffer)
     data=[]
-    data.append([triple_variable[0], triple_variable[1], triple_variable[2], 'TEXT1', 'TEXT2', 'TEXT3', 'Fault']) # add csv header
+    data.append([cantest_triple_variable[0], cantest_triple_variable[1], cantest_triple_variable[2], 'TEXT1', 'TEXT2', 'TEXT3', 'Fault']) # add csv header
     BCL_Axis = [[], [], []]     # [0] timestamp [1] voltage [2] current
     CCS_Axis = [[], [], []]     # [0] timestamp [1] voltage [2] current
     MsgBcpDict = [0, 0, 0] # [0] RTS [1] donestep [2] long connect join temp
@@ -151,14 +170,16 @@ for file in csvfiles:
     CST_Period = []
     CTS_Period = []
     CCS_Period = []
+    CRO_Period = []
+    CEM_Period = []
     Not_First_CST = False
     Not_First_CTS = False
     Not_First_CCS = False
-    cst_receive_flag = False
-    cts_receive_flag = False
-    ccs_receive_flag = False
+    Not_First_CRO = False
+    Not_First_CEM = False
     stopStamp = False
     TimeoutFlag = False
+    ev_profile = {}
     for item in buffer:
         sh = item[0]
         # if match(sh, '*Gun*'):
@@ -192,7 +213,6 @@ for file in csvfiles:
                         CCS_Period.append((GetAfterTime - GetBeforeTime_CCS).microseconds/1000 + (GetAfterTime - GetBeforeTime_CCS).seconds*1000)
                     GetBeforeTime_CCS = datetime.datetime.strptime(item[0].strip('[]'),'%H:%M:%S.%f')
                     Not_First_CCS = True
-                    ccs_receive_flag = True
                 item[3] = 'CCS: U=' + str(CCSVoltage) + 'V' 
                 item[4] = 'CCS: I=' + str(CCSCurrent) + 'A'
             elif match(sh.lower(), BHM_FrameID): # filter BHM messages
@@ -290,6 +310,12 @@ for file in csvfiles:
                     item[3] = 'CRO:桩端准备完成[OK]'
                 else:
                     item[3] = 'CRO:桩端准备中...'
+                if not match(file.lower(), '*bms*'):
+                    if Not_First_CRO:
+                        GetAfterTime = datetime.datetime.strptime(str(item[0]).strip('[]'),'%H:%M:%S.%f')
+                        CRO_Period.append((GetAfterTime - GetBeforeTime_CRO).microseconds/1000 + (GetAfterTime - GetBeforeTime_CRO).seconds*1000)
+                    GetBeforeTime_CRO = datetime.datetime.strptime(item[0].strip('[]'),'%H:%M:%S.%f')
+                    Not_First_CRO = True
             elif match(sh.lower(), CHM_FrameID):
                 item[3] = 'CHM:自检版本=V' + str(int(str(item[2])[0:2], 16)) + '.' + str(int(str(item[2])[3:5], 16)) + str(int(str(item[2])[6:8], 16))
             elif match(sh.lower(), BST_FrameID):
@@ -304,12 +330,12 @@ for file in csvfiles:
                         CST_Period.append((GetAfterTime - GetBeforeTime).microseconds/1000 + (GetAfterTime - GetBeforeTime).seconds*1000)
                     GetBeforeTime = datetime.datetime.strptime(item[0].strip('[]'),'%H:%M:%S.%f')
                     Not_First_CST = True
-                    cst_receive_flag = True
                 item[4] = 'CST:中止原因' + CST_Parser(item[2])
                 if stopStamp == False:
                     item[3] = '桩端主动中止...'
                     stopStamp = True
             elif match(sh.lower(), CRM_FrameID):
+                Not_First_CEM = False
                 if match(item[2].lower(), 'aa*'):
                     item[3] = 'CRM:车辆辨识成功'
                 else:
@@ -335,13 +361,21 @@ for file in csvfiles:
                     TimeoutFlag = True
                     Not_First_CTS = False   # reconnect message calculate initizal
                     Not_First_CCS = False
+                    Not_First_CRO = False
             elif match(sh.lower(), CEM_FrameID):
                 item[4] = 'CEM:车端报文超时=' + CEM_Parser(item[2])
+                if not match(file.lower(), '*bms*'):
+                    if Not_First_CEM:
+                        GetAfterTime = datetime.datetime.strptime(str(item[0]).strip('[]'),'%H:%M:%S.%f')
+                        CEM_Period.append((GetAfterTime - GetBeforeTime_CEM).microseconds/1000 + (GetAfterTime - GetBeforeTime_CEM).seconds*1000)
+                    GetBeforeTime_CEM = datetime.datetime.strptime(item[0].strip('[]'),'%H:%M:%S.%f')
+                    Not_First_CEM = True
                 if TimeoutFlag == False:
                     item[3] = '桩端发现超时重连中...'
                     TimeoutFlag = True
                     Not_First_CTS = False   # reconnect message calculate initizal
                     Not_First_CCS = False
+                    Not_First_CRO = False
             elif match(sh.lower(), CTS_FrameID):
                 item[3] = 'CTS:同步时间...' 
                 item[4] = 'CTS:' + item[2][18:20] + item[2][15:17] + '-' + item[2][12:14] + '-' + item[2][9:11] + ' ' + item[2][6:8]  + ':' + item[2][3:5] + ':' + item[2][0:2]
@@ -351,40 +385,65 @@ for file in csvfiles:
                         CTS_Period.append((GetAfterTime - GetBeforeTime_CTS).microseconds/1000 + (GetAfterTime - GetBeforeTime_CTS).seconds*1000)
                     GetBeforeTime_CTS = datetime.datetime.strptime(item[0].strip('[]'),'%H:%M:%S.%f')
                     Not_First_CTS = True
-                    cts_receive_flag = True
+            elif match(sh.lower(), tcu_msg_table['tcu_heartbeat']):
+                item[3] = 'TCU->心跳包'
+            elif match(sh.lower(), ccu_msg_table['ccu_heartbeat']):
+                item[3] = 'CCU->心跳包'
+            else:
+                for key in special_vehicle_profile:
+                    if match(sh.lower(), key):
+                        ev_profile[sh] = special_vehicle_profile[key]
+                        break
+                if not sh in ev_profile:
+                    ev_profile[sh] = 'Customize'
             data.append(item)
-    # print(round(np.mean(CST_Period),1), np.maximum(CST_Period), np.std(CST_Period), np.min(CST_Period))
     data.append([])
-    data.append(['Message Type', 'Period(ms)', 'mean', 'max', 'min', 'std', 'cv'])
+    data.append(['Frame ID', 'Type'])
+    for key in ev_profile:
+        data.append([key, ev_profile[key]])
+    data.append([])
+    data.append(['Message Type', 'Period(ms)', 'mean', 'max', 'min', 'number', 'cv'])
     if (not match(file.lower(), '*bms*')):
-        if cst_receive_flag:
+        if len(CST_Period) != 0:
             calcu_mean = round(np.mean(CST_Period), 1)
             calcu_min = np.min(CST_Period)
             calcu_max = np.max(CST_Period)
-            calcu_std = round(np.std(CST_Period), 1)
+            calcu_frames = len(CST_Period)
             calcu_cv = round(np.std(CST_Period)/np.mean(CST_Period), 2)
-            data.append(['CST', '10', str(calcu_mean), str(calcu_max), str(calcu_min), str(calcu_std), str(calcu_cv)])
-        if cts_receive_flag:
+            data.append(['CST', '10±3', str(calcu_mean), str(calcu_max), str(calcu_min), str(calcu_frames), str(calcu_cv)])
+        if len(CTS_Period) != 0:
             calcu_mean = round(np.mean(CTS_Period), 1)
             calcu_min = np.min(CTS_Period)
             calcu_max = np.max(CTS_Period)
-            calcu_std = round(np.std(CTS_Period), 1)
+            calcu_frames = len(CTS_Period)
             calcu_cv = round(np.std(CTS_Period)/np.mean(CTS_Period), 2)
-            data.append(['CTS', '250', str(calcu_mean), str(calcu_max), str(calcu_min), str(calcu_std), str(calcu_cv)])
-        if ccs_receive_flag:
+            data.append(['CTS', '250±25', str(calcu_mean), str(calcu_max), str(calcu_min), str(calcu_frames), str(calcu_cv)])
+        if len(CCS_Period) != 0:
             calcu_mean = round(np.mean(CCS_Period), 1)
             calcu_min = np.min(CCS_Period)
             calcu_max = np.max(CCS_Period)
-            calcu_std = round(np.std(CCS_Period), 1)
+            calcu_frames = len(CCS_Period)
             calcu_cv = round(np.std(CCS_Period)/np.mean(CCS_Period), 2)
-            data.append(['CCS', '50', str(calcu_mean), str(calcu_max), str(calcu_min), str(calcu_std), str(calcu_cv)])
+            data.append(['CCS', '50±5', str(calcu_mean), str(calcu_max), str(calcu_min), str(calcu_frames), str(calcu_cv)])
+        if len(CRO_Period) != 0:
+            calcu_mean = round(np.mean(CRO_Period), 1)
+            calcu_min = np.min(CRO_Period)
+            calcu_max = np.max(CRO_Period)
+            calcu_frames = len(CRO_Period)
+            calcu_cv = round(np.std(CRO_Period)/np.mean(CRO_Period), 2)
+            data.append(['CRO', '250±25', str(calcu_mean), str(calcu_max), str(calcu_min), str(calcu_frames), str(calcu_cv)])
+        if len(CEM_Period) != 0:
+            calcu_mean = round(np.mean(CEM_Period), 1)
+            calcu_min = np.min(CEM_Period)
+            calcu_max = np.max(CEM_Period)
+            calcu_frames = len(CEM_Period)
+            calcu_cv = round(np.std(CEM_Period)/np.mean(CEM_Period), 2)
+            data.append(['CEM', '250±25', str(calcu_mean), str(calcu_max), str(calcu_min), str(calcu_frames), str(calcu_cv)])
     csvFilesobj = open(os.path.join('csvfiles', file), 'w', newline='') # create copy file in csvfiles direstory
     csvWriter = csv.writer(csvFilesobj)
     for row in data:
         csvWriter.writerow(row)
     csvFilesobj.close()
-    # df = pd.read_csv('./csvfiles/5.csv',header=None,names=[triple_variable[0], triple_variable[1], triple_variable[2], 'TEXT1', 'TEXT2', 'TEXT3', '1', '2', '3'])
-    # df.to_csv('./csvfiles/5.csv', index=False)
     # y_major_locator=MultipleLocator(10)
     # plt.plot(BCL_Axis[0], BCL_Axis[1], color='red', label='BCL Voltage')
     # plt.plot(CCS_Axis[0], CCS_Axis[1], color='green', label='CCS Voltage')
@@ -416,5 +475,5 @@ for file in csvfiles:
     DoubleAxis.legend(loc=7)
     plt.savefig(path + '/csvfiles/' + file +'.png') # 在show之前才能保存
     plt.show()
-    print ('<<<< ' + path + '/csvfiles/' + file + 'file conversion completed')
+    print ('<<<< ' + path + '/csvfiles/' + file + ' file conversion completed')
 # TODO(yaolimumu): double-x axis xticks rotation=45
