@@ -125,6 +125,7 @@ SAJ1939_CTS_FrameID = '*1ceb56f4*'
 SAJ1939_EndofMsgAck = '*1cecf456*'
 tcu_msg_table = {'tcu_heartbeat':'*1840e*'}
 ccu_msg_table = {'ccu_heartbeat':'*18418ae*'}
+tcu_link = 'tcu-link'
 special_vehicle_profile= {'*18ecff81*':'盛丰三枪(CATL)', '*18f30281*':'盛丰三枪(CATL)'}
 os.makedirs('csvfiles', exist_ok=True) # make directory to store analysis results
 # Loop through every file in the current working directory
@@ -161,7 +162,7 @@ for file in csvfiles:
     framebuffer = framebuffer.dropna(how='any', axis=0) # delete/drop 'NaN' 
     buffer= np.array(framebuffer)
     data=[]
-    data.append([cantest_triple_variable[0], cantest_triple_variable[1], cantest_triple_variable[2], 'TEXT1', 'TEXT2', 'TEXT3', 'Fault']) # add csv header
+    data.append([cantest_triple_variable[0], cantest_triple_variable[1], cantest_triple_variable[2], 'TEXT1', 'TEXT2', 'TEXT3', 'Fault', 'Atrribute']) # add csv header
     BCL_Axis = [[], [], []]     # [0] timestamp [1] voltage [2] current
     CCS_Axis = [[], [], []]     # [0] timestamp [1] voltage [2] current
     MsgBcpDict = [0, 0, 0] # [0] RTS [1] donestep [2] long connect join temp
@@ -387,8 +388,10 @@ for file in csvfiles:
                     Not_First_CTS = True
             elif match(sh.lower(), tcu_msg_table['tcu_heartbeat']):
                 item[3] = 'TCU->心跳包'
+                item[7] = tcu_link
             elif match(sh.lower(), ccu_msg_table['ccu_heartbeat']):
                 item[3] = 'CCU->心跳包'
+                item[7] = tcu_link
             else:
                 for key in special_vehicle_profile:
                     if match(sh.lower(), key):
