@@ -1331,4 +1331,31 @@ crontab -e //编辑当前用户的定时服务
     #+begin_src bash
     crond 
     #+end_src
-    
+*** x11vnc [[https://kbumsik.io/using-ipad-as-a-2nd-monitor-on-linux][[1]​]]
+    #+begin_src bash
+    sudo apt install x11vnc
+    ./ipad_monitor.sh -l -p -h
+    vim /etc/X11/xorg.conf.d/20-intel.conf
+        Section "Device"
+        Identifier  "Intel Graphics"
+        Driver      "intel"
+        Option "VirtualHeads" "1"
+        Option      "TripleBuffer" "true"
+        Option      "TearFree"     "true"
+        Option      "DRI"          "false"
+        EndSection
+    #+end_src
+*** gImageReader & tesseract [[https://www.cnblogs.com/keatonlao/p/12585750.html#:~:text=Ubuntu%20%E4%B8%8A%E5%AE%89%E8%A3%85%20OCR%20%E6%89%AB%E6%8F%8F%E8%BD%AF%E4%BB%B6%20gImageReader%20gImageReader%20%E6%98%AF%E4%B8%80%E6%AC%BE%E5%BC%80%E6%94%BE%E6%BA%90%E7%A0%81%E7%9A%84%20OCR%EF%BC%88%E5%85%89%E5%AD%A6%E5%AD%97%E7%AC%A6%E8%AF%86%E5%88%AB%EF%BC%89%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7%E8%BD%AF%E4%BB%B6%EF%BC%8C%E6%94%AF%E6%8C%81,Linux%20%E5%92%8C%20Windows%20%E7%B3%BB%E7%BB%9F%EF%BC%8C%E7%94%A8%E6%88%B7%E5%8F%AF%E7%94%A8%E6%9D%A5%E6%89%AB%E6%8F%8F%20JPEG%EF%BC%8CPNG%EF%BC%8CTIFF%EF%BC%8CGIFF%20%E6%88%96%20PDF%20%E6%96%87%E4%BB%B6%E6%88%96%E8%80%85%E4%BB%8E%E6%89%AB%E6%8F%8F%E4%BB%AA%E7%9B%B4%E6%8E%A5%E5%AF%BC%E5%85%A5%E7%9A%84%E6%96%87%E4%BB%B6%EF%BC%8C%E5%B9%B6%E8%AF%86%E5%88%AB%E5%AD%97%E7%AC%A6%E3%80%82][[1]​]]
+    install gImageReader
+    #+begin_src bash
+    sudo add-apt-repository ppa:sandromani/gimagereader
+    sudo apt update
+    sudo apt install gimagereader tesseract-ocr tesseract-ocr-eng tesseract-ocr-chi-sim tesseract-ocr-chi-tra  -y
+    sudo apt install tesseract-ocr-chi-sim-vert tesseract-ocr-chi-tra-vert  -y
+    #+end_src
+    uninstall gImageReader
+    #+begin_src bash
+    sudo apt remove gimagereader -y
+    sudo apt install ppa-purge -y
+    sudo ppa-purge ppa:sandromani/gimagereader
+    #+end_src
