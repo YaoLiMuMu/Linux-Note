@@ -203,10 +203,14 @@ for file in csvfiles:
     TimeoutFlag = False
     ev_profile = {}
     for item in buffer:
+        item[0] = str(item[0])
         sh = item[0]
         # if match(sh, '*Gun*'):
         #     continue    # filter 'can:0 Gun:00' row
         if match(sh, MsgDateTime): # filter DateTime
+            if item[0].isdigit():
+                print(int(item[0])/1000/1000)
+                item[0] = datetime.datetime.fromtimestamp(int(item[0])/1000/1000).strftime('%H:%M:%S.%f')
             sh = item[1]
             if match(sh.lower(), BCL_FrameID): # filter BCL messages
                 BCLVoltage = (int(str(item[2])[3:5], 16)*256 + int(str(item[2])[0:2], 16))/10
@@ -251,15 +255,17 @@ for file in csvfiles:
                 item[3] = 'CML:电压范围=' + str(CML_Min_Voltage) + '~' + str(CML_Max_Voltage) + 'V'
                 item[4] = 'CML:电流范围=' + str(CML_Min_Current) + '~' + str(CML_Max_Current) + 'A'
             elif match(sh.lower(), SAJ1939_RTS_FrameID):
-                if match(item[2], BCP_First_Frame_Data):
+                if match(item[2].lower(), BCP_First_Frame_Data):
                     MsgBcpDict[0] = 1
                     item[3] = 'BCP->RTS...'
-                elif match(item[2], BRM_First_Frame_Data):
+                elif match(item[2].lower(), BRM_First_Frame_Data):
                     MsgBrmDict[0] = 1
                     item[3] = 'BRM->RTS...'
-                elif match(item[2], BCS_First_Frame_Data):
+                elif match(item[2].lower(), BCS_First_Frame_Data):
                     MsgBcsDict[0] = 1
                     item[3] = 'BCS->RTS...'
+                else:
+                    print('Miss:' + item[2].lower())
             elif match(sh.lower(), SAJ1939_CTS_FrameID):
                 if match(item[2].lower(), '01*') and MsgBcpDict[0] == 1:    # filter BCP messages[1]
                     item[3] = 'BCP:单体上限=' + str((int(str(item[2])[6:8], 16)*256 + int(str(item[2])[3:5], 16))/100) + ' V'

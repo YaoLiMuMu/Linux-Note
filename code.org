@@ -111,7 +111,7 @@ ProtoBuf
 Python Operator
 | Operator | Operate          | Example        | Value | Priority |
 | **       | index            | 2 ** 3         |     8 |        1 |
-| %        | modulo           | 22 % 6         |     6 |        2 |
+| %        | modulo           | 22 % 6         |     4 |        2 |
 | //       | round            | 22 // 8        |     2 |        2 |
 | /        | divide           | 22 / 8         |  2.75 |        2 |
 | *        | multiply         | 3 * 5          |    15 |        2 |
