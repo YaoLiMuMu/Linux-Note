@@ -202,6 +202,10 @@ for file in csvfiles:
     stopStamp = False
     TimeoutFlag = False
     ev_profile = {}
+    timestamp = 1570774556514
+    d = datetime.datetime.fromtimestamp(timestamp/1000)
+    str1 = d.strftime("%Y-%m-%d %H:%M:%S.%f")
+    print(str1)
     for item in buffer:
         item[0] = str(item[0])
         sh = item[0]
@@ -209,7 +213,6 @@ for file in csvfiles:
         #     continue    # filter 'can:0 Gun:00' row
         if match(sh, MsgDateTime): # filter DateTime
             if item[0].isdigit():
-                print(int(item[0])/1000/1000)
                 item[0] = datetime.datetime.fromtimestamp(int(item[0])/1000/1000).strftime('%H:%M:%S.%f')
             sh = item[1]
             if match(sh.lower(), BCL_FrameID): # filter BCL messages

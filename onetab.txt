@@ -1,0 +1,503 @@
+https://www.tesla.com/ownersmanual/model3/en_mx/GUID-9A3F0F72-71F4-433D-B68B-0A472A9359DF.html | Troubleshooting Alerts
+https://zhuanlan.zhihu.com/p/347971302 | TVS管选型参数详解，超详细的指南 - 知乎
+https://zhuanlan.zhihu.com/p/342829327 | 精通TVS的计算和选择 - 知乎
+https://www.cnblogs.com/dowo/p/14914648.html | 12V系统汽车电子瞬态浪涌保护及TVS二极管选型 - 东沃电子DOWOSEMI - 博客园
+https://zhuanlan.zhihu.com/p/20670309 | [硬件设计]TVS管的功率计算 - 知乎
+https://zhuanlan.zhihu.com/p/96880184 | 特斯拉Model 3的充电控制器解析 - 知乎
+https://zhuanlan.zhihu.com/p/70283695 | 干货 | 三极管工作原理详解 - 知乎
+https://eng.libretexts.org/Bookshelves/Materials_Science/Supplemental_Modules_(Materials_Science)/Solar_Basics/D._P-N_Junction_Diodes/3%3A_Ideal_Diode_Equation | 3: Ideal Diode Equation - Engineering LibreTexts
+https://python.quectel.com/doc/ | QuecPython
+https://zhuanlan.zhihu.com/p/23447428 | 4G网络数据传输流程与速率分析系列（一） - 知乎
+
+https://zhuanlan.zhihu.com/p/147319603 | TVS二极管的主要参数有哪些？ - 知乎
+https://zhuanlan.zhihu.com/p/89678512 | 电线和电缆有什么区别？电缆电线的型号规格应该怎么选择？详解！ - 知乎
+https://www.zhihu.com/question/274880537 | 求助铜母排和铝母排的温升规范？ - 知乎
+https://zhuanlan.zhihu.com/p/35431231 | 动力电池包工艺系列--铜铝连接 - 知乎
+https://zhuanlan.zhihu.com/p/23375884 | 如何解决输电线路铜铝接线问题 - 知乎
+http://www.dowosemi.cn/en/index.php/solution/detail/10.html | 7637-2 5a/5b测试脉冲波形详解，看看您也知道_DOWOSEMI
+https://zhuanlan.zhihu.com/p/20800963#! | 国际充电标准近况 - 知乎
+https://zhuanlan.zhihu.com/p/362464548#:~:text=%E7%A3%81%E7%8F%A0%E6%98%AF%E5%B1%9E%E4%BA%8E%E4%B8%80%E7%A7%8D%E9%AB%98%E9%A2%91%E6%BB%A4%E6%B3%A2%E5%99%A8%E4%BB%B6%E3%80%82%20%E7%A3%81%E7%8F%A0%E7%9A%84%E5%9F%BA%E6%9D%90%E4%B8%BA%E9%93%81%E6%B0%A7%E4%BD%93%EF%BC%8C%E5%88%A9%E7%94%A8%E5%8D%B0%E5%88%B7%E6%8A%80%E6%9C%AF%E5%B0%86%E9%93%B6%E6%B5%86%E5%8D%B0%E5%88%B7%E5%9C%A8%E9%93%81%E6%B0%A7%E4%BD%93%E5%9F%BA%E6%9D%90%E4%B9%8B%E4%B8%8A%EF%BC%8C%E9%80%9A%E8%BF%87%E7%83%A7%E7%BB%93%EF%BC%8C%E5%88%87%E5%89%B2%EF%BC%8C%E9%95%80%E9%93%B6%E5%88%B6%E4%BD%9C%E8%80%8C%E6%88%90%E3%80%82,%E5%AE%83%E7%9A%84%E9%A2%9C%E8%89%B2%E5%91%88%E7%81%B0%E9%BB%91%E8%89%B2%E3%80%82%20%E7%A3%81%E7%8F%A0%E4%B8%BB%E8%A6%81%E5%BA%94%E7%94%A8%E5%9C%A8%E7%94%B5%E7%A3%81%E5%85%BC%E5%AE%B9%E9%A2%86%E5%9F%9F%EF%BC%8C%E8%A7%A3%E5%86%B3%E4%B8%80%E4%BA%9B%E7%94%B5%E7%A3%81%E5%B9%B2%E6%89%B0%E9%97%AE%E9%A2%98%E3%80%82%20%E5%AF%B9%E4%BA%8E%E9%AB%98%E9%A2%91%E4%BF%A1%E5%8F%B7%EF%BC%8C%E7%A3%81%E7%8F%A0%E5%BA%94%E7%94%A8%E5%9C%A8%E7%BA%BF%E8%B7%AF%E4%B8%8A%E5%91%88%E7%8E%B0%E5%BE%88%E9%AB%98%E7%9A%84%E9%98%BB%E6%8A%97%EF%BC%9B%E8%80%8C%E5%AF%B9%E4%BA%8E%E4%BD%8E%E9%A2%91%E4%BF%A1%E5%8F%B7%EF%BC%8C%E7%A3%81%E7%8F%A0%E5%91%88%E7%8E%B0%E5%BE%88%E4%BD%8E%E7%9A%84%E9%98%BB%E6%8A%97%EF%BC%9B%E5%AF%B9%E4%BA%8EDC%E7%BA%BF%E8%B7%AF%E5%AE%83%E8%BF%91%E4%BC%BC%E5%A6%82%E4%B8%80%E6%9D%A1%E8%B7%B3%E7%BA%BF%E6%88%96%E8%80%85%E8%AF%B4%E9%9B%B6%E7%94%B5%E9%98%BB%E3%80%82 | 磁珠的原理与应用 - 知乎
+
+https://www.zhihu.com/question/22298352 | 如何通俗易懂地解释卷积？ - 知乎
+
+https://www.emc.wiki/thread-2305-1-1.html | 关于辐射测试中Antenna与EUT的测试距离换算 - 限值换算 - 3m 10m 其它测试距离限值... - EMC.wiki 致力于电磁兼容技术！
+https://www.ti.com.cn/general/cn/docs/gencontent.tsp?contentId=152187 | EMI 辐射信号强度解析- TI.com
+https://zhuanlan.zhihu.com/p/257010828 | 电磁兼容（EMC）：从源头抑制辐射超标—PCB设计 - 知乎
+http://www.cntronics.com/emc-art/80040378 | 如何抑制来自开关电源的复杂的FM频段传导辐射？-EMC安规-电子元件技术网
+https://www.maximintegrated.com/cn/design/technical-documents/app-notes/4/4944.html?__cf_chl_captcha_tk__=pmd_NCSGQ4bGTb_v.Fo0RzYM263xYKM85qNVqDLvQ0Mt9bU-1634807456-0-gqNtZGzNA2WjcnBszQjl | 布线指南：提高汽车电源性能、降低电磁辐射
+https://zhuanlan.zhihu.com/p/401208432 | Matlab利用离散傅里叶变换DFT 进行频谱分析 - 知乎
+https://blog.csdn.net/qq_37400096/article/details/79780530 | MATLAB实现傅里叶变换_CoderChaser的博客-CSDN博客_matlab傅里叶变换函数
+
+https://www.cnblogs.com/sunshine-jackie/p/8137431.html | 光耦继电器工作原理与参数详解 - 阳光&技术 - 博客园
+https://bbs.21ic.com/blog-588162-178328.html | 气体放电管的主要参数和选型 - langtuodianzi的日志 - 21ic电子技术开发论坛
+https://www.dianziaihaozhe.com/mulu/zhuanti/yuanjian/1490.html | 气体放电管原理应用及技术参数_电子元件_电子爱好者
+https://www.dgjs123.com/bandaoti/6986.htm | 气体放电管如何选型，气体放电管的主要参数 - 电工天下
+https://zhuanlan.zhihu.com/p/361329414 | 雷击浪涌抑制电路设计需了解的基本功 - 知乎
+https://rohm.eefocus.com/article/id-1215 | 放大器的输入阻抗-用户体验-ROHM技术社区
+https://www.cnblogs.com/ydvely521/p/10177291.html | 常用运放电路计算与分析 - 东方之巅 - 博客园
+
+https://zhuanlan.zhihu.com/p/20726079 | 模拟电路基础之运放的增益计算（一）Gm - 知乎
+https://www.zhihu.com/question/432824969 | 为什么学了模数电还是看不懂较复杂的电路图？ - 知乎
+
+https://tool.520101.com/calculator/biaozhuncha-fangcha/ | 标准差-方差在线计算器
+https://www.eefocus.com/e/480156 | 低通滤波电路截止频率计算公式-与非网
+http://www.elecfans.com/tools/rclvboqijiezhipinlv.html | RC滤波器截止频率在线计算器_RC高通滤波器截止频率_RC低通滤波器截止频率_RC截止频率计算器 - 电子发烧友(www.elecfans.com)
+https://zhuanlan.zhihu.com/p/397940508 | AES128加解密流程详细介绍 - 知乎
+https://max.book118.com/html/2018/0329/159193626.shtm | 电力电子技术matlab仿真_隔离型DC-DC变换电路.pdf
+https://wenku.baidu.com/view/69695b4cfe4ffe4733687e21af45b307e871f907.html | RC滤波电路截止频率计算 - 百度文库
+https://xueqiu.com/4295535815/192370238 | 最强阵容？Cree、英飞凌、罗姆、三菱电机、中车、日立、东芝等21企业集结出动 9月9-11日，PCIM Asia展览会即将召开，这次展会几乎汇集了SiC功率器件的“大半江山”—— 产品展示方面：英飞... - 雪球
+https://zhuanlan.zhihu.com/p/381872352 | 2021-2027全球与中国IGBT市场现状及未来发展趋势 - 知乎
+
+https://blog.csdn.net/weixin_31556371/article/details/112880959 | 充电枪cp信号控制板_一种车载充电机检测CP信号的抗干扰处理方法与流程_一颗青木的博客-CSDN博客
+https://www.sohu.com/a/441453131_505888 | 大电容滤低频？小电容滤高频？终于搞懂了_频率
+https://www.cnblogs.com/coolyouguo/p/10530921.html | LC滤波电路分析，LC滤波电路原理及其时间常数的计算 - coolyouguo - 博客园
+http://m.elecfans.com/article/665000.html | 一文看懂二阶lc低通滤波器的设计及原理-电子发烧友网
+https://zhidao.baidu.com/question/1046984601309664899.html | 滤波的原理根据lc滤波时计算截止频率就可以了，但是π型滤波是为了什么？两边电容中间电感，是不是就是_百度知道
+https://duanku.pai-hang-bang.cn/kuzi_2017974256873873468.htm | 低压电缆传输100米。电损耗多少?
+http://www.nbweikang.com/news/65.html?cid=4#:~:text=%E6%89%80%E8%B0%93%E7%9A%84%E9%93%9C%E5%AF%BC%E7%BA%BF%E7%94%B5%E9%98%BB%E7%8E%87%E5%B0%B1%E6%98%AF%E6%8C%87%E4%BB%A5%E9%93%9C%E7%BA%BF%E4%B8%BA%E8%BD%BD%E4%BD%93%EF%BC%8C%E7%94%B5%E6%B5%81%E5%9C%A8%E5%AF%BC%E7%BA%BF%E5%86%85%E5%85%B7%E6%9C%89%E7%94%B5%E9%98%BB%E7%9A%84%E5%A4%A7%E5%B0%8F%E3%80%82%20%E9%93%9C%E5%AF%BC%E7%BA%BF%E7%94%B5%E9%98%BB%E7%8E%87%E6%8C%87%E7%9A%84%E6%98%AF%E9%95%BF1%E7%B1%B3%E3%80%81%E6%A8%AA%E6%88%AA%E9%9D%A2%E7%A7%AF%E6%98%AF1%E5%B9%B3%E6%96%B9%E6%AF%AB%E7%B1%B3%E7%9A%84%E5%9C%A8%E5%B8%B8%E6%B8%A9%E4%B8%8B%EF%BC%8820%E2%84%83%E6%97%B6%EF%BC%89%E9%93%9C%E5%AF%BC%E7%BA%BF%E7%9A%84%E7%94%B5%E9%98%BB%E3%80%82%20%E6%B2%A1%E6%9C%89%E7%89%B9%E6%AE%8A%E8%AF%B4%E6%98%8E%EF%BC%8C%E9%82%A3%E4%B9%88%E9%93%9C%E5%AF%BC%E7%BA%BF%E7%94%B5%E9%98%BB%E7%8E%87%E5%B0%B1%E6%98%AF%E6%8C%87%E5%9C%A820%E2%84%83%E6%97%B6%E5%80%99%E7%9A%84%E7%94%B5%E9%98%BB%E7%8E%87%E4%BA%86%E3%80%82%20%E9%93%9C%E5%AF%BC%E7%BA%BF%E7%94%B5%E9%98%BB%E7%8E%87%E7%9A%84%E5%8D%95%E4%BD%8D%E5%B0%B1%E6%98%AF%E6%AC%A7%E5%A7%86%C2%B7%E7%B1%B3%EF%BC%8C%E5%B0%B1%E6%98%AF%CE%A9%C2%B7m%E3%80%82%20%E9%93%9C%E5%AF%BC%E7%BA%BF%E7%94%B5%E9%98%BB%E7%8E%87%E7%AC%A6%E5%8F%B7%E5%B0%B1%E6%98%AF%EF%BC%9A%CF%81%E3%80%82%20%E5%A5%BD%E4%BA%86%EF%BC%8C%E6%88%91%E4%BB%AC%E7%8E%B0%E5%9C%A8%E6%9D%A5%E8%AF%B4%E8%AF%B4%E9%93%9C%E5%AF%BC%E7%BA%BF%E7%94%B5%E9%98%BB%E7%8E%87%E5%90%A7%E3%80%82,%E9%93%9C%E5%AF%BC%E7%BA%BF%20%E3%80%80%E3%80%80%E9%93%9C%E5%AF%BC%E7%BA%BF%E7%94%B5%E9%98%BB%E7%8E%87%E5%88%B0%E5%BA%95%E6%98%AF%E5%A4%9A%E5%B0%91%E5%91%A2%EF%BC%9F%20%E9%93%9C%E5%AF%BC%E7%BA%BF%E7%94%B5%E9%98%BB%E7%8E%87%E7%9A%84%E7%89%B9%E7%82%B9%EF%BC%9A%E5%A6%82%E4%B8%8B%20%E3%80%80%E3%80%801%E3%80%81%E9%93%9C%E5%AF%BC%E7%BA%BF%E7%94%B5%E9%98%BB%E7%8E%87%CF%81%E4%B8%8D%E4%BB%85%E5%92%8C%E5%AF%BC%E4%BD%93%E7%9A%84%E6%9D%90%E6%96%99%E6%9C%89%E5%85%B3%EF%BC%8C%E8%BF%98%E5%92%8C%E9%93%9C%E5%AF%BC%E7%BA%BF%E7%9A%84%E6%B8%A9%E5%BA%A6%E6%9C%89%E5%85%B3%E3%80%82%20%E5%9C%A8%E6%B8%A9%E5%BA%A6%E5%8F%98%E5%8C%96%E4%B8%8D%E5%A4%A7%E7%9A%84%E8%8C%83%E5%9B%B4%E5%86%85%EF%BC%8C%EF%BC%9A%E5%87%A0%E4%B9%8E%E6%89%80%E6%9C%89%E9%87%91%E5%B1%9E%E7%9A%84%E7%94%B5%E9%98%BB%E7%8E%87%E9%9A%8F%E6%B8%A9%E5%BA%A6%E4%BD%9C%E7%BA%BF%E6%80%A7%E5%8F%98%E5%8C%96%EF%BC%8C%E5%8D%B3%CF%81%3D%CF%81o%281%2Bat%29%E3%80%82%20%E5%BC%8F%E4%B8%ADt%E6%98%AF%E6%91%84%E6%B0%8F%E6%B8%A9%E5%BA%A6%EF%BC%8C%CF%81o%E6%98%AFO%E2%84%83%E6%97%B6%E7%9A%84%E7%94%B5%E9%98%BB%E7%8E%87%EF%BC%8Ca%E6%98%AF%E7%94%B5%E9%98%BB%E7%8E%87%E6%B8%A9%E5%BA%A6%E7%B3%BB%E6%95%B0%E3%80%82 | 铜导线电阻率到底是多少呢？
+https://www.analog.com/cn/analog-dialogue/articles/introduction-to-spi-interface.html | SPI接口简介 | 亚德诺半导体
+https://cloud.tencent.com/developer/article/1862094 | 逻辑分析仪的简单使用介绍（附带i2c、串口、spi数据分析） - 云+社区 - 腾讯云
+https://www.cnblogs.com/Spring-Ltc/p/13512099.html | 信号完整性之“过冲“（振铃）深度分析 - 失心少年悟红尘 - 博客园
+https://zhuanlan.zhihu.com/p/395409883 | 信号完整性学习的笔记——阻抗 - 知乎
+http://blog.chinaaet.com/justlxy/p/5100064446 | 信号完整性分析——阻抗匹配与信号反射-Felix-电子技术应用-AET-中国科技核心期刊-最丰富的电子设计资源平台
+https://zhidao.baidu.com/question/1668824770561466547.html | 直流电路电感怎么计算选取。_百度知道
+https://www.21ic.com/dc/technical/201804/61264.html | 开关电源中输出滤波电感的计算 - 21ic电子网
+
+https://blog.csdn.net/douqingl/article/details/50452355 | SPI接口扫盲 SPI定义/SPI时序(CPHA CPOL)_douqingl的博客-CSDN博客_spi接口
+https://www.cnblogs.com/sunshine-jackie/p/8137293.html | 晶振工作原理及参数详解（最透彻） - 阳光&技术 - 博客园
+https://login.ibm.com/authsvc/mtfim/sps/authsvc?PolicyId=urn:ibm:security:authentication:asf:basicldapuser&Target=https%3A%2F%2Flogin.ibm.com%2Foidc%2Fendpoint%2Fdefault%2Fauthorize%3FqsId%3D74a4e3c6-103e-4cb0-be49-288ecdae6e17%26client_id%3DOTVhNzdjNzgtZDczNi00 | IBMid - Sign in or create an IBMid
+https://blog.csdn.net/weixin_36054159/article/details/111916618 | spi通讯不需要地线吗_终于看懂了！通信协议 IIC 与 SPI 最全对比_倪里的博客-CSDN博客
+https://blog.csdn.net/xswy1/article/details/81382933 | SPI及其时钟配置_大话嵌入式-CSDN博客_spi时钟频率
+https://www.zhihu.com/question/363524406 | 为什么示波器不能直接测市电220v而要接个隔离变压器？ - 知乎
+https://www.amobbs.com/thread-5508575-1-1.html | [求助]用示波器测非隔离220V市电电路时，发生设备事故。... (amobbs.com 阿莫电子论坛)
+
+https://blog.csdn.net/weixin_39946364/article/details/111836121?utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-6.essearch_pc_relevant&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-6.essearch_pc_relevant | 充电枪cp信号控制板_一种cp信号唤醒电路的制作方法_weixin_39946364的博客-CSDN博客
+https://blog.csdn.net/weixin_28747829/article/details/112378777?utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-5.essearch_pc_relevant&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-5.essearch_pc_relevant | (1条消息) 充电枪cp信号控制板_车载充电机OBC凝露问题解决及试验方法_木彦orz的博客-CSDN博客
+https://wenku.baidu.com/view/e3adeafafab069dc502201c6.html | 电感和电容的滤波有什么不同 - 百度文库
+
+https://www.cnblogs.com/zhenzhen-huang/p/10451005.html | PCB载流你必须知道的那些事儿 - Layout妞的自我修养 - 博客园
+https://wenku.baidu.com/view/7a90691b376baf1ffc4fad85.html | PCB布线耐压要求 - 百度文库
+http://www.elecfans.com/d/1311104.html | layout工程师经验分享：PCB设计布线技巧-电子发烧友网
+https://zhuanlan.zhihu.com/p/347731135 | IP防护等级解读 - 知乎
+https://www.doc88.com/p-34559417540399.html | 06-电击防护的措施 - 道客巴巴
+https://www.doc88.com/p-9962134697444.html | (高清正版) GB 4943.1-2011 信息技术设备 安全 第1部分_ 通用要求 标准 - 道客巴巴
+https://zhuanlan.zhihu.com/p/113467366 | 小型漏电断路器的选型 - 知乎
+https://www.doc88.com/p-28273105464967.html | Q∕GDW 10592-2018 国家电网公司电动汽车交流充电桩检验技术规范 - 道客巴巴
+https://www.doc88.com/p-16716961211821.html?r=1 | GB/T 38661-2020电动汽车用电池管理系统技术条件 - 道客巴巴
+https://max.book118.com/html/2016/0518/43234608.shtm | 三相电功率计讲解.doc
+
+https://www.sohu.com/a/302172101_120111879 | 了解PLL应用：倍频_输出
+http://m.elecfans.com/article/534776.html | 锁相环实现倍频的原理是什么？锁相环的组成及倍频的三种方法解析-电子发烧友网
+https://www.cnblogs.com/kl2blog/p/6920142.html | 锁相环倍频原理简要分析 - 嗜血的草 - 博客园
+
+https://www.sohu.com/a/410384751_99897087 | 充电桩日常维护测试安全隐患检查项目整理_检测
+https://device.panasonic.cn/ac/c/control/relay/cautions_use/index.jsp | 继电器使用上的注意事项 | 松下电器(中国）有限公司 控制机器 | Panasonic
+http://www.yllled.com/news/hynews/173.html | 推算LED灯寿命的方法居然这么简单！-宇亮光电
+http://www.dzdiy.com/html/200712/31/LED-color-light6.htm | LED变色灯电路--LED color light
+http://m.eadianqi.com/view.php?aid=4531 | 稳压二极管稳压电路原理图解_自动控制网
+https://tool.520101.com/yuanqijian/wenyaerjiguan/ | 稳压二极管的应用与选择计算器
+http://www.doc88.com/p-0416866808218.html | GB-T 14048.17-2008 低压开关设备和控制设备 第5-4部分 控制电路电器和开关元件 小容量触头的性能评定方法 特殊试验 - 道客巴巴
+https://jingyan.baidu.com/article/359911f50c422357fe0306b8.html | 格宁YC-1893D三相电能表多功能校验装置说明书:[1]-百度经验
+https://wenku.baidu.com/view/17ac5efeba0d4a7302763a49.html | MRA4007T3G中文资料 - 百度文库
+https://www.cnblogs.com/zzb-Dream-90Time/p/9117303.html | M1卡的工作原理【转】 - 请给我倒杯茶 - 博客园
+https://blog.csdn.net/liujianhua1989/article/details/72639307 | m1卡工作原理和相关总结_liujianhua1989的博客-CSDN博客
+
+https://www.zhihu.com/question/40756707 | 控制研究中的「带宽」怎样理解？ - 知乎
+http://bbs.eetop.cn/thread-378190-1-1.html | 有没有做过电能计量芯片的同志，进来看看 - Analog/RF IC 设计讨论 - EETOP 创芯网论坛 (原名：电子顶级开发网) -
+https://max.book118.com/html/2020/0627/7115141013002144.shtm | 电能计量算法介绍知识讲解（15页）-原创力文档
+https://wenku.baidu.com/view/cedcd9abf8c75fbfc67db203?fr=step_zhidao | ADC的有效位数和信噪比计算 - 百度文库
+https://blog.csdn.net/wordwarwordwar/article/details/52906307 | ADC动态范围的计算_坚持-CSDN博客_adc动态范围
+https://blog.csdn.net/weixin_44536482/article/details/89030152 | 关于DBC文件的格式解析（DBC文件系列其二）_第55号小白鸭的博客-CSDN博客_dbc文件
+https://wenku.baidu.com/view/80dd0e8c82c4bb4cf7ec4afe04a1b0717ed5b362.html | 热量与功率换算的基本关系 - 百度文库
+http://www.elecfans.com/d/760722.html | 如何解决充电桩散热问题-电子发烧友网
+https://zhuanlan.zhihu.com/p/40715951 | 上汽安悦 充电桩隔声罩工程 - 知乎
+https://www.doc88.com/p-16816088158421.html?r=1 | 地下室变电所通风量计算方式的探讨 - 道客巴巴
+https://wenku.baidu.com/view/0fcd8b8db04e852458fb770bf78a6529647d3528.html | 地下室设备房通风量计算书(1) - 百度文库
+
+https://zhuanlan.zhihu.com/p/231647104?utm_source=wechat_session | 手撕系列（1）：PWM控制的基本原理 - 知乎
+https://b2b.baidu.com/land?url=https%3A%2F%2Fb2b.hc360.com%2Fsupplyself%2F764574324.html%3Fconfr%3DB12%26bdb2b8a2d%3D2975892287929738693&query=&lattr=&xzhid=32233577&from=land_recommend&pi=b2b.land.recommend.1.pccdb&category=%E6%9C%BA%E6%A2%B0%E5%B7%A5%E4%B8%9A%3B%E8%BF%87%E6%BB%A4%E8%AE%BE%E5%A4%87%3B%E8%BF%87%E6%BB%A4%E5%99%A8&fid=83951616%2C1621996168591&iid=f905f8999689c64c31a768243513036e&jid=888950558370996&prod_type=0 | G4初效过滤器中效可洗式过滤网环保
+https://b2b.baidu.com/land?id=f908e882833d0eb11051ac3d4d67c54810 | TNS 中效过滤器中效可洗式过滤网规格参数初效过滤网
+http://www.airfilter-china.com/product/zsjlxf0b/ | 初效过滤器——南通恒嘉环保科技有限公司
+http://www.elecfans.com/yuanqijian/zhenliuqi/20171103574418.html | 九款最简单的电子镇流器电路图原理图分析 - 电子发烧友网
+
+http://www.doc88.com/p-1764848400328.html | 充电模块电路分析 - 道客巴巴
+https://tech.hqew.com/fangan_1761706 | 移相全桥DC
+https://www.dianyuan.com/article/31091.html | 移相全桥PWM ZVS DC-DC变换器拓扑结构简析-电源网
+
+https://www.cnblogs.com/tython/p/12805262.html | Python读取CSV文件 - 此去经年归来仍是少年 - 博客园
+https://www.cnblogs.com/ucos/p/5896861.html | Python 枚举【一】 - 航行 - 博客园
+https://zhuanlan.zhihu.com/p/144717256 | Python 中的正则表达式之match - 知乎
+
+https://www.jianshu.com/p/f66eed3a3a25 | linux下gcc、g++不同版本的安装和切换 - 简书
+https://blog.csdn.net/ctbinzi/article/details/5929800 | 将Open SSH Server 移植到ARM Linux成功_ctbinzi的专栏-CSDN博客
+https://blog.51cto.com/myunix/1095074 | shell脚本实现scp文件传输_freeterman的技术博客_51CTO博客
+https://blog.csdn.net/weixin_28977715/article/details/111958357 | 免秘登陆linux_linux 免密登陆（超简单）_Yu-Dem~~的博客-CSDN博客
+https://blog.51cto.com/tigerjibo/1275998 | 使用ssh无密码登录_嵌入式开发乐园的技术博客_51CTO博客
+https://blog.csdn.net/skdkjzz/article/details/40984789 | 嵌入式 SSH无密码验证登录的实现_skdkjxy的专栏-CSDN博客
+
+https://blog.csdn.net/qq_24835087/article/details/104459726 | 嵌入式Linux开发板移植SSH_Ruler-CSDN博客
+https://www.cnblogs.com/schips/p/12309228.html | arm linux 移植 ssh - 黄树超 - 博客园
+https://www.shangmayuan.com/a/e7c8576bfa8148208f95627f.html | 交叉编译器 arm-linux-gnueabi 和 arm-linux-gnueabihf 的区别 - 尚码园
+http://www.myir-tech.com/bbs/thread-54-1-1.html | 成功移植OpenSSH到ARM Linux开发板-ARM嵌入式-米尔科技论坛
+https://blog.csdn.net/lengye7/article/details/78081702 | lib.so.6软链接被删除的恢复问题_lengye7的博客-CSDN博客
+https://zhidao.baidu.com/question/1515809593714104580.html | 如何安装gcc-linaro-arm-linux-gnueabihf-4.8-2014.03_百度知道
+https://www.cnblogs.com/from-zero/p/12606867.html | 获取ARM架构的libc.so.6文件方法 - From_Zero - 博客园
+https://www.cnblogs.com/emanlee/p/4311901.html | 解决libc.so.6: version `GLIBC_2.14' not found问题 - emanlee - 博客园
+
+https://www.cnpython.com/qa/32155 | 使用Python从目录中读取所有csv文件 - 问答 - Python中文网
+https://www.cnblogs.com/junge-mike/p/12761518.html | 使用python依次读取文件中的所有csv格式的数据 - 蜘蛛侠不会飞 - 博客园
+
+https://www.jb51.net/article/142504.htm | Python 读取某个目录下所有的文件实例_python_脚本之家
+https://blog.csdn.net/wang725/article/details/50070689 | python 扫描目录下所有文件并读取文件_wang725的专栏-CSDN博客_python 扫描文件夹
+https://www.jianshu.com/p/59c0168ba91b | python基础学习|使用python对CSV、excel表格数据进行读取，筛选，输出 - 简书
+
+https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=2&ch=&tn=baiduhome_pg&bar=&wd=python+csv+%E8%A1%A8%E6%A0%BC+%E7%AD%9B%E9%80%89%E5%A4%84%E7%90%86&rsv_spt=1&oq=python%2520csv%2520%25E8%25A1%25A8%25E6%25A0%25BC%2520%25E8%25BF%2587%25E6%25BB%25A4&rsv_pq=976f6c2100036d2f&rsv_t=5b6ci1jPHfo6oyqibAtoTEVVoGeByI27cagcVPP6FxabU4bC5MwZW7xJcrJllHMEPdFl&rqlang=cn&rsv_enter=1&rsv_btype=t&rsv_dl=tb&inputT=10131 | python csv 表格 筛选处理_百度搜索
+https://blog.csdn.net/m0_46159136/article/details/113618135 | Python 提取csv数据并筛选指定条件数据_m0_46159136的博客-CSDN博客
+https://www.cnblogs.com/huiAlex/p/7994606.html | Python3: 对两个字符串进行匹配 - 一只敲码的猫 - 博客园
+https://blog.csdn.net/qq_17753903/article/details/85809137 | python-进阶教程-利用通配符进行字符串匹配_shangyj17的博客-CSDN博客_python 通配符
+
+https://baike.baidu.com/item/%E6%9C%89%E6%BA%90%E5%8A%9F%E7%8E%87%E5%9B%A0%E6%95%B0%E6%A0%A1%E6%AD%A3/5296558?fr=aladdin | 有源功率因数校正_百度百科
+
+https://blog.csdn.net/qq_34754747/article/details/103362534 | 安装qt时，找不到libQt**.so问题_小白啥时候能进阶成功的博客-CSDN博客
+https://zhuanlan.zhihu.com/p/96696862 | Linux下Qt程序的打包发布(2)-使用第三方工具linuxdeployqt - 知乎
+
+https://blog.csdn.net/xiaolong1126626497/article/details/104761103 | Linux系统下实现QT程序打包发布_xiaolong1126626497的专栏-CSDN博客_linuxqt程序打包发布
+https://github.com/probonopd/linuxdeployqt/issues/59 | problem with patchelf · Issue #59 · probonopd/linuxdeployqt
+
+https://www.baidu.com/s?wd=mcu+%E5%88%86%E9%A2%91&rsv_spt=1&rsv_iqid=0xcb04c6db001f24c8&issp=1&f=8&rsv_bp=1&rsv_idx=2&ie=utf-8&rqlang=&tn=baiduhome_pg&ch=&rsv_enter=1&rsv_btype=i&rsv_dl=ib&inputT=9103 | mcu 分频_百度搜索
+
+https://blog.csdn.net/duobaohongtu3/article/details/95097382 | stm32 定时器TIM时钟步骤_duobaohongtu3的专栏-CSDN博客
+https://blog.csdn.net/longgyue/article/details/80161380?utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-2.control&dist_request_id=&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-2.control | STM32 定时器中TIM_RepetitionCounter 作用详解_longgyue的专栏-CSDN博客
+
+https://orgmode.org/worg/org-tutorials/org-taskjuggler.html | Creating Gantt charts by Exporting to TaskJuggler
+https://kbumsik.io/using-ipad-as-a-2nd-monitor-on-linux | Using iPad as a 2nd monitor on Linux | Bumsik Kim
+https://www.zhihu.com/question/374049654/answer/1802631473 | (27 封私信 / 5 条消息) Linux下能否实现ipad扩展屏幕？ - 知乎
+https://wiki.archlinux.org/index.php/Extreme_Multihead#VNC | Extreme Multihead - ArchWiki
+https://ywnz.com/linuxsj/8525.html | 将手机或者平板(iPad)作为Deepin Linux扩展屏的方法_Linux手机_云网牛站
+https://askubuntu.com/questions/945895/solution-to-intel-graphics-screen-tearing-flickering-causes-excessive-fan-use | drivers - "Solution" to Intel Graphics Screen Tearing/Flickering Causes Excessive Fan Use in Ubuntu 16.10/17.04/17.10 - Ask Ubuntu
+https://askubuntu.com/questions/1234026/screen-tearing-on-ubuntu-xorg-20-04-with-intel-graphics | Screen Tearing on Ubuntu Xorg 20.04 with Intel Graphics - Ask Ubuntu
+
+https://zhuanlan.zhihu.com/p/93857890 | 动态规划之背包问题系列 - 知乎
+https://zhidao.baidu.com/question/280162990.html | 急！动态规划 多人背包问题_百度知道
+http://www.doc88.com/p-0408913073035.html | 动态规划及其在资源分配中的应用(精选) - 道客巴巴
+https://blog.csdn.net/gaopengxiazhibing/article/details/51352824 | 动态规划　资源分配问题_gaopengxiazhibing的博客-CSDN博客_动态规划资源分配问题
+
+https://blog.csdn.net/Quorra_chord/article/details/109780175 | 动态规划：背包问题（01背包、完全背包、多重背包、分组背包）_Quorra_chord的博客-CSDN博客_动态规划 背包问题两个背包
+https://blog.csdn.net/qq_38984851/article/details/81133840/ | 动态规划：完全背包、多重背包_Allen的博客-CSDN博客_完全背包
+https://blog.csdn.net/crayondeng/article/details/16338639 | 动态规划 之 拔河比赛人员分配问题_小邓笔记-CSDN博客
+https://blog.csdn.net/stulcc/article/details/103449561 | 动态规划-最短路径_stulcc的博客-CSDN博客_动态规划 最短路径
+
+http://www.voidcn.com/article/p-yxgtonll-gn.html | 基于GTEST+MOCKCPP的自动化测试 - 程序园
+
+https://www.cnblogs.com/jiaoshou/p/11190619.html | 如何规范git commit提交 - 较瘦 - 博客园
+
+https://blog.csdn.net/gxm91716/article/details/53734801#commentBox | 698通信协议总结_gxm91716的博客-CSDN博客_698协议
+https://www.liaoxuefeng.com/wiki/1016959663602400/1017075323632896 | 字符串和编码 - 廖雪峰的官方网站
+
+https://blog.csdn.net/chen_zhang_yu/article/details/52415077 | 清晰理解红黑树的演变---红黑的含义_chen_zhang_yu的博客-CSDN博客_红黑树
+
+https://www.cnblogs.com/wainiwann/p/4210343.html | export LD_LIBRARY_PATH 的使用 - 阿波伦 - 博客园
+
+https://wenku.baidu.com/view/7acc7bfac8d376eeafaa3105.html?re=view# | CRC校验原理及推导过程 - 百度文库
+http://m.elecfans.com/article/593483.html | CRC校验原理及推导过程-电子发烧友网
+https://blog.csdn.net/Cracked_hitter/article/details/79427496 | CRC校验原理及步骤_Cracked_hitter的博客-CSDN博客
+https://www.cnblogs.com/liushui-sky/p/9962123.html | CRC码计算及校验原理的最通俗诠释 - 苦涩的茶 - 博客园
+https://blog.csdn.net/jing_xin/article/details/99090306 | CRC码计算及校验原理的最通俗诠释_jing_xin的专栏-CSDN博客
+https://www.cnblogs.com/xdyixia/p/12576437.html | 密码学中的数学基础2 伽罗华域（Galois Field）上的四则运算 - xdyixia - 博客园
+
+https://blog.csdn.net/qq_36535153/article/details/100579927?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-3.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-3.control | python对采集的CAN数据进行整理_抬头就是一枪的博客-CSDN博客_python解析can数据
+https://blog.csdn.net/m0_49762095/article/details/112668837?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_baidulandingword-6&spm=1001.2101.3001.4242 | 使用边缘计算网关分析CAN报文_m0_49762095的博客-CSDN博客
+https://www.jianshu.com/p/04d1e3460031?utm_campaign=maleskine&utm_content=note&utm_medium=seo_notes&utm_source=recommendation | Python数据分析——数据预处理的方法 - 简书
+https://zhuanlan.zhihu.com/p/29576732 | Python数据分析及可视化实例目录 - 知乎
+https://www.pianshen.com/article/4315416281/ | 利用Python语言编写新能源汽车GB-T 27930-2015直流充电报文解析工具 - 程序员大本营
+
+https://github.com/probonopd/linuxdeployqt/blob/master/BUILDING.md | linuxdeployqt/BUILDING.md at master · probonopd/linuxdeployqt
+https://blog.csdn.net/adieu_csdn/article/details/102638934 | ubuntu18.04通过linuxdeployqt打包Qt5.0项目_Adieu_csdn的博客-CSDN博客
+https://blog.csdn.net/zyhse/article/details/106381937?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control | 使用linuxdeployqt在linux下进行Qt打包发布(超详细)_百里杨的博客-CSDN博客
+
+https://www.cnblogs.com/f-ck-need-u/p/7016077.html#auto_id_0 | 第4章 ext文件系统机制原理剖析 - 骏马金龙 - 博客园
+https://www.gnu.org/software/make/manual/make.html#Phony-Targets | GNU make
+https://www.cnblogs.com/malinzhai/p/12641567.html | QSettings 读/写ini配置文件中的数组数据 - 码林斋 - 博客园
+https://www.cnblogs.com/liushui-sky/p/10867512.html | QT QSettings 操作（导入导出、保存获取信息）*.ini文件详解 - 苦涩的茶 - 博客园
+https://www.bbsmax.com/A/n2d96o4QzD/ | Qt配置信息设置（QSettings在不同平台下的使用路径）
+
+http://www.voidcn.com/article/p-fteyqhud-bwa.html | 输出文件,每行一个字节,十六进制格式(在linux bash下) - 程序园
+http://zgserver.com/hexdumphexascii.html | 如何只打印hexdumphex值没有行号或ASCII表？ 中国服务器网
+https://www.cnblogs.com/xia-weiwen/p/7932379.html | 在Qt(C++)中与Python混合编程 - 星夜之夏 - 博客园
+https://www.jianshu.com/p/85d477fcbc91 | 用Python写界面--上位机开发 - 简书
+
+https://www.jb51.net/article/131086.htm | Linux中hexdump命令用法_Linux_脚本之家
+https://www.cnblogs.com/kerrycode/p/5077687.html | Linux命令学习总结：hexdump - 潇湘隐者 - 博客园
+https://blog.csdn.net/yzhang6_10/article/details/81588282 | (1条消息) Linux中hexdump命令_没有最好，只有更好！-CSDN博客_hexdump
+http://www.voidcn.com/article/p-fteyqhud-bwa.html | 输出文件,每行一个字节,十六进制格式(在linux bash下) - 程序园
+https://www.cnblogs.com/gavanwanggw/p/7073581.html | linux 命令 xxd - gavanwanggw - 博客园
+
+http://c.biancheng.net/view/740.html | Linux ln命令：在文件之间建立链接（硬链接和软链接）详解版
+http://www.szyyny.com/html/6843093923.html | 永阳PT100/PT1000二线制与三线制测温电路图-深圳市永阳新能源科技有限公司
+https://www.21ic.com/app/test/201012/72168.htm | 基于PT1000的高精度温度测量系统 - 21ic中国电子网
+http://www.elecfans.com/yuanqijian/sensor/20171026570254.html | PT1000温度测量，PT1000温度检测和控制 - 电子发烧友网
+https://wenku.baidu.com/view/2d5cb5566429647d27284b73f242336c1fb93062.html | 误差分析-热敏电阻 - 百度文库
+https://zhuanlan.zhihu.com/p/32289621 | 电动汽车，绝缘检测方法 - 知乎
+https://blog.csdn.net/D_azzle/article/details/83410141 | 在KEIL下查看单片机编程内存使用情况_D_azzle的博客-CSDN博客
+https://blog.csdn.net/qq_29350001/article/details/72730667#commentBox | UNIX再学习 -- RS485 串口编程_不积跬步，无以至千里-CSDN博客
+https://zhuanlan.zhihu.com/p/168751293 | 浅谈分布式并发控制 - 知乎
+
+https://www.amobbs.com/thread-5658743-1-1.html | can 有没有像以太网一样的隔离变压器 (amobbs.com 阿莫电子论坛)
+https://www.cnblogs.com/Anker/p/3209876.html | error while loading shared libraries: xxx.so.x" 错误的原因和解决办法 - Rabbit_Dale - 博客园
+https://www.cnblogs.com/unclemac/p/12783328.html | Linux从error while loading shared libraries: libxxx.so.x 错误的常规解决思路看程序与动态库的关系 - 小麦大叔 - 博客园
+https://www.cnblogs.com/xl2432/p/11124415.html | Ubuntu下使用linuxdeployqt打包Qt程序 - 星星,风,阳光 - 博客园
+https://github.com/probonopd/linuxdeployqt | probonopd/linuxdeployqt: Makes Linux applications self-contained by copying in the libraries and plugins that the application uses, and optionally generates an AppImage. Can be used for Qt and other applications
+
+https://blog.csdn.net/qq_36958104/article/details/90897958 | STM32常见通信方式（TTL、RS232、RS485、I2C，SPI，CAN）总结_位文杰的博客-CSDN博客
+https://blog.csdn.net/qq_41179988/article/details/85676362#t2 | SPI、I2C、UART（即串口）三种串行总线详解_sunshine-CSDN博客
+https://blog.csdn.net/oqqHuTu12345678/article/details/72356722 | s5pv210——I2C基础详解、I2C时序详解_清风徐来-CSDN博客
+https://www.circuitbasics.com/basics-uart-communication/ | Basics of UART Communication
+https://www.fujitsu.com/cn/products/devices/semiconductor/memory/fram/overview/ | What is FRAM? - 富士通中国
+http://ix.io/2CnF | ix.io/2CnF
+https://zhuanlan.zhihu.com/p/96597338 | 云服务器ix.io恶意挖矿漏洞修复 - 知乎
+
+https://www.zmonster.me/2020/06/27/org-roam-introduction.html | 使用 org-roam 构建自己的知识网络 · ZMonster's Blog
+http://shigaro.org/2020/07/01/emacs-1/ | Emacs 笔记 (一) —— 安装与配置 Doom Emacs | Shigaro
+
+http://www.woshipm.com/pmd/3327770.html | PRD到底该怎么写？更全面的文档范例来了 | 人人都是产品经理
+
+https://www.doc88.com/p-9488184382900.html | 直流系统绝缘监测装置的介绍 - 道客巴巴
+http://m.elecfans.com/article/583992.html | 两电平apf和三电平apf的区别-电子发烧友网
+https://www.cnblogs.com/zhiqiang_zhang/p/11107818.html | AD转换为KiCAD的方法 - CNZHIQIANG - 博客园
+https://zhuanlan.zhihu.com/p/140473235 | 用TiddlyWiki替代Notion和EverNote作为个人知识管理系统 - 知乎
+
+https://wenku.baidu.com/view/697c0235a32d7375a4178064.html# | 电能计量芯片汇总 - 百度文库
+https://wenku.baidu.com/view/4cf89df7f61fb7360b4c6547.html# | 电能计量芯片CS5460及其应用 - 百度文库
+http://bbs.eetop.cn/thread-378190-1-1.html | 有没有做过电能计量芯片的同志，进来看看 - Analog/RF IC 设计讨论 - EETOP 创芯网论坛 (原名：电子顶级开发网) -
+
+https://www.behaviortree.dev/bt_basics/ | Introduction to BT - BehaviorTree.CPP
+https://blog.csdn.net/travis_x/article/details/87687914 | 行为树（BT）笔记（二）：行为树简介_Travis_X的博客-CSDN博客
+
+https://blog.csdn.net/gao7009/article/details/80221163#commentBox | FSM（状态机）、HFSM（分层状态机）、BT（行为树）的区别_gao7009的博客-CSDN博客
+https://zhuanlan.zhihu.com/p/19891875 | 游戏AI - 行为树Part2：框架 - 知乎
+
+https://igor-misic.blogspot.com/2017/10/debugging-ek-tm4c123gxl-with-visual.html?m=1 | Debugging EK-TM4C123GXL with Visual Studio Code on Linux
+https://github.com/yuvadm/tiva-c | yuvadm/tiva-c: Open source toolchain for the TI Tiva C dev board
+https://blog.csdn.net/qq_34245464/article/details/100769643 | 使用VS Code打造完美的嵌入式IDE_Letter-CSDN博客
+
+https://www.alibabacloud.com/help/zh/doc-detail/86706.htm#title-ndb-p2e-joe | 使用MQTT.fx接入物联网平台 - 最佳实践| 阿里云
+
+https://blog.csdn.net/ba_wang_mao/article/details/107027612 | 阿里云IOT C-SDK 源码分析系列（1）：应用框架概述_ba_wang_mao的专栏-CSDN博客
+
+https://baike.baidu.com/item/va_list/8573665?fr=aladdin | va_list_百度百科
+http://c.biancheng.net/view/446.html | C语言宏的定义和宏的使用方法（#define）
+
+https://blog.csdn.net/mw_nice/article/details/82899575 | printf可变参数原理_mw_nice的博客-CSDN博客
+
+https://blog.csdn.net/anxianfeng55555/article/details/80908795 | IoT -- (七)MQTT协议详解_精品博客-CSDN博客
+https://zhuanlan.zhihu.com/p/37133568 | 使用 MQTT + JSON 进行物联网通信 - 知乎
+
+https://wenku.baidu.com/view/0722272ecfc789eb172dc822.html | 功率电费对照表 - 百度文库
+
+http://web.eece.maine.edu/~zhu/book/index.php | Embedded Systems with ARM Cortex-M Microcontrollers in Assembly Language and C
+
+https://www.zhihu.com/question/30315894 | (25 封私信 / 80 条消息) Visual Studio Code 如何编写运行 C、C++ 程序？ - 知乎
+https://zhuanlan.zhihu.com/p/27814491 | 正确而又优雅地测试电源纹波 - 知乎
+https://www.dianyuan.com/article/48790.html | 终于讲透了！开关电源MOS开关损耗推导过程-电源网
+
+https://wiki.segger.com/J-Link_Visual_Studio_Code | J-Link Visual Studio Code - SEGGER Wiki
+https://www.codenong.com/cs105319929/ | 使用 VSCode 开发调试 STM32 单片机尝试 | 码农家园
+https://processors.wiki.ti.com/index.php?printable=yes&title=Using_TivaWare_and_ControlSUITE_with_Linux_CCS&keyMatch=USINGTIVAWAREANDCONTROLSUITEWITHLINUXCCS&tisearch=Search-EN-everything | Using TivaWare and ControlSUITE with Linux CCS - Texas Instruments Wiki
+
+https://github.com/posborne/cmsis-svd/tree/master/data/TexasInstruments | cmsis-svd/data/TexasInstruments at master · posborne/cmsis-svd
+https://www.justinmklam.com/posts/2017/10/vscode-debugger-setup/ | Debugger Setup with GDB + OpenOCD in Visual Studio Code
+https://blog.csdn.net/Mculover666/article/details/84945211 | 【STM32开发环境】Linux下开发stm32（三） | 寄存器工程开发_Mculover666的博客（嵌入式）-CSDN博客_linux 开发 stm32
+https://blog.csdn.net/Mculover666/article/details/84888539 | 【STM32开发环境】Linux下开发stm32（一） | 使用gcc-arm-none-eabi工具链编译_Mculover666的博客（嵌入式）-CSDN博客_arm-none-eabi-as生成的bin文件如何在手机上运行
+
+https://wenku.baidu.com/view/7e4e3b45561252d380eb6ed2.html | TivaWare软件安装指导 - 百度文库
+https://www.ti.com/licreg/docs/swlicresults.tsp?countryName=China+%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29&eeq=Civil&Certify=YES&submitsubmit=Submit | TI Software Approval - TI.com
+https://wiki.segger.com/J-Link_Visual_Studio_Code | J-Link Visual Studio Code - SEGGER Wiki
+
+https://blog.csdn.net/Attack_on_cc/article/details/86668182 | TM4C123GLaunchPad教程二_GPIO输入输出_Attack_on_cc的博客-CSDN博客_gpiopadconfigset
+
+https://www.cnblogs.com/asswecan/p/9980029.html | 网络抓包分析——移动互联网方向第三组 - DeepDarkFantasy - 博客园
+https://blog.csdn.net/xhl1123456789/article/details/80653727?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase | 波特率与定时器初值关系_xhl1123456789的博客-CSDN博客_波特率与定时器初值关系
+
+https://blog.csdn.net/u011546766/article/details/80975266 | 基于 Qt QThread 的同步任务队列和异步任务队列_Jimmy的小黑屋-CSDN博客_qt 多线程 队列
+
+https://blog.csdn.net/liuzhezhe111/article/details/82285146#t3 | Qt 定时器的几种使用方式、windows精确定时器使用【精确度对比】_liuwb博客-CSDN博客_qt调用windows的精准定时器
+
+https://blog.csdn.net/hw5226349/article/details/40825649 | Linux+Qt 算法运行时间（计时函数）_Mars_WH的专栏-CSDN博客_qt while 计时
+https://www.jianshu.com/p/938bd6393405 | QT学习笔记——十进制与十六进制转换 - 简书
+https://www.cnblogs.com/hanford/p/6048325.html | 串行通讯之Qt - hanford - 博客园
+https://wenku.baidu.com/view/e691171f77a20029bd64783e0912a21614797f8c.html | PID控制算法及流程图 - 百度文库
+
+https://www.cnblogs.com/hualalasummer/p/3712179.html | C++回调函数用法 - Hualalasummer - 博客园
+https://zhidao.baidu.com/question/400792925.html | return *(int*)a-*(int*)b;中两个*各是什么意思_百度知道
+
+https://blog.csdn.net/leonsust/article/details/81908255 | 手把手教你使用simulink配合STM32CUBEMX （生成keil项目实战）_嵌入式_LeonSUST的博客-CSDN博客
+https://blog.csdn.net/weixin_41695564/category_7746645.html | Simulink_行歌_行歌er-CSDN博客
+
+https://jingyan.baidu.com/article/4f34706e35d36ee387b56de3.html | tcpdump抓取网络包的实用命令-百度经验
+https://blog.csdn.net/qq_25453065/article/details/89786943 | 通过tcpdump分析TCP报文（1）_网络_Qmeng的博客-CSDN博客
+https://blog.csdn.net/lincyang/article/details/17266027 | ARM Endian（字节序）初探_嵌入式_懒人的技术笔记-CSDN博客
+https://blog.csdn.net/autumn20080101/article/details/8119694 | 一般来说，x86 系列CPU 都是little-endian 的字节序，PowerPC 通常是Big endian_数据库_autumn20080101的专栏-CSDN博客
+https://blog.csdn.net/andrewniu/article/details/80566324 | C/C++ typedef用法详解（真的很详细）_C/C++_Andrewniu的博客-CSDN博客
+https://baike.baidu.com/item/typedef/9558154?fr=aladdin | typedef_百度百科
+https://www.cnblogs.com/chengxuyuancc/articles/2999834.html | typedef与宏定义区别 - 在于思考 - 博客园
+
+https://blog.csdn.net/qqxx6661/article/details/53930286 | 【latex】itemize, enumerate枚举，编号使用_后端_后端技术漫谈-CSDN博客
+https://www.cnblogs.com/zkweb/p/6856879.html | 如何实现在Windows上运行Linux程序，附示例代码 - q303248153 - 博客园
+
+http://softlab.sdut.edu.cn/blog/subaochen/2017/07/latex%E7%9A%84%E8%AE%A1%E6%95%B0%E5%99%A8%EF%BC%88counter%EF%BC%89/ | LaTeX的计数器（counter） – 宿宝臣的博客
+http://blog.sina.com.cn/s/blog_4b91d3b50100rgyq.html | \latex  用户定制——计数器，公式编号，自定义环境，命令_保福寺假行僧_新浪博客
+https://blog.csdn.net/philosophyatmath/article/details/49174239 | latex表格行号自动递增测试笔记_张大鹏(朋)的专栏-CSDN博客
+
+https://www.jianshu.com/p/c6c5655b9b7c | LaTeX：表格内部分区域背景颜色设定 - 简书
+https://www.latexstudio.net/archives/8093.html | 149. LaTeX技巧506：LaTeX颜色表格中合并行着色问题---multirow使用技巧 - LaTeX科技排版工作室
+https://blog.csdn.net/programchangesworld/article/details/51465154 | LaTeX技巧004：给文字添加下划线、波浪线等样式_latex,下划线,波浪线_ProgramChangesWorld的专栏-CSDN博客
+https://blog.csdn.net/lishoubox/article/details/7268858 | Latex跨页表格_lishoubox的专栏-CSDN博客
+http://blog.sina.com.cn/s/blog_01ea59580102ynoo.html | latex表格标题列格式:标题居中,内容居左_latex888_新浪博客
+
+https://blog.csdn.net/qq_26399665/article/details/53268807 | c++11之chrono头文件_C/C++_linus_Robot的博客-CSDN博客
+https://blog.csdn.net/weixin_30345055/article/details/97035897 | C++11 std::chrono库详解_weixin_30345055的博客-CSDN博客
+
+https://blog.csdn.net/yuabcxiao/article/details/89600907 | 字符数组，字符指针，指针数组（字符串）的比较与使用_C/C++_yuabcxiao的博客-CSDN博客
+
+https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=2&ch=&tn=baiduhome_pg&bar=&wd=maltab+simulink+%E9%98%B6%E6%A2%AF%E6%AD%A5%E8%BF%9B&rsv_spt=1&oq=maltab%2520simulink%2520%25E8%25BF%259B%25E4%25B8%2580&rsv_pq=f9ae7dca000c24f6&rsv_t=beddXrF6PRDQ6Xp8ChEJAGONfZ9KEbE%2FMbJoliyotuKTZVC1QksiCO2Gj10mkXuRZo0W&rqlang=cn&rsv_enter=1&rsv_dl=tb&inputT=15752 | maltab simulink 阶梯步进_百度搜索
+https://blog.csdn.net/dyq1995/article/details/88657823 | simulink仿真之比较产生阶梯波_人工智能_跑得动就不要歇着-CSDN博客
+https://jingyan.baidu.com/article/6079ad0ecbc65428ff86dbd6.html | simulink中传输延时模块的使用-百度经验
+
+https://blog.csdn.net/Adieu_csdn/article/details/102638934 | ubuntu18.04通过linuxdeployqt打包Qt5.0项目_运维_Adieu_csdn的博客-CSDN博客
+https://www.pianshen.com/article/1288261033/ | 在Ubuntu上打包Qt工程，并实现其安装和使用。 - 程序员大本营
+https://zhuanlan.zhihu.com/p/96696862 | Linux下Qt程序的打包发布(2)-使用第三方工具linuxdeployqt - 知乎
+
+https://www.cnblogs.com/lidabo/archive/2013/03/17/2964969.html | 结构体初始化 - DoubleLi - 博客园
+https://www.cnblogs.com/lvjunjie/p/8961731.html | 结构体中定义函数指针 - 聚散流沙的独白 - 博客园
+https://blog.csdn.net/GengWenhui123/article/details/87370991 | c++ 类成员函数指针（qt 信号）存放在容器中_C/C++_小灰灰的博客-CSDN博客
+
+https://www.cnblogs.com/yjphhw/p/11070614.html | QObject的timerEvent使用 - 看看完了 - 博客园
+https://blog.csdn.net/lusanshui/article/details/97638520 | (1条消息)Qt中QTimer和timerevent的区别与用法_Python_lusanshui的博客-CSDN博客
+
+https://www.cnblogs.com/williamjie/p/9983958.html | Linux tcpdump命令详解 - 割肉机 - 博客园
+https://blog.csdn.net/sunlylorn/article/details/7544301 | (1条消息)c99之 柔性数组成员（flexible array member）_C/C++_sunlylorn的专栏-CSDN博客
+
+https://www.cnblogs.com/rickyk/p/4203680.html | 深入理解QStateMachine与QEventLoop事件循环的联系与区别 - Ricky.K - 博客园
+https://blog.51cto.com/9291927/1868744 | QT开发（十二）——QT事件处理机制-生命不息，奋斗不止-51CTO博客
+
+https://blog.csdn.net/dbzhang800/article/details/6300519 | QEventLoop 的使用两例_C/C++_1+1=10-CSDN博客
+
+https://blog.csdn.net/huaweijian0324/article/details/80571315 | 在Qt子线程中使用定时器_古道云的博客-CSDN博客
+https://www.jianshu.com/p/b900fdeec9bf | Qt多线程中基于队列实现网络通信 - 简书
+
+https://blog.csdn.net/CLinuxF/article/details/79923460 | Qt之处理QNetworkAccessManager网络连接超时_网络_波风水门的博客-CSDN博客
+
+https://www.jianshu.com/p/237d2864e5d6 | 使用Orgmode进行GTD管理 - 简书
+
+https://www.cnblogs.com/qlwy/archive/2012/06/15/2551034.html | 神器中的神器org-mode之入门篇 - csqlwy - 博客园
+https://blog.csdn.net/iSunwish/article/details/87858960 | QT（三）：浅探 QTimer 类_网络_Sunwish的博客-CSDN博客
+https://www.cnblogs.com/lidabo/archive/2013/03/17/2964969.html | 结构体初始化 - DoubleLi - 博客园
+
+https://www.cnblogs.com/findumars/p/6152840.html?utm_source=itdadao&utm_medium=referral | qt在windows下的udp通信（最简单） - findumars - 博客园
+https://stackoverflow.com/questions/29963701/latex-flowchart-line-crossing-line | Latex flowchart line crossing line - Stack Overflow
+https://tex.stackexchange.com/questions/218727/add-text-on-arrow-in-flowchart | tikz pgf - Add text on arrow in flowchart - TeX - LaTeX Stack Exchange
+
+https://blog.csdn.net/qq_35721743/article/details/83592415 | C++中一个类成员函数调用另一个类成员的方法_青山绿水-CSDN博客
+http://cnlox.is-programmer.com/categories/7113/posts | Lisp - 行者无疆 始于足下 - 行走，思考，在路上
+https://www.douban.com/doulist/31637/ | 北京大学数学学院课程教材
+https://www.zhihu.com/question/22072020 | (13 封私信 / 4 条消息) 有人能解释一下伽罗瓦域和GF(2^8)吗？ - 知乎
+https://blog.csdn.net/shelldon/article/details/54729687 | 伽罗华域（Galois Field）上的四则运算_算法_shelldon的专栏-CSDN博客
+https://www.zhihu.com/question/27528796 | (13 封私信 / 4 条消息) 如何简单清晰地解释哥德尔不完备定理？ - 知乎
+https://www.jianshu.com/p/bfe2a3fc806b | 我帮你读：「哥德尔、艾舍尔、巴赫——集异璧之大成」 - 简书
+
+https://blog.csdn.net/wasd6081058/article/details/7216266 | 可变长的结构体_好读书-CSDN博客
+http://almemo.blog.sohu.com/253344745.html | 【转】C/C++定义全局变量/常量几种方法的区别-疏梦-搜狐博客
+https://blog.csdn.net/aidam_bo/article/details/85775368 | Qt总结之十三：QUDPSocket详解_YBAdiam的博客-CSDN博客
+https://blog.csdn.net/rabbitjerry/article/details/72830004 | QT中UDPSocket丢包问题(续)_rabbitjerry的专栏-CSDN博客
+https://blog.csdn.net/qq78442761/article/details/85535391 | Qt工作笔记-UDP多线程数据处理及发送（简单实例）_C++,Qt,socket_IT1995的博客-CSDN博客
+
+https://www.cnblogs.com/ling123/p/8626093.html | 周立功USBCAN-II 上位机开发（MFC） - Lynn4321 - 博客园
+https://blog.csdn.net/Aidam_Bo/article/details/85211303 | #Pragma Pack(n)与内存分配 pragma pack(push,1)与#pragma pack(1)的区别_YBAdiam的博客-CSDN博客
+https://wenku.baidu.com/view/f66eb4e5a55177232f60ddccda38376baf1fe083.html | [免费下载]Pt1000热电阻温度测量 - 百度文库
+https://www.cnblogs.com/MisterXu/p/10773831.html | C/C++中extern和static - shell_nut - 博客园
+https://blog.csdn.net/u014470361/article/details/79297601 | 什么是代码区、常量区、静态区（全局区）、堆区、栈区？_夜风的博客-CSDN博客
+https://zhuanlan.zhihu.com/p/58087261 | Linux内核中常用的数据结构和算法 - 知乎
+https://www.cnblogs.com/heat-man/p/4677193.html | 数据结构之链表C语言实现以及使用场景分析 - heat nan - 博客园
+https://www.cnblogs.com/ciangcic/p/3619230.html | Emacs下设置Lisp开发环境路径 - 晨曦语晴 - 博客园
+https://www.cnblogs.com/mr-xu/archive/2012/08/07/2626973.html | C++中引用（&）的用法和应用实例 - blue—— - 博客园
+https://my.oschina.net/michaelyuanyuan/blog/104421?p=1 | 流言终结者——C语言内存管理 - michael的个人空间 - OSCHINA
+https://www.ibm.com/developerworks/cn/linux/l-memory/ | 内存管理内幕
+
+https://blog.csdn.net/csfreebird/article/details/43636615 | org mode 使用latex - Dean Chen的专栏 - CSDN博客
+https://blog.csdn.net/csfreebird/article/details/47658957 | Emacs 使用graphviz-dot-mode创建架构图 - Dean Chen的专栏 - CSDN博客
+https://blog.csdn.net/u011729865/article/details/79059391 | emacs org-mode嵌入graphviz代码，并执行 - 学而不思则罔，思而不学则殆 - CSDN博客
+https://blog.csdn.net/abcamus/article/details/53738481 | org mode文档转成markdown格式 - Camus - CSDN博客
+https://blog.csdn.net/Marionce/article/details/51456924 | 使用 LaTeX 绘制流程图 - Marionce的博客 - CSDN博客
+https://blog.csdn.net/liufengl138/article/details/78398263 | 使用 emacs org-mode 画图 - liufengl138的专栏 - CSDN博客
+https://tonybai.com/2015/09/23/intro-of-gohugo/ | 使用Hugo搭建静态站点 | Tony Bai
+https://www.zhihu.com/question/268844949 | org mode 中如何调整latex公式预览的大小？ - 知乎
+https://emacs-china.org/t/topic/5216/30 | 科研人员请进，你们平时都用emacs做些什么？ - 闲聊灌水 - Emacs China
+https://github.com/et2010/org-edit-latex | GitHub - et2010/org-edit-latex: Edit LaTeX fragments like editing src blocks
+https://zhuanlan.zhihu.com/p/63217203 | org-babel联合R语言用于数据报告的生成 - 知乎
+https://blog.csdn.net/OzhangsenO/article/details/83832935 | emacs+Latex 设置xelatex编译命令，以及预览功能 - OzhangsenO的专栏 - CSDN博客
+https://brantou.github.io/2017/04/01/babel-intro/#fnr.1 | Babel: org-mode的元编程 | Brantou的日常
+https://orgmode.org/manual/Extracting-Source-Code.html#Header-arguments | The Org Manual: Extracting Source Code
+https://doc.qt.io/qt-5/qtnetwork-module.html | Qt Network C++ Classes | Qt Network 5.13.1
+
+https://blog.csdn.net/qq_38437024/article/details/73194724 | 关于float有效位数为7位的研究 - qq_38437024的博客 - CSDN博客
+
+https://blog.csdn.net/whyel/article/details/81067989 | 浮点数的原理简析 - 有无中的专栏 - CSDN博客
+https://blog.csdn.net/dreamer2020/article/details/24158303/ | 深入理解浮点数有效位 - dreamer2020的专栏 - CSDN博客
+
+https://www.doc88.com/p-8846420993623.html | 维也纳整流器研究 - 道客巴巴
+
+http://www.escn.com.cn/news/show-753839.html# | ​现货来了，峰谷差价更小了？ - 电网侧储能 - 中国储能网
+https://www.cnblogs.com/zuoxiaolong/p/computer10.html | 深入理解计算机系统（2.6）---二进制整数的乘、除法运算（重要）【困难度高】 - 左潇龙 - 博客园
+
+https://blog.csdn.net/zxm1306192988/article/details/78595933 | 隐马尔科夫模型(HMM) - 无关风月 - CSDN博客
+
+https://baike.baidu.com/item/%E7%A3%81%E6%94%BE%E5%A4%A7%E5%99%A8%E7%9B%B4%E6%B5%81%E8%B0%83%E9%80%9F/22351718 | 磁放大器直流调速_百度百科
+http://www.doc88.com/p-6901366204329.html | 基于MPC的多源孤岛微电网协调控制 - 道客巴巴
+
+https://baike.baidu.com/item/%E6%96%A9%E6%B3%A2%E7%94%B5%E8%B7%AF/9429403?fr=aladdin | 斩波电路_百度百科
+https://www.docin.com/p-1484281433.html | 多源_多负荷直流微电网的能量管理和协调控制方法 - 豆丁网
+https://www.cnblogs.com/lemonzhang/p/8963932.html | RS485 MODBUS RTU通信协议 - kkzhang - 博客园
+https://www.cnblogs.com/sinferwu/p/7904279.html | 循环冗余校验（CRC）算法入门 - sinferwu - 博客园
+
+https://wenku.baidu.com/view/5be59c68ff4733687e21af45b307e87100f6f873.html | 三相逆变器控制算法详细设计报告 - 百度文库
+
+http://www.elecfans.com/d/828608.html | 通过park变换得到的Id、Iq有什么具体的物理含义？-电子发烧友网
+
+https://wenku.baidu.com/view/4cdbd4250722192e4536f6ca.html | 基于MATLAB的三相电压型PWM整流系统仿真 - 图文 - 百度文库
+http://www.elecfans.com/d/828608.html | 通过park变换得到的Id、Iq有什么具体的物理含义？-电子发烧友网
+
+https://wenku.baidu.com/view/4cdbd4250722192e4536f6ca.html | 基于MATLAB的三相电压型PWM整流系统仿真 - 图文 - 百度文库
+https://wenku.baidu.com/view/c8a40611854769eae009581b6bd97f192279bfc4.html | 基于Matlab的单相电压型PWM整流电路仿真与设计 - 百度文库
+https://blog.csdn.net/tichimi3375/article/details/80853229 | 基于MATLAB/Simulink的电力电子电路仿真技术——三相电压源型SPWM逆变器 - 唯恋殊雨的博客 - CSDN博客
+https://wenku.baidu.com/view/7bcba87c83c4bb4cf7ecd1b0.html | 三相电压型PWM整流器的仿真 - 百度文库
+
+https://wenku.baidu.com/view/8118252f700abb68a982fbeb.html | 基于Matlab的PWM整流器的仿真研究论文（内附中英文翻译） - 百度文库
+https://wenku.baidu.com/view/6b52db49312b3169a451a49e.html | PWM逆变器Matlab仿真 - 百度文库
+https://www.docin.com/p-1147620068.html | PWM逆变器MATLAB仿真 - 豆丁网
+https://wenku.baidu.com/view/9e1f49260029bd64793e2c54.html | 三相逆变器matlab仿真 - 百度文库
+
+http://m.elecfans.com/article/631318.html | Buck电路的多角度干货解析-电子发烧友网
+https://blog.csdn.net/zhy295006359/article/details/79054258 | 开关电源Buck电路CCM和DCM工作模式 - zhy295006359的博客 - CSDN博客
+
+https://wenku.baidu.com/view/f325b26b0b1c59eef8c7b414.html | UPS 6脉冲整流器、12脉冲整流器和IGBT整流器技术区别 - 百度文库
+http://www.doc88.com/p-6893139942049.html | 平衡电抗器在十二脉冲整流电路中的应用 - 道客巴巴
+
+https://www.doc88.com/p-5929646332417.html | 基于Matlab_Simulink的并网型变流器教学仿真_刘斌 - 道客巴巴
+https://wenku.baidu.com/view/694ceec15fbfc77da269b1ad.html | 基于MATLAB的变流器设计与仿真 - 图文 - 百度文库
+https://wenku.baidu.com/view/54318e74ae45b307e87101f69e3143323968f5fe.html | 三相方波逆变电路原理说明 - 图文 - 百度文库
+https://wenku.baidu.com/view/c53749283169a4517723a369.html | simulink中的solver各选项表示的意思 - 百度文库
+https://baike.baidu.com/item/%E5%B8%B8%E6%95%B0%E5%8F%98%E6%98%93%E6%B3%95/5356198 | 常数变易法_百度百科
+https://www.docin.com/p-674000123.html | PWM逆变器Matlab仿真 - 豆丁网
+http://m.elecfans.com/article/591983.html | IGBT整流器功率因数有什么控制方法？CT异常对整流器有什么影响？-电子发烧友网
+http://www.highsemi.com/sheji/622.html | IGBT整流器控制原理 应用技术-海飞乐技术有限公司
+https://wenku.baidu.com/view/cf944a42178884868762caaedd3383c4bb4cb498.html?rec_flag=default | [图文]PWM控制电路 - 百度文库
+http://www.elecfans.com/dianzichangshi/20180515677453.html | spwm控制的基本原理_spwm控制方法有哪些 - 电子常识 - 电子发烧友网
+https://wenku.baidu.com/view/acc03ddacc7931b764ce1581.html | [图文]第5章 PWM整流电路 - 百度文库
+https://wenku.baidu.com/view/f325b26b0b1c59eef8c7b414.html | UPS 6脉冲整流器、12脉冲整流器和IGBT整流器技术区别 - 百度文库
+
+https://wenku.baidu.com/view/bb5106bd846a561252d380eb6294dd88d0d23d9a.html | PWM逆变器Matlab仿真解析 - 百度文库
+
+http://m.elecfans.com/article/790842.html | 浅析导致整车绝缘监测仪报出绝缘故障的典型原因-电子发烧友网
+http://m.elecfans.com/article/622040.html | 简单可控硅充电机制作（四款可控硅充电机电路图详解）-电子发烧友网
+http://www.dianyuan.com/article/31075.html | 半桥LLC谐振DC-DC变换器工作原理简析-电源网
+https://wenku.baidu.com/view/e2fd26f389eb172dec63b709.html | 电力电子技术MATLAB仿真报告 - 百度文库
