@@ -1,9 +1,44 @@
+https://zhuanlan.zhihu.com/p/389735254 | 塑胶材料选型 - 知乎
+https://zhuanlan.zhihu.com/p/181361205 | 常用塑料材料的性能 - 知乎
+http://www.riukai.com/articles/sszqds4534.html | 史上最全的塑料性能解析及检测标准
+https://www.amobbs.com/forum.php?mod=viewthread&tid=858410 | CS5460A芯片读取数据时经常出现读回0的状况,请教各位了. (amobbs.com 阿莫电子论坛)
+https://www.docin.com/p-314977913.html | [通信/电子]CS5460A中文数据手册 - 豆丁网
+https://orgmode.org/worg/org-tutorials/org-spreadsheet-intro.html | Org as a spreadsheet system: a short introduction
+http://www.yllled.com/news/hynews/173.html | 推算LED灯寿命的方法居然这么简单！-宇亮光电
+https://blog.csdn.net/banrieen/article/details/51190688 | 通常环境光照度参照表_布谷鸟-CSDN博客_光照度
+https://www.testmart.cn/Home/News/data_detail/id/90994.html | lux(照度)和cd/m2(亮度)的换算关系_仪器仪表交易网
+https://www.sinowatcher.cn/show-29-586.html | 400mm机动车信号灯(小功率) - 机动车信号灯-方向指示信号灯-非机动车信号灯-人行横道信号灯厂家 - 赛诺杰官网
+https://www.zhihu.com/question/347826778 | 相同功率不同颜色的LED灯，光强受颜色影响吗？ - 知乎
+https://stackoverflow.com/questions/32252996/what-algorithm-can-i-use-to-generate-a-48-bit-hash-for-unique-mac-addresses | linux - What algorithm can I use to generate a 48-bit hash for unique mac addresses? - Stack Overflow
+https://www.zhihu.com/question/20507188 | hash算法的数学原理是什么，如何保证尽可能少的碰撞？ - 知乎
+https://zhuanlan.zhihu.com/p/178555720#:~:text=Hash%E7%AE%97%E6%B3%95%E7%9A%84%E5%8E%9F%E7%90%86%E6%98%AF%E6%8A%8A%E8%BE%93%E5%85%A5%E7%A9%BA%E9%97%B4%E7%9A%84%E5%80%BC%E6%98%A0%E5%B0%84%E5%88%B0Hash%E7%A9%BA%E9%97%B4%E5%86%85%EF%BC%8C%E7%94%B1%E4%BA%8EHash%E5%80%BC%E7%9A%84%E7%A9%BA%E9%97%B4%E8%BF%9C%E5%B0%8F%E4%BA%8E%E8%BE%93%E5%85%A5%E7%9A%84%E7%A9%BA%E9%97%B4%EF%BC%8C%E8%80%8C%E4%B8%94%E5%80%9F%E5%8A%A9,%E6%8A%BD%E5%B1%89%E5%8E%9F%E7%90%86%20%EF%BC%8C%E5%8F%AF%E4%BB%A5%E5%BE%97%E5%87%BA%E4%B8%80%E4%B8%AA%E7%BB%93%E8%AE%BA%E2%80%94%E2%80%94%E4%B8%80%E5%AE%9A%E4%BC%9A%E5%AD%98%E5%9C%A8%E4%B8%8D%E5%90%8C%E7%9A%84%E8%BE%93%E5%85%A5%E8%A2%AB%E6%98%A0%E5%B0%84%E6%88%90%E7%9B%B8%E5%90%8C%E8%BE%93%E5%87%BA%E7%9A%84%E6%83%85%E5%86%B5%EF%BC%8C%E5%A6%82%E6%9E%9C%E4%B8%80%E4%B8%AAHash%E7%AE%97%E6%B3%95%E8%B6%B3%E5%A4%9F%E5%A5%BD%EF%BC%8C%E9%82%A3%E4%B9%88%E4%BB%96%E5%B0%B1%E4%B8%80%E5%AE%9A%E4%BC%9A%E6%9C%89%E6%9B%B4%E5%B0%8F%E7%9A%84%E5%8F%91%E7%94%9F%E5%86%B2%E7%AA%81%E7%9A%84%E6%A6%82%E7%8E%87. | HashMap的工作原理(一)：Hash算法 - 知乎
+https://cn.bing.com/search?q=arm+M4&qs=n&form=QBRE&sp=-1&pq=arm+m4&sc=0-6&sk=&cvid=14D97BD0C1C34A6C95FCE295F8FFEF58 | arm M4 - Search
+https://zhuanlan.zhihu.com/p/92315825 | ARM7、ARM9、ARM11、ARM-Cortex系列的关系 - 知乎
+
+https://github.com/mstegen/Open-Chargeport | mstegen/Open-Chargeport: Opens the chargeport of a Tesla Model S
+https://fccid.io/2AEIM-1023049 | Tesla Motors, Remote control for EV charge port door 1023049 FCC ID 2AEIM-1023049
+https://teslamotorsclub.com/tmc/threads/open-chargeport.21001/ | Open ChargePort | Tesla Motors Club
+https://teslatap.com/articles/homelink-analysis-and-troubleshooting/ | HomeLink Analysis and Troubleshooting – TeslaTap
+
+https://www.jianshu.com/p/e2835954cadd | STM32F103学习笔记（6）——4G模块EC200S使用 - 简书
+https://zhuanlan.zhihu.com/p/102296622 | 以太网PHY自学笔记 - 知乎
+https://blog.csdn.net/sternlycore/article/details/89289579 | (2条消息) 以太网详解（三）-PHY Transceiver硬件设计注意事项_sternlycore的博客-CSDN博客
+https://askubuntu.com/questions/1235957/how-to-add-chromedriver-to-path-in-ubuntu | 18.04 - How to add chromedriver to Path in ubuntu? - Ask Ubuntu
+https://gist.github.com/ziadoz/3e8ab7e944d02fe872c3454d17af31a5
+https://www.zhihu.com/question/274880537 | 求助铜母排和铝母排的温升规范？ - 知乎
+https://www.auto-testing.net/news/show-97012.html | GMW标准汽车内饰件耐用老化试验方法解析_耐久性试验__汽车测试网
+https://zhuanlan.zhihu.com/p/222067233 | 材料老化测试，选紫外、氙灯还是碳弧? - 知乎
+http://www.anytesting.com/news/1918687.html | 专家深度剖析PC/ABS光老化_检测资讯_嘉峪检测网
+http://www.dongguanruili.com/news/502.html | ABS材料的自然老化与人工加速老化试验_【环境|力学|电池】瑞力检测设备
+http://blog.sciencenet.cn/blog-68158-1060065.html | 科学网—忆手工做晶体管 - 张永刚的博文
+https://zhuanlan.zhihu.com/p/25064672 | 一起来聊一聊元素周期表（正式篇） - 知乎
+https://wenku.baidu.com/view/fbc42cd702020740bf1e9bb8.html | QJLY J7110279B-2014 汽车内外饰非金属件耐光老化试验规范 - 百度文库
+
 https://www.tesla.com/ownersmanual/model3/en_mx/GUID-9A3F0F72-71F4-433D-B68B-0A472A9359DF.html | Troubleshooting Alerts
 https://zhuanlan.zhihu.com/p/347971302 | TVS管选型参数详解，超详细的指南 - 知乎
 https://zhuanlan.zhihu.com/p/342829327 | 精通TVS的计算和选择 - 知乎
 https://www.cnblogs.com/dowo/p/14914648.html | 12V系统汽车电子瞬态浪涌保护及TVS二极管选型 - 东沃电子DOWOSEMI - 博客园
 https://zhuanlan.zhihu.com/p/20670309 | [硬件设计]TVS管的功率计算 - 知乎
-https://zhuanlan.zhihu.com/p/96880184 | 特斯拉Model 3的充电控制器解析 - 知乎
 https://zhuanlan.zhihu.com/p/70283695 | 干货 | 三极管工作原理详解 - 知乎
 https://eng.libretexts.org/Bookshelves/Materials_Science/Supplemental_Modules_(Materials_Science)/Solar_Basics/D._P-N_Junction_Diodes/3%3A_Ideal_Diode_Equation | 3: Ideal Diode Equation - Engineering LibreTexts
 https://python.quectel.com/doc/ | QuecPython
@@ -11,7 +46,6 @@ https://zhuanlan.zhihu.com/p/23447428 | 4G网络数据传输流程与速率分�
 
 https://zhuanlan.zhihu.com/p/147319603 | TVS二极管的主要参数有哪些？ - 知乎
 https://zhuanlan.zhihu.com/p/89678512 | 电线和电缆有什么区别？电缆电线的型号规格应该怎么选择？详解！ - 知乎
-https://www.zhihu.com/question/274880537 | 求助铜母排和铝母排的温升规范？ - 知乎
 https://zhuanlan.zhihu.com/p/35431231 | 动力电池包工艺系列--铜铝连接 - 知乎
 https://zhuanlan.zhihu.com/p/23375884 | 如何解决输电线路铜铝接线问题 - 知乎
 http://www.dowosemi.cn/en/index.php/solution/detail/10.html | 7637-2 5a/5b测试脉冲波形详解，看看您也知道_DOWOSEMI
@@ -92,7 +126,6 @@ https://www.cnblogs.com/kl2blog/p/6920142.html | 锁相环倍频原理简要分�
 
 https://www.sohu.com/a/410384751_99897087 | 充电桩日常维护测试安全隐患检查项目整理_检测
 https://device.panasonic.cn/ac/c/control/relay/cautions_use/index.jsp | 继电器使用上的注意事项 | 松下电器(中国）有限公司 控制机器 | Panasonic
-http://www.yllled.com/news/hynews/173.html | 推算LED灯寿命的方法居然这么简单！-宇亮光电
 http://www.dzdiy.com/html/200712/31/LED-color-light6.htm | LED变色灯电路--LED color light
 http://m.eadianqi.com/view.php?aid=4531 | 稳压二极管稳压电路原理图解_自动控制网
 https://tool.520101.com/yuanqijian/wenyaerjiguan/ | 稳压二极管的应用与选择计算器
